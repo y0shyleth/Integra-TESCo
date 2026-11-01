@@ -1,0 +1,130 @@
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: #FFF8DC; min-height: 100vh; display: flex; flex-direction: column; }
+        .nav-inutilizable { background-color: #32CD32; padding: 0.75rem 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .navbar-brand { color: #FFF8DC; font-weight: 700; font-size: 1.5rem; }
+        .nav-link-admin { color: #FFF8DC !important; font-weight: 600; transition: all 0.2s ease; border-radius: 12px; padding: 8px 16px !important; }
+        .nav-link-admin:hover { background-color: rgba(255,248,220,0.2); transform: translateY(-2px); }
+        .btn-nav-link { background: transparent; border: none; color: #FFF8DC !important; font-weight: 600; padding: 8px 16px !important; border-radius: 12px; transition: all 0.2s ease; }
+        .btn-nav-link:hover { background-color: rgba(255,248,220,0.2); transform: translateY(-2px); }
+        .main-login { flex: 1; padding: 2rem 0; min-height: calc(100vh - 200px); }
+        .container { max-width: 1200px; margin: 0 auto; }
+        
+        .page-header {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFFDF5 100%);
+            border-radius: 28px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        .page-title {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #008B8B 0%, #32CD32 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        .page-subtitle { color: #6B8E23; font-size: 1rem; }
+        
+        /* Stats Cards */
+        .stats-row { margin-bottom: 2rem; }
+        .stats-card { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 1.5rem;
+            color: white;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .stats-card:hover { transform: translateY(-5px); }
+        .stats-card h6 { font-size: 0.9rem; opacity: 0.9; margin-bottom: 0.5rem; }
+        .stats-card h3 { font-size: 2rem; font-weight: 700; margin-bottom: 0; }
+        
+        /* Accordion styles */
+        .accordion-custom { border-radius: 20px; overflow: visible; }
+        .accordion-item-custom { background: #FFFFFF; border: none; margin-bottom: 1rem; border-radius: 16px !important; overflow: visible; box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: all 0.3s ease; }
+        .accordion-item-custom:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+        .accordion-header-custom { background: linear-gradient(135deg, #008B8B 0%, #006666 100%); padding: 1rem 1.5rem; cursor: pointer; transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: center; border-radius: 16px 16px 0 0; }
+        .accordion-header-custom:hover { background: linear-gradient(135deg, #009999 0%, #007777 100%); }
+        .accordion-title { color: white; font-weight: 600; font-size: 1.2rem; margin: 0; display: flex; align-items: center; gap: 12px; }
+        .accordion-title i { font-size: 1.5rem; }
+        .accordion-icon { color: white; font-size: 1.5rem; transition: transform 0.3s ease; }
+        .accordion-icon.rotated { transform: rotate(180deg); }
+        .accordion-content-custom {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: #f9f9f9;
+            border-radius: 0 0 16px 16px;
+        }
+        .accordion-content-custom.show {
+            max-height: none;
+            overflow: visible;
+        }
+        .accordion-body-custom { padding: 1.5rem; }
+        
+        /* Tabla de equipos */
+        .equipos-table { width: 100%; border-collapse: collapse; }
+        .equipos-table th { background-color: #f0f0f0; padding: 12px 15px; text-align: left; font-weight: 600; color: #2E8B57; border-bottom: 2px solid #32CD32; }
+        .equipos-table td { padding: 12px 15px; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
+        .equipos-table tr:hover { background-color: #f5f5f5; }
+        
+        /* Evaluaciones dentro de cada equipo */
+        .evaluacion-item {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            border-left: 4px solid #0d6efd;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+        }
+        .evaluacion-item:hover { transform: translateX(5px); box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+        
+        .badge-interno { background-color: #198754; }
+        .badge-externo { background-color: #fd7e14; }
+        
+        .btn-eliminar {
+            transition: all 0.2s ease;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+        }
+        .btn-eliminar:hover { transform: scale(1.05); }
+        
+        .empty-evaluaciones {
+            text-align: center;
+            padding: 2rem;
+            color: #6c757d;
+            background: #f8f9fa;
+            border-radius: 16px;
+        }
+        .empty-evaluaciones i { font-size: 3rem; color: #32CD32; margin-bottom: 1rem; display: block; }
+        
+        .badge-apto { background-color: #198754; }
+        .badge-no-apto { background-color: #dc3545; }
+        
+        .footer-innovatec { background-color: #32CD32; color: #2E3B1F; margin-top: auto; border-top: 3px solid #008B8B; }
+        .footer-text { font-weight: 500; color: #FFF8DC; }
+        .footer-link { color: #FFF8DC; text-decoration: none; font-weight: 500; transition: all 0.3s ease; }
+        .footer-link:hover { color: #ffffff; text-decoration: underline; }
+        
+        @media (max-width: 991px) { 
+            .navbar-nav { margin-top: 1rem; } 
+            .nav-link-admin, .btn-nav-link { padding: 10px 16px !important; text-align: center; }
+            .accordion-title { font-size: 1rem; }
+            .accordion-title i { font-size: 1.2rem; }
+        }
+        
+        @media (max-width: 768px) { 
+            .page-title { font-size: 1.5rem; }
+            .accordion-body-custom { padding: 1rem; }
+            .equipos-table th, .equipos-table td { padding: 10px 12px; }
+            .equipos-table thead { display: none; }
+            .equipos-table tr { display: block; margin-bottom: 16px; border: 1px solid #e0e0e0; border-radius: 12px; background: white; }
+            .equipos-table td { display: flex; justify-content: space-between; align-items: center; text-align: right; border-bottom: 1px solid #eee; padding: 10px 12px; }
+            .equipos-table td:last-child { border-bottom: none; }
+            .equipos-table td:before { content: attr(data-label); font-weight: 600; color: #2E8B57; text-align: left; margin-right: 15px; }
+            .evaluacion-item .row [class*="col-"] { margin-bottom: 8px; text-align: left !important; }
+        }

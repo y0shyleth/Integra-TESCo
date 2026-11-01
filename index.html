@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Inicio - InnovaTecNM 2026</title>
+  <link rel="icon" href="#" type="image/x-icon">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <style>
+    /* =========================================================
+       VARIABLES — Paleta oficial TecNM / InnovaTecNM 2026
+    ========================================================= */
+    :root {
+      --sep:          #8B1E3F;
+      --tecnm:        #0033A0;
+      --tecnm-l:      #1a4db3;
+      --margarita:    #C9A227;
+      --certamen:     #28a745;
+      --hackatec:     #dc3545;
+      --innobotica:   #6f42c1;
+      --cortometraje: #17a2b8;
+      --retos:        #fd7e14;
+      --sidebar-bg:   #1a1a2e;
+      --topbar-h:     70px;
+      --sidebar-w:    280px;
+      --bg:           #f8f9fa;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: #333; }
+
+    /* =========================================================
+       BARRA SUPERIOR FIJA
+    ========================================================= */
+    .navbar-institucional {
+      background: linear-gradient(135deg, var(--sep) 0%, var(--tecnm) 100%);
+      height: var(--topbar-h);
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1040;
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,.2);
+    }
+    .logo-hdr { filter: brightness(0) invert(1); height: 40px; transition: transform .3s; }
+    .logo-hdr:hover { transform: scale(1.05); }
+    .logo-hdr-lg { height: 45px; }
+    .sep-v { width: 1px; height: 30px; background: rgba(255,255,255,.3); flex-shrink: 0; }
+    .anio-box { text-align: center; color: #fff; line-height: 1.2; }
+    .anio-num { font-size: 1.5rem; font-weight: 700; color: var(--margarita); display: block; }
+    .anio-sub { font-size: .7rem; text-transform: uppercase; letter-spacing: 1px; }
+    .integralogo {font-family: Impact, Verdana, Arial, sans-serif; font-size: 2rem; color: #effab0;
+  text-shadow: -1px -1px 0 #000000,1px -1px 0 #000000,-1px  1px 0 #000000,1px  1px 0 #000000, 4px  4px 6px #004D00, 0px  0px 12px #32CD32; transition: color 0.3s ease;}
+    .integralogo:hover {color: #b4bc47;cursor: pointer;}
+    .social-ic {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(255,255,255,.15);
+      display: inline-flex; align-items: center; justify-content: center;
+      color: #fff; text-decoration: none; font-size: .9rem;
+      transition: background .3s, transform .3s;
+    }
+    .social-ic:hover { background: var(--margarita); color: var(--sidebar-bg); transform: translateY(-2px); }
+    .user-av {
+      width: 35px; height: 35px; border-radius: 50%;
+      background: var(--margarita); color: var(--sidebar-bg);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: .8rem;
+    }
+    .smaller { font-size: .75rem; opacity: .8; }
+
+    /* =========================================================
+       LAYOUT PRINCIPAL
+    ========================================================= */
+    .main-wrap {
+      display: flex;
+      min-height: 100vh;
+      padding-top: var(--topbar-h);
+    }
+
+    /* =========================================================
+       SIDEBAR
+    ========================================================= */
+    .sidebar {
+      width: var(--sidebar-w);
+      background: var(--sidebar-bg);
+      color: #fff;
+      position: fixed;
+      top: var(--topbar-h);
+      left: 0;
+      height: calc(100vh - var(--topbar-h));
+      overflow-y: auto;
+      overflow-x: hidden;
+      z-index: 1030;
+      transition: transform .3s;
+      box-shadow: 2px 0 10px rgba(0,0,0,.1);
+    }
+    .sidebar::-webkit-scrollbar { width: 5px; }
+    .sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 3px; }
+    .nav-sec { padding: .75rem 1rem 0; margin-bottom: 1rem; }
+    .nav-sec-ttl {
+      display: block; font-size: .7rem; text-transform: uppercase;
+      letter-spacing: 1.5px; color: rgba(255,255,255,.45);
+      margin-bottom: .5rem; padding-left: .75rem;
+    }
+    .s-link {
+      display: flex; align-items: center; padding: .7rem .75rem;
+      color: rgba(255,255,255,.8); border-radius: 8px;
+      text-decoration: none; font-size: .9rem;
+      transition: background .25s, color .25s;
+    }
+    .s-link:hover, .s-link.active { background: rgba(255,255,255,.08); color: #fff; cursor: pointer; }
+    .s-link i:first-child { width: 24px; margin-right: .75rem; font-size: 1.1rem; }
+    .ev-ic {
+      width: 28px; height: 28px; border-radius: 6px;
+      display: inline-flex; align-items: center; justify-content: center;
+      margin-right: .75rem; font-size: .9rem;
+    }
+    .ic-certamen    { background: var(--certamen); }
+    .ic-hackatec    { background: var(--hackatec); }
+    .ic-innobotica  { background: var(--innobotica); }
+    .ic-corto       { background: var(--cortometraje); }
+    .ic-retos       { background: var(--retos); }
+    .contact-box {
+      background: rgba(255,255,255,.05); border-radius: 8px;
+      padding: .9rem; display: flex; align-items: center; gap: .75rem;
+      font-size: .83rem; margin: 0 1rem 1rem;
+    }
+    .contact-box i { font-size: 1.4rem; color: var(--margarita); }
+
+    /* =========================================================
+       CONTENIDO PRINCIPAL
+    ========================================================= */
+    .main-content {
+      flex: 1;
+      margin-left: var(--sidebar-w);
+      padding: 1.5rem;
+      min-height: calc(100vh - var(--topbar-h));
+      transition: margin-left .3s;
+    }
+
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      top: var(--topbar-h); left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,.5);
+      z-index: 1025;
+    }
+    .sidebar-overlay.show { display: block; }
+
+    /* =========================================================
+       SECCIONES DE CONTENIDO — navegación JS-free
+    ========================================================= */
+    .content-sec { display: none; animation: fadeUp .3s ease; }
+    #fundamentos { display: block; }
+    :target ~ #fundamentos { display: none; }
+    :target { display: block !important; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* =========================================================
+       HERO BANNER
+    ========================================================= */
+    .hero-banner {
+      background: linear-gradient(135deg, var(--tecnm) 0%, var(--sep) 100%);
+      border-radius: 16px;
+      padding: 2rem;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,51,160,.2);
+      margin-bottom: 1.5rem;
+    }
+    .hero-title   { font-size: clamp(1.4rem, 4vw, 2.4rem); font-weight: 800; line-height: 1.2; margin-bottom: .4rem; }
+    .hero-sub     { font-size: clamp(.95rem, 2.5vw, 1.4rem); font-weight: 300; opacity: .9; margin-bottom: .9rem; }
+    .hero-txt     { font-size: .97rem; opacity: .85; max-width: 600px; }
+    .hero-hex { position: absolute; right: -40px; top: 50%; transform: translateY(-50%); opacity: .08; }
+    .hexagon {
+      width: 100px; height: 110px;
+      background: #fff;
+      clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+      position: absolute;
+    }
+    .hx1 { top: -60px; right: 100px; transform: scale(1.5); }
+    .hx2 { top: 35px;  right: 20px;  transform: scale(1); }
+    .hx3 { top: 100px; right: 80px;  transform: scale(.7); }
+    .cd-wrap {
+      background: rgba(255,255,255,.12); backdrop-filter: blur(8px);
+      border-radius: 12px; padding: .9rem 1.2rem;
+      display: inline-block; margin-top: 1rem;
+    }
+    .cd-lbl { font-size: .8rem; text-transform: uppercase; letter-spacing: 1px; opacity: .9; margin-bottom: .4rem; }
+    .cd-timer { display: flex; gap: 1rem; }
+    .cd-item { text-align: center; }
+    .cd-num  { display: block; font-size: 2rem; font-weight: 800; line-height: 1; }
+    .cd-unit { font-size: .72rem; text-transform: uppercase; opacity: .8; }
+
+    /* =========================================================
+       TARJETAS Y ESTILOS GENERALES
+    ========================================================= */
+    .card-innova {
+      border: none;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.08);
+      transition: transform .3s, box-shadow .3s;
+      overflow: hidden;
+    }
+    .card-innova:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,.14); }
+
+    .sec-ttl {
+      font-size: 1.2rem; font-weight: 700; color: var(--sidebar-bg);
+      display: flex; align-items: center; gap: .5rem; margin-bottom: 1.25rem;
+    }
+    .sec-ttl i { color: var(--tecnm); }
+
+    .base-card {
+      border-radius: 14px;
+      border: none;
+      box-shadow: 0 4px 18px rgba(0,0,0,.08);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform .3s, box-shadow .3s;
+      background: white;
+    }
+    .base-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,.14); }
+    .base-card-header {
+      padding: 1.5rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .base-card-header i { font-size: 2rem; }
+    .base-card-body { padding: 1.2rem 1.4rem; }
+
+    /* Paneles laterales CSS-only */
+    .panel-toggle { display: none; }
+    .panel-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.45);
+      z-index: 2000;
+      opacity: 0; pointer-events: none;
+      transition: opacity .35s;
+    }
+    .panel-drawer {
+      position: fixed; top: 0; bottom: 0;
+      width: min(420px, 92vw);
+      background: #fff;
+      z-index: 2001;
+      overflow-y: auto;
+      transition: transform .35s cubic-bezier(.4,0,.2,1);
+      padding: 1.5rem;
+      box-shadow: 0 0 40px rgba(0,0,0,.2);
+    }
+    .panel-drawer.from-right { right: 0; transform: translateX(100%); }
+    .panel-drawer.from-left  { left: 0;  transform: translateX(-100%); }
+    .panel-toggle:checked ~ .panel-overlay { opacity: 1; pointer-events: all; }
+    .panel-toggle:checked ~ .panel-overlay ~ .panel-drawer,
+    .panel-toggle:checked ~ .panel-drawer  { transform: translateX(0) !important; }
+    .panel-close-btn {
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none; font-size: 1.4rem;
+      cursor: pointer; color: #555;
+    }
+    .panel-header-bar {
+      height: 6px; border-radius: 3px; margin-bottom: 1.2rem;
+    }
+    .panel-ttl { font-size: 1.2rem; font-weight: 700; margin-bottom: .8rem; color: var(--sidebar-bg); }
+
+    .lin-card {
+      border-radius: 14px; border: none;
+      box-shadow: 0 4px 16px rgba(0,0,0,.08);
+      overflow: hidden; cursor: pointer;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .lin-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,.14); }
+    .lin-card-top {
+      padding: 1.3rem;
+      display: flex; align-items: center; gap: .9rem;
+      color: #fff;
+    }
+    .lin-ic { font-size: 1.8rem; }
+    .lin-card-body { padding: 1rem 1.2rem; }
+
+    /* Acordeón eventos */
+    .ev-accordion .accordion-button {
+      font-weight: 600;
+      background: #fff;
+      color: var(--sidebar-bg);
+    }
+    .ev-accordion .accordion-button:not(.collapsed) {
+      color: #fff;
+      box-shadow: none;
+    }
+    .acc-certamen    .accordion-button:not(.collapsed) { background: var(--certamen); }
+    .acc-hackatec    .accordion-button:not(.collapsed) { background: var(--hackatec); }
+    .acc-innobotica  .accordion-button:not(.collapsed) { background: var(--innobotica); }
+    .acc-corto       .accordion-button:not(.collapsed) { background: var(--cortometraje); }
+    .acc-retos       .accordion-button:not(.collapsed) { background: var(--retos); }
+    .ev-accordion .accordion-button:not(.collapsed)::after {
+      filter: brightness(0) invert(1);
+    }
+
+    /* Disposiciones */
+    .disp-item {
+      display: flex; gap: 1rem; padding: .9rem;
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+      transition: box-shadow .25s;
+    }
+    .disp-item:hover { box-shadow: 0 4px 16px rgba(0,0,0,.12); }
+    .disp-num {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--tecnm); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: .85rem;
+    }
+
+    /* Modal login personalizado (Bootstrap) */
+    .modal-personalizado {
+      border-radius: 24px;
+      background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+      border: none;
+    }
+    .role-badge {
+      background: linear-gradient(135deg, var(--tecnm), var(--tecnm-l));
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      color: white;
+      margin-left: 8px;
+    }
+    .input-custom {
+      border-radius: 12px;
+      border: 1px solid #e0e0e0;
+      padding: 12px 16px;
+      transition: all 0.3s ease;
+    }
+    .input-custom:focus {
+      border-color: var(--tecnm);
+      box-shadow: 0 0 0 3px rgba(0, 51, 160, 0.1);
+    }
+    .btn-iniciar-sesion {
+      background: linear-gradient(135deg, var(--tecnm), var(--tecnm-l));
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 10px 24px;
+      font-weight: 600;
+    }
+    .btn-cerrar-modal {
+      background: #f0f0f0;
+      color: #666;
+      border: none;
+      border-radius: 50px;
+      padding: 10px 24px;
+      font-weight: 600;
+    }
+
+    /* Botones flotantes de acceso (3 roles) */
+    .btn-accesoN, .btn-acceso {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .btn-accesoN:hover, .btn-acceso:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    }
+
+    .text-margarita { color: var(--margarita) !important; }
+    .content-footer { padding: 2rem 0; color: #6c757d; margin-top: 2.5rem; }
+    .content-footer hr { border-color: #dee2e6; }
+    .mob-menu-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 40px; height: 40px;
+      border-radius: 8px;
+      border: none;
+      background: rgba(255,255,255,.18);
+      color: #fff;
+      font-size: 1.3rem;
+      cursor: pointer;
+      margin-right: .5rem;
+    }
+
+    @media (max-width: 991.98px) {
+      :root { --sidebar-w: 0px; }
+      .sidebar {
+        width: 300px;
+        transform: translateX(-100%);
+        z-index: 1050;
+        top: 0;
+        height: 100vh;
+        padding-top: var(--topbar-h);
+      }
+      .sidebar.open { transform: translateX(0); }
+      .main-content { margin-left: 0; }
+      .mob-menu-btn { display: flex; }
+      .hero-hex { display: none; }
+      .sidebar-overlay { z-index: 1045; }
+    }
+    @media (max-width: 575.98px) {
+      .social-grp { display: none !important; }
+      .hero-banner { padding: 1.25rem; text-align: center; }
+      .sidebar { width: 260px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     BARRA SUPERIOR FIJA
+============================================================ -->
+<nav class="navbar-institucional">
+  <div class="d-flex align-items-center gap-2 flex-shrink-0">
+    <button class="mob-menu-btn" id="mobMenuBtn" aria-label="Abrir menú lateral">
+      <i class="bi bi-list" id="mobMenuIcon"></i>
+    </button>
+    <img src="assets/images/logo-sep.png" alt="SEP" class="logo-hdr">
+    <div class="sep-v"></div>
+    <img src="assets/images/logo-tecnm.png" alt="TecNM" class="logo-hdr">
+    <div class="sep-v"></div>
+    <img src="assets/images/logo-innovatec.png" alt="InnovaTecNM" class="logo-hdr logo-hdr-lg">
+  </div>
+  <div class="anio-box mx-auto d-none d-md-block">
+    <span class="anio-num">2026</span>
+    <span class="anio-sub d-block">Año de Margarita Maza</span>
+  </div>
+  <div class="d-flex align-items-center gap-2 ms-auto">
+    <div class="social-grp d-flex gap-1">
+      <span class="integralogo d-block">Integra-TESCo</span>
+    </div>
+    <div class="sep-v d-none d-sm-block"></div>
+    <div class="dropdown">
+      <button class="btn btn-link text-white position-relative p-1" data-bs-toggle="dropdown">
+        <i class="bi bi-bell-fill fs-5"></i>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end shadow-lg">
+        <li><h6 class="dropdown-header">Notificaciones</h6></li>
+        <li><a class="dropdown-item" href="#"><i class="bi bi-calendar-event text-warning me-2"></i>Notificación</a></li>
+        <li><a class="dropdown-item" href="#"><i class="bi bi-check-circle text-success me-2"></i>Notificación</a></li>
+        <li><a class="dropdown-item" href="#"><i class="bi bi-info-circle text-info me-2"></i>Notificación</a></li>
+      </ul>
+    </div>
+    
+  </div>
+</nav>
+
+<div class="main-wrap">
+  <!-- ============================================================
+       SIDEBAR
+  ============================================================ -->
+  <aside class="sidebar" id="sidebar">
+    <nav class="pt-3">
+      <div class="nav-sec">
+        <span class="nav-sec-ttl">Inicio</span>
+        <div class="d-flex flex-column gap-1">
+          <a class="s-link active" href="#fundamentos"><i class="bi bi-file-earmark-text-fill"></i><span>Fundamentos y Convocatoria</span></a>
+          <a class="s-link" href="#eventos"><i class="bi bi-grid-1x2-fill"></i><span>Eventos InnovaTecNM</span></a>
+          <a class="s-link" href="#disposiciones"><i class="bi bi-journal-check"></i><span>Disposiciones Finales</span></a>
+        </div>
+      </div>
+      <div class="nav-sec">
+        <span class="nav-sec-ttl">Eventos</span>
+        <div class="d-flex flex-column gap-1">
+          <a class="s-link" href="#eventos"><div class="ev-ic ic-certamen"><i class="bi bi-trophy-fill text-white"></i></div><span>Certamen de Proyectos</span><span class="badge bg-success ms-auto">Activo</span></a>
+          <a class="s-link" href="#eventos"><div class="ev-ic ic-hackatec"><i class="bi bi-lightning-charge-fill text-white"></i></div><span>HackaTec</span><span class="badge bg-warning text-dark ms-auto">Próximo</span></a>
+          <a class="s-link" href="#eventos"><div class="ev-ic ic-innobotica"><i class="bi bi-robot text-white"></i></div><span>InnoBótica</span><span class="badge bg-success ms-auto">Activo</span></a>
+          <a class="s-link" href="#eventos"><div class="ev-ic ic-corto"><i class="bi bi-film text-white"></i></div><span>Cortometraje</span></a>
+          <a class="s-link" href="#eventos"><div class="ev-ic ic-retos"><i class="bi bi-bullseye text-white"></i></div><span>Retos Transformación</span></a>
+        </div>
+      </div>
+      <div class="nav-sec">
+        <span class="nav-sec-ttl">Gestión</span>
+        <div class="d-flex flex-column gap-1">
+          <a class="s-link" href="#"><i class="bi bi-people-fill"></i><span>Mi Equipo</span></a>
+          <a class="s-link" href="#"><i class="bi bi-folder-fill"></i><span>Mis Proyectos</span><span class="badge bg-primary ms-auto">2</span></a>
+          <a class="s-link" href="#"><i class="bi bi-file-earmark-check-fill"></i><span>Documentos</span></a>
+        </div>
+      </div>
+      <div class="contact-box mt-3">
+        <i class="bi bi-envelope-fill"></i>
+        <div><small>¿Necesitas ayuda?</small><div class="fw-semibold" style="font-size:.82rem">innovatecnm@tecnm.mx</div></div>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- ============================================================
+       CONTENIDO PRINCIPAL
+  ============================================================ -->
+  <main class="main-content" id="mainContent">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- ============================================================
+         SECCIÓN 1: FUNDAMENTOS Y CONVOCATORIA
+    ============================================================ -->
+    <section id="fundamentos" class="content-sec">
+      <div class="hero-banner">
+        <div class="row align-items-center">
+          <div class="col-lg-8">
+            <h1 class="hero-title">Cumbre Nacional de Desarrollo Tecnológico</h1>
+            <h2 class="hero-sub">Fundamentos y Convocatoria 2026</h2>
+            <p class="hero-txt">Conoce las bases legales, objetivos y lineamientos que rigen la participación en los cinco eventos simultáneos de InnovaTecNM.</p>
+            <div class="cd-wrap">
+              <div class="cd-lbl">Cierra etapa Local en:</div>
+              <div class="cd-timer">
+                <div class="cd-item"><span class="cd-num">15</span><span class="cd-unit">Días</span></div>
+                <div class="cd-item"><span class="cd-num">08</span><span class="cd-unit">Horas</span></div>
+                <div class="cd-item"><span class="cd-num">42</span><span class="cd-unit">Min</span></div>
+                <div class="cd-item"><span class="cd-num">17</span><span class="cd-unit">Seg</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 text-center mt-3 mt-lg-0">
+            <img src="ima/logoinova26.png" alt="InnovaTecNM 2026" class="img-fluid" style="max-height:130px">
+          </div>
+        </div>
+        <div class="hero-hex">
+          <div class="hexagon hx1"></div>
+          <div class="hexagon hx2"></div>
+          <div class="hexagon hx3"></div>
+        </div>
+      </div>
+
+      <h3 class="sec-ttl"><i class="bi bi-book-half"></i>Marco Normativo</h3>
+      <div class="row g-4 mb-5">
+        <div class="col-md-4">
+          <div class="base-card h-100" data-bs-toggle="modal" data-bs-target="#modalBasesLegales">
+            <div class="base-card-header" style="background:linear-gradient(135deg,var(--tecnm),var(--tecnm-l))">
+              <i class="bi bi-file-earmark-law fs-2"></i>
+              <div><div class="fw-bold fs-5">Bases Legales</div><small class="opacity-75">Marco jurídico y normativo</small></div>
+            </div>
+            <div class="base-card-body"><p class="small text-muted mb-2">Fundamento legal que sustenta la realización de InnovaTecNM en el Sistema Educativo Nacional.</p></div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="base-card h-100" data-bs-toggle="modal" data-bs-target="#modalObjetivos">
+            <div class="base-card-header" style="background:linear-gradient(135deg,var(--sep),#c0324f)">
+              <i class="bi bi-bullseye fs-2"></i>
+              <div><div class="fw-bold fs-5">Objetivos</div><small class="opacity-75">General y específicos</small></div>
+            </div>
+            <div class="base-card-body"><p class="small text-muted mb-2">Metas que guían la participación estudiantil y docente en cada etapa del certamen.</p></div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="base-card h-100" data-bs-toggle="modal" data-bs-target="#modalBasesGenerales">
+            <div class="base-card-header" style="background:linear-gradient(135deg,#1a4db3,#2563c0)">
+              <i class="bi bi-journal-text fs-2"></i>
+              <div><div class="fw-bold fs-5">Bases Generales</div><small class="opacity-75">Requisitos y condiciones</small></div>
+            </div>
+            <div class="base-card-body"><p class="small text-muted mb-2">Requisitos de participación, elegibilidad y reglas comunes a todos los eventos simultáneos.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lineamientos con paneles CSS-only -->
+      <h3 class="sec-ttl"><i class="bi bi-list-check"></i>Lineamientos</h3>
+      <div class="row g-4 mb-2">
+        <!-- Jurado -->
+        <div class="col-sm-6 col-xl-4">
+          <input type="checkbox" id="panelJurado" class="panel-toggle">
+          <label for="panelJurado" class="lin-card d-block">
+            <div class="lin-card-top" style="background:linear-gradient(135deg,#0033A0,#1a4db3)">
+              <i class="bi bi-people-fill lin-ic"></i>
+              <div><div class="fw-bold">Jurado</div><small class="opacity-75">Integración y funciones</small></div>
+              <i class="bi bi-chevron-right ms-auto"></i>
+            </div>
+            <div class="lin-card-body"><p class="small text-muted mb-0">Composición, perfil y responsabilidades del jurado calificador.</p></div>
+          </label>
+          <label for="panelJurado" class="panel-overlay"></label>
+          <div class="panel-drawer from-right">
+            <label for="panelJurado" class="panel-close-btn">&times;</label>
+            <div class="panel-header-bar" style="background:var(--tecnm)"></div>
+            <h4 class="panel-ttl"><i class="bi bi-people-fill me-2" style="color:var(--tecnm)"></i>Lineamientos de Jurado</h4>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><i class="bi bi-check2-circle text-success me-2"></i>El jurado se integra por docentes o especialistas propuestos por cada tecnológico participante.</li>
+              <li class="list-group-item"><i class="bi bi-check2-circle text-success me-2"></i>Cada jurado debe contar con experiencia mínima de 3 años en el área a evaluar.</li>
+              <li class="list-group-item"><i class="bi bi-check2-circle text-success me-2"></i>Se designará un presidente de jurado por categoría en etapa regional y nacional.</li>
+              <li class="list-group-item"><i class="bi bi-check2-circle text-success me-2"></i>El jurado deberá guardar confidencialidad sobre los proyectos evaluados.</li>
+              <li class="list-group-item"><i class="bi bi-check2-circle text-success me-2"></i>Sus resoluciones son inapelables y definitivas.</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Proyectos -->
+        <div class="col-sm-6 col-xl-4">
+          <input type="checkbox" id="panelProyectos" class="panel-toggle">
+          <label for="panelProyectos" class="lin-card d-block">
+            <div class="lin-card-top" style="background:linear-gradient(135deg,var(--certamen),#1e8c3a)">
+              <i class="bi bi-folder-fill lin-ic"></i>
+              <div><div class="fw-bold">Proyectos</div><small class="opacity-75">Requisitos y criterios</small></div>
+              <i class="bi bi-chevron-left ms-auto"></i>
+            </div>
+            <div class="lin-card-body"><p class="small text-muted mb-0">Tipos de proyectos admisibles, documentación y criterios de originalidad.</p></div>
+          </label>
+          <label for="panelProyectos" class="panel-overlay"></label>
+          <div class="panel-drawer from-left">
+            <label for="panelProyectos" class="panel-close-btn">&times;</label>
+            <div class="panel-header-bar" style="background:var(--certamen)"></div>
+            <h4 class="panel-ttl"><i class="bi bi-folder-fill me-2" style="color:var(--certamen)"></i>Lineamientos de Proyectos</h4>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><i class="bi bi-check2-circle text-success me-2"></i>Ser inéditos y no haber participado en ediciones anteriores de InnovaTecNM.</li>
+              <li class="list-group-item"><i class="bi bi-check2-circle text-success me-2"></i>El equipo puede estar conformado por 1 a 4 integrantes, incluyendo asesor.</li>
+              <li class="list-group-item"><i class="bi bi-check2-circle text-success me-2"></i>Un mismo estudiante puede participar hasta en 2 proyectos distintos.</li>
+              <li class="list-group-item"><i class="bi bi-check2-circle text-success me-2"></i>La documentación (Ficha, Memoria Técnica, Video) deberá entregarse antes de la fecha límite.</li>
+              <li class="list-group-item"><i class="bi bi-check2-circle text-success me-2"></i>Los proyectos deben estar alineados a alguna de las 6 categorías estratégicas.</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Reconocimientos -->
+        <div class="col-sm-6 col-xl-4">
+          <input type="checkbox" id="panelReconocimientos" class="panel-toggle">
+          <label for="panelReconocimientos" class="lin-card d-block">
+            <div class="lin-card-top" style="background:linear-gradient(135deg,var(--margarita),#b88c1d)">
+              <i class="bi bi-award-fill lin-ic"></i>
+              <div><div class="fw-bold">Reconocimientos</div><small class="opacity-75">Premios y distinciones</small></div>
+              <i class="bi bi-chevron-right ms-auto"></i>
+            </div>
+            <div class="lin-card-body"><p class="small text-muted mb-0">Tipos de reconocimientos otorgados por etapa y categoría.</p></div>
+          </label>
+          <label for="panelReconocimientos" class="panel-overlay"></label>
+          <div class="panel-drawer from-right">
+            <label for="panelReconocimientos" class="panel-close-btn">&times;</label>
+            <div class="panel-header-bar" style="background:var(--margarita)"></div>
+            <h4 class="panel-ttl"><i class="bi bi-award-fill me-2" style="color:var(--margarita)"></i>Reconocimientos</h4>
+            <div class="table-responsive">
+              <table class="table table-sm table-bordered">
+                <thead class="table-dark"><tr><th>Etapa</th><th>Lugar</th><th>Distinción</th></tr></thead>
+                <tbody>
+                  <tr><td>Local</td><td>1°</td><td>Constancia + avance a Regional</td></tr>
+                  <tr><td>Regional</td><td>1° – 3°</td><td>Diploma + medalla</td></tr>
+                  <tr><td>Nacional</td><td>1°</td><td>Trofeo + reconocimiento SEP/TecNM</td></tr>
+                  <tr><td>Nacional</td><td>2° – 3°</td><td>Diploma de excelencia</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- Jurado Calificador -->
+        <div class="col-sm-6 col-xl-4">
+          <input type="checkbox" id="panelCalificador" class="panel-toggle">
+          <label for="panelCalificador" class="lin-card d-block">
+            <div class="lin-card-top" style="background:linear-gradient(135deg,var(--innobotica),#5a35a0)">
+              <i class="bi bi-clipboard-check-fill lin-ic"></i>
+              <div><div class="fw-bold">Jurado Calificador</div><small class="opacity-75">Rúbricas y criterios</small></div>
+              <i class="bi bi-chevron-left ms-auto"></i>
+            </div>
+            <div class="lin-card-body"><p class="small text-muted mb-0">Instrumentos de evaluación, ponderaciones y proceso de deliberación.</p></div>
+          </label>
+          <label for="panelCalificador" class="panel-overlay"></label>
+          <div class="panel-drawer from-left">
+            <label for="panelCalificador" class="panel-close-btn">&times;</label>
+            <div class="panel-header-bar" style="background:var(--innobotica)"></div>
+            <h4 class="panel-ttl"><i class="bi bi-clipboard-check-fill me-2" style="color:var(--innobotica)"></i>Jurado Calificador</h4>
+            <ul class="list-group list-group-flush mb-3">
+              <li class="list-group-item d-flex justify-content-between"><span>Innovación y originalidad</span><strong>25%</strong></li>
+              <li class="list-group-item d-flex justify-content-between"><span>Impacto social / económico</span><strong>20%</strong></li>
+              <li class="list-group-item d-flex justify-content-between"><span>Viabilidad técnica</span><strong>20%</strong></li>
+              <li class="list-group-item d-flex justify-content-between"><span>Sustentabilidad</span><strong>15%</strong></li>
+              <li class="list-group-item d-flex justify-content-between"><span>Presentación oral</span><strong>10%</strong></li>
+              <li class="list-group-item d-flex justify-content-between"><span>Documentación</span><strong>10%</strong></li>
+            </ul>
+            <div class="alert alert-info small mb-0"><i class="bi bi-info-circle me-2"></i>La calificación mínima para avanzar a la siguiente etapa es 7.5/10.</div>
+          </div>
+        </div>
+        <!-- Fechas -->
+        <div class="col-sm-6 col-xl-4">
+          <input type="checkbox" id="panelFechas" class="panel-toggle">
+          <label for="panelFechas" class="lin-card d-block">
+            <div class="lin-card-top" style="background:linear-gradient(135deg,var(--cortometraje),#0e8095)">
+              <i class="bi bi-calendar-week-fill lin-ic"></i>
+              <div><div class="fw-bold">Fechas por Etapa</div><small class="opacity-75">Calendario y regiones</small></div>
+              <i class="bi bi-chevron-right ms-auto"></i>
+            </div>
+            <div class="lin-card-body"><p class="small text-muted mb-0">Calendario detallado de fechas límite por etapa y región del país.</p></div>
+          </label>
+          <label for="panelFechas" class="panel-overlay"></label>
+          <div class="panel-drawer from-right">
+            <label for="panelFechas" class="panel-close-btn">&times;</label>
+            <div class="panel-header-bar" style="background:var(--cortometraje)"></div>
+            <h4 class="panel-ttl"><i class="bi bi-calendar-week-fill me-2" style="color:var(--cortometraje)"></i>Fechas por Etapa y Región</h4>
+            <div class="table-responsive">
+              <table class="table table-sm table-hover">
+                <thead class="table-dark"><tr><th>Etapa</th><th>Fecha límite</th><th>Región</th></tr></thead>
+                <tbody>
+                  <tr><td>Local</td><td>30 May 2026</td><td>Todos los TecNM</td></tr>
+                  <tr><td>Regional 1</td><td>18 Sep 2026</td><td>Noroeste / Norte</td></tr>
+                  <tr><td>Regional 2</td><td>25 Sep 2026</td><td>Noreste / Occidente</td></tr>
+                  <tr><td>Regional 3</td><td>02 Oct 2026</td><td>Centro / Sur</td></tr>
+                  <tr><td>Regional 4</td><td>09 Oct 2026</td><td>Sureste / Peninsular</td></tr>
+                  <tr class="table-warning"><td><strong>Nacional</strong></td><td><strong>30 Nov – 4 Dic 2026</strong></td><td>Sede única</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECCIÓN 2: EVENTOS (Acordeón completo)
+    ============================================================ -->
+    <section id="eventos" class="content-sec">
+      <div class="hero-banner mb-4" style="background:linear-gradient(135deg,#1a1a2e 0%,var(--tecnm) 100%)">
+        <h1 class="hero-title">Eventos InnovaTecNM</h1>
+        <p class="hero-txt">Conoce en detalle cada uno de los cinco eventos simultáneos que conforman la Cumbre Nacional 2026.</p>
+      </div>
+      <h3 class="sec-ttl"><i class="bi bi-hexagon-fill"></i>Cinco Eventos Simultáneos</h3>
+      <div class="accordion ev-accordion shadow-sm rounded-3 overflow-hidden mb-4" id="accordionEventos">
+        <!-- Certamen -->
+        <div class="accordion-item acc-certamen border-0">
+          <h2 class="accordion-header">
+            <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#ev1">
+              <i class="bi bi-trophy-fill me-2" style="color:var(--certamen)"></i> Certamen de Proyectos Tecnológicos y de Innovación <span class="badge bg-success ms-3">Activo</span>
+            </button>
+          </h2>
+          <div id="ev1" class="accordion-collapse collapse show" data-bs-parent="#accordionEventos">
+            <div class="accordion-body">
+              <div class="row g-3">
+                <div class="col-md-8">
+                  <p>Espacio donde estudiantes de <strong>licenciatura y posgrado</strong> presentan prototipos tecnológicos y modelos de negocio escalables alineados al Plan Nacional de Desarrollo.</p>
+                  <h6 class="fw-bold mt-3 mb-2">Categorías</h6>
+                  <div class="d-flex flex-wrap gap-2">
+                    <span class="badge text-white px-3 py-2" style="background:var(--certamen)">Tecnología e Industria</span>
+                    <span class="badge text-white px-3 py-2" style="background:var(--certamen)">Salud y Bienestar</span>
+                    <span class="badge text-white px-3 py-2" style="background:var(--certamen)">Medio Ambiente</span>
+                    <span class="badge text-white px-3 py-2" style="background:var(--certamen)">Educación e Innovación</span>
+                    <span class="badge text-white px-3 py-2" style="background:var(--certamen)">Seguridad Alimentaria</span>
+                    <span class="badge text-white px-3 py-2" style="background:var(--certamen)">Gestión Pública Digital</span>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card border-0 bg-light h-100 p-3">
+                    <div class="small"><i class="bi bi-info-circle me-1 text-success"></i><strong>Hasta 2 proyectos</strong> por estudiante</div>
+                    <div class="small mt-1"><i class="bi bi-info-circle me-1 text-success"></i>Equipos de 1–4 integrantes</div>
+                    <div class="small mt-1"><i class="bi bi-info-circle me-1 text-success"></i>Asesor docente requerido</div>
+                    <a href="#" class="btn btn-sm btn-success mt-2">Registrar proyecto</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- HackaTec -->
+        <div class="accordion-item acc-hackatec border-0">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#ev2">
+              <i class="bi bi-lightning-charge-fill me-2" style="color:var(--hackatec)"></i> HackaTec — Hackathon de Innovación <span class="badge bg-warning text-dark ms-3">Próximo</span>
+            </button>
+          </h2>
+          <div id="ev2" class="accordion-collapse collapse" data-bs-parent="#accordionEventos">
+            <div class="accordion-body">
+              <p>Desarrollo intensivo y colaborativo de soluciones en <strong>36 horas continuas</strong>. Equipos de hasta 4 estudiantes atacan retos reales propuestos por empresas e instituciones públicas.</p>
+              <h6 class="fw-bold mt-3 mb-2">Retos disponibles</h6>
+              <div class="row g-2">
+                <div class="col-sm-6"><div class="border rounded p-2 small"><i class="bi bi-tree-fill text-success me-2"></i>Ecosistemas y medio ambiente</div></div>
+                <div class="col-sm-6"><div class="border rounded p-2 small"><i class="bi bi-cpu-fill text-primary me-2"></i>Tecnologías emergentes (IA, IoT)</div></div>
+                <div class="col-sm-6"><div class="border rounded p-2 small"><i class="bi bi-building-fill text-secondary me-2"></i>Gestión pública digital</div></div>
+                <div class="col-sm-6"><div class="border rounded p-2 small"><i class="bi bi-heart-pulse-fill text-danger me-2"></i>Salud y bienestar comunitario</div></div>
+                <div class="col-sm-6"><div class="border rounded p-2 small"><i class="bi bi-people-fill" style="color:var(--hackatec)"></i><span class="ms-2">HackaHer (categoría género)</span></div></div>
+                <div class="col-sm-6"><div class="border rounded p-2 small"><i class="bi bi-shield-lock-fill text-warning me-2"></i>Ciberseguridad nacional</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- InnoBótica -->
+        <div class="accordion-item acc-innobotica border-0">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#ev3">
+              <i class="bi bi-robot me-2" style="color:var(--innobotica)"></i> InnoBótica — Competencia de Robótica <span class="badge bg-success ms-3">Activo</span>
+            </button>
+          </h2>
+          <div id="ev3" class="accordion-collapse collapse" data-bs-parent="#accordionEventos">
+            <div class="accordion-body">
+              <p>Competencia de diseño, programación y operación de robots en <strong>8 categorías</strong> que van desde minisumo hasta sistemas aeroespaciales no tripulados.</p>
+              <div class="row g-2 mt-1">
+                <div class="col-6 col-md-3"><span class="badge w-100 py-2" style="background:var(--innobotica)">Minisumo</span></div>
+                <div class="col-6 col-md-3"><span class="badge w-100 py-2" style="background:var(--innobotica)">Seguidor de línea</span></div>
+                <div class="col-6 col-md-3"><span class="badge w-100 py-2" style="background:var(--innobotica)">Rescate de zona</span></div>
+                <div class="col-6 col-md-3"><span class="badge w-100 py-2" style="background:var(--innobotica)">Humanoides</span></div>
+                <div class="col-6 col-md-3"><span class="badge w-100 py-2" style="background:var(--innobotica)">VANT / Drones</span></div>
+                <div class="col-6 col-md-3"><span class="badge w-100 py-2" style="background:var(--innobotica)">Robótica social</span></div>
+                <div class="col-6 col-md-3"><span class="badge w-100 py-2" style="background:var(--innobotica)">Exoesqueletos</span></div>
+                <div class="col-6 col-md-3"><span class="badge w-100 py-2" style="background:var(--innobotica)">Aeroespacial</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Cortometraje -->
+        <div class="accordion-item acc-corto border-0">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#ev4">
+              <i class="bi bi-film me-2" style="color:var(--cortometraje)"></i> Cortometraje InnovAcción
+            </button>
+          </h2>
+          <div id="ev4" class="accordion-collapse collapse" data-bs-parent="#accordionEventos">
+            <div class="accordion-body">
+              <p>Producción de cortometrajes de hasta <strong>10 minutos</strong> que divulguen impactos positivos de la innovación tecnológica en la sociedad mexicana.</p>
+              <ul class="list-unstyled mt-2">
+                <li><i class="bi bi-check2-circle text-info me-2"></i>Formato MP4/MOV, resolución mínima 1080p</li>
+                <li><i class="bi bi-check2-circle text-info me-2"></i>Subtítulos en español obligatorios</li>
+                <li><i class="bi bi-check2-circle text-info me-2"></i>Debe incluir créditos completos del equipo</li>
+                <li><i class="bi bi-check2-circle text-info me-2"></i>Entrega exclusiva por plataforma oficial TecNM</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Retos -->
+        <div class="accordion-item acc-retos border-0">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#ev5">
+              <i class="bi bi-bullseye me-2" style="color:var(--retos)"></i> Retos de Transformación Nacional <span class="badge bg-secondary ms-3">Próximamente</span>
+            </button>
+          </h2>
+          <div id="ev5" class="accordion-collapse collapse" data-bs-parent="#accordionEventos">
+            <div class="accordion-body">
+              <p>Vinculación con sectores estratégicos del país para desarrollar propuestas colaborativas que atiendan problemáticas nacionales prioritarias.</p>
+              <div class="alert alert-warning"><i class="bi bi-clock-history me-2"></i>Las especificaciones de cada reto se publicarán en <strong>julio 2026</strong>.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECCIÓN 3: DISPOSICIONES FINALES
+    ============================================================ -->
+    <section id="disposiciones" class="content-sec">
+      <div class="hero-banner mb-4" style="background:linear-gradient(135deg,#1a1a2e 0%,var(--sep) 100%)">
+        <h1 class="hero-title">Disposiciones Finales</h1>
+        <p class="hero-txt">Artículos y disposiciones que regulan situaciones no previstas, recursos de revisión y vigencia del presente manual.</p>
+      </div>
+      <h3 class="sec-ttl"><i class="bi bi-journal-check"></i>Disposiciones Generales</h3>
+      <div class="row g-3">
+        <div class="col-12"><div class="disp-item"><div class="disp-num">1</div><div><strong>Interpretación</strong><br><small class="text-muted">La Dirección de Investigación y Posgrado del TecNM es la única instancia facultada para interpretar y resolver las situaciones no contempladas en el presente Manual de Operación.</small></div></div></div>
+        <div class="col-12"><div class="disp-item"><div class="disp-num">2</div><div><strong>Descalificación</strong><br><small class="text-muted">El incumplimiento de cualquiera de los lineamientos establecidos podrá resultar en la descalificación automática del proyecto o equipo participante, sin posibilidad de apelación.</small></div></div></div>
+        <div class="col-12"><div class="disp-item"><div class="disp-num">3</div><div><strong>Propiedad intelectual</strong><br><small class="text-muted">La propiedad intelectual de los proyectos pertenece exclusivamente a sus autores. La participación en InnovaTecNM no implica cesión de derechos al TecNM ni a ninguna otra institución.</small></div></div></div>
+        <div class="col-12"><div class="disp-item"><div class="disp-num">4</div><div><strong>Difusión</strong><br><small class="text-muted">Los participantes autorizan al TecNM la difusión de imágenes, videos y resúmenes de los proyectos con fines académicos y de promoción institucional.</small></div></div></div>
+        <div class="col-12"><div class="disp-item"><div class="disp-num">5</div><div><strong>Vigencia</strong><br><small class="text-muted">El presente Manual de Operación entrará en vigor a partir de su publicación oficial en el portal del TecNM y tendrá vigencia durante el ciclo InnovaTecNM 2026.</small></div></div></div>
+        <div class="col-12"><div class="disp-item"><div class="disp-num">6</div><div><strong>Casos de fuerza mayor</strong><br><small class="text-muted">En caso de contingencias o situaciones de fuerza mayor, la organización nacional se reserva el derecho de modificar fechas, sedes o modalidades de participación, notificando oportunamente a los participantes.</small></div></div></div>
+      </div>
+      <div class="card border-0 mt-4 p-4 text-center" style="background:linear-gradient(135deg,#f8f9fa,#e9ecef);border-radius:16px">
+        <p class="text-muted small mb-1">Emitido por</p>
+        <h5 class="fw-bold" style="color:var(--tecnm)">Tecnológico Nacional de México</h5>
+        <p class="text-muted small">Dirección de Investigación, Innovación y Posgrado — 2026</p>
+        <p class="text-margarita fw-bold small">2026 · Año de Margarita Maza de Juárez</p>
+      </div>
+    </section>
+
+    <footer class="content-footer">
+      <div class="row align-items-center">
+        <div class="col-md-6"><small class="text-muted">© 2026 Tecnológico Nacional de México. Todos los derechos reservados.</small></div>
+        <div class="col-md-6 text-md-end"><small class="text-margarita fw-bold">2026 · Año de Margarita Maza</small></div>
+      </div>
+      <hr>
+      <div class="text-center">
+        <a href="#" class="text-muted me-3"><small>Aviso de Privacidad</small></a>
+        <a href="#" class="text-muted me-3"><small>Términos de Uso</small></a>
+        <a href="#" class="text-muted"><small>innovatecnm@tecnm.mx</small></a>
+      </div>
+    </footer>
+  </main>
+</div>
+
+<!-- ============================================================
+     BOTONES DE LOGIN (3 roles flotantes)
+============================================================ -->
+<div class="container py-4" style="position: fixed; bottom: 20px; right: 20px; z-index: 1050; width: auto;">
+  <div class="d-flex flex-column gap-2">
+    <button class="btn btn-accesoN" onclick="location.href='inicio_admin.html'" data-rol="admin" style="background: #0033A0; color: white; border-radius: 50px; padding: 10px 20px;">
+      <i class="fas fa-user-shield me-2"></i>ADMINISTRADOR
+    </button>
+    <button class="btn btn-accesoN" onclick="location.href='login_participante.html'" data-rol="participante" style="background: #28a745; color: white; border-radius: 50px; padding: 10px 20px;">
+      <i class="fas fa-users me-2"></i>PARTICIPANTE
+    </button>
+    <button class="btn btn-acceso" onclick="location.href='Registro_evaluador.html'" data-rol="evaluador" style="background: #fd7e14; color: white; border-radius: 50px; padding: 10px 20px;">
+      <i class="fas fa-clipboard-list me-2"></i>EVALUADOR
+    </button>
+  </div>
+</div>
+
+<!-- ============================================================
+     MODAL LOGIN (con rol oculto)
+============================================================ -->
+<div class="modal fade" id="loginModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content modal-personalizado">
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title fw-bold">Iniciar sesión como <span id="rolSpan" class="role-badge"></span></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body pt-2">
+        <form id="formLogin" action="procesar_login.php" method="POST" novalidate>
+          <div class="mb-4">
+            <label class="form-label fw-semibold">Correo electrónico</label>
+            <input type="email" class="form-control form-control-lg input-custom" name="email" required>
+          </div>
+          <div class="mb-4">
+            <label class="form-label fw-semibold">Contraseña</label>
+            <input type="password" class="form-control form-control-lg input-custom" name="password" required>
+          </div>
+          <input type="hidden" id="rolHidden" name="rol" value="">
+          <div class="d-flex justify-content-end gap-3">
+            <button type="button" class="btn btn-cerrar-modal" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-iniciar-sesion">Iniciar Sesión</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DE ERROR 
+<?php if ($mostrar_error_modal): ?>
+<div class="modal fade" id="errorModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+      <div class="modal-body text-center py-4">
+        <div class="mb-3"><div style="width:70px;height:70px;background:#fee2e2;border-radius:50%;display:inline-flex;align-items:center;justify-content:center"><i class="fas fa-times-circle" style="font-size:40px;color:#dc2626;"></i></div></div>
+        <h5 class="fw-bold mb-2" style="color:#991b1b;">¡Error de autenticación!</h5>
+        <p class="mb-0 px-2" style="color:#7f1d1d;"><?php echo htmlspecialchars($error_message); ?></p>
+      </div>
+      <div class="modal-footer border-0 justify-content-center pb-4 pt-0">
+        <button type="button" class="btn fw-semibold px-4 py-2" data-bs-dismiss="modal" style="background:#991b1b;color:white;border-radius:50px;">Intentar de nuevo</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>document.addEventListener('DOMContentLoaded',function(){new bootstrap.Modal(document.getElementById('errorModal')).show();});</script>
+<?php endif; ?>
+-->
+<!-- MODALES ADICIONALES (Bases Legales, Objetivos, Bases Generales completos desde index3.html) -->
+<div class="modal fade" id="modalBasesLegales" tabindex="-1" aria-labelledby="lblBasesLegales" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content border-0 shadow-lg">
+      <div class="modal-header text-white" style="background:linear-gradient(135deg,var(--tecnm),var(--tecnm-l))">
+        <h5 class="modal-title fw-bold" id="lblBasesLegales"><i class="bi bi-file-earmark-law me-2"></i>Bases Legales</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body p-4">
+        <p class="text-muted small mb-4">El presente Manual de Operación se sustenta en el siguiente marco jurídico:</p>
+        <div class="list-group list-group-flush">
+          <div class="list-group-item px-0"><i class="bi bi-dot text-primary me-2 fs-5"></i><strong>Constitución Política de los Estados Unidos Mexicanos</strong> — Art. 3° sobre educación pública.</div>
+          <div class="list-group-item px-0"><i class="bi bi-dot text-primary me-2 fs-5"></i><strong>Ley General de Educación</strong> (DOF 30/09/2019) y sus reformas vigentes.</div>
+          <div class="list-group-item px-0"><i class="bi bi-dot text-primary me-2 fs-5"></i><strong>Ley Orgánica del TecNM</strong> — Decreto de creación y estatutos.</div>
+          <div class="list-group-item px-0"><i class="bi bi-dot text-primary me-2 fs-5"></i><strong>Plan Nacional de Desarrollo 2025–2030</strong> — Eje de Ciencia, Tecnología e Innovación.</div>
+          <div class="list-group-item px-0"><i class="bi bi-dot text-primary me-2 fs-5"></i><strong>Programa Institucional del TecNM 2025–2030</strong> — Objetivo estratégico 3: Investigación e Innovación.</div>
+          <div class="list-group-item px-0"><i class="bi bi-dot text-primary me-2 fs-5"></i><strong>Reglamento de Investigación del TecNM</strong> (última reforma 2024).</div>
+          <div class="list-group-item px-0"><i class="bi bi-dot text-primary me-2 fs-5"></i><strong>Ley Federal de Protección de Datos Personales</strong> — aplicable a registros de participantes.</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+        <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-download me-1"></i>Descargar PDF</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalObjetivos" tabindex="-1" aria-labelledby="lblObjetivos" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content border-0 shadow-lg">
+      <div class="modal-header text-white" style="background:linear-gradient(135deg,var(--sep),#c0324f)">
+        <h5 class="modal-title fw-bold" id="lblObjetivos"><i class="bi bi-bullseye me-2"></i>Objetivos InnovaTecNM 2026</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body p-4">
+        <div class="alert border-0 p-3 mb-4 rounded-3" style="background:rgba(139,30,63,.08)">
+          <h6 class="fw-bold mb-2" style="color:var(--sep)"><i class="bi bi-flag-fill me-2"></i>Objetivo General</h6>
+          <p class="mb-0 small">Fortalecer las capacidades creativas, tecnológicas e innovadoras de los estudiantes del Sistema TecNM, impulsando el desarrollo de proyectos que contribuyan al bienestar social, económico y ambiental del país.</p>
+        </div>
+        <h6 class="fw-bold mb-3" style="color:var(--sep)"><i class="bi bi-list-stars me-2"></i>Objetivos Específicos</h6>
+        <div class="row g-3">
+          <div class="col-sm-6"><div class="card-innova p-3 h-100 border"><i class="bi bi-lightbulb-fill fs-4 mb-2" style="color:var(--margarita)"></i><p class="small mb-0">Fomentar la cultura de <strong>innovación y emprendimiento</strong> entre la comunidad estudiantil del TecNM.</p></div></div>
+          <div class="col-sm-6"><div class="card-innova p-3 h-100 border"><i class="bi bi-people-fill fs-4 mb-2 text-primary"></i><p class="small mb-0">Promover el trabajo <strong>interdisciplinario y colaborativo</strong> para abordar retos complejos.</p></div></div>
+          <div class="col-sm-6"><div class="card-innova p-3 h-100 border"><i class="bi bi-globe fs-4 mb-2 text-success"></i><p class="small mb-0">Vincular los proyectos estudiantiles con las <strong>necesidades reales</strong> de los sectores productivo y social.</p></div></div>
+          <div class="col-sm-6"><div class="card-innova p-3 h-100 border"><i class="bi bi-award-fill fs-4 mb-2" style="color:var(--retos)"></i><p class="small mb-0">Reconocer y visibilizar el <strong>talento estudiantil</strong> a nivel local, regional y nacional.</p></div></div>
+        </div>
+      </div>
+      <div class="modal-footer"><button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalBasesGenerales" tabindex="-1" aria-labelledby="lblBasesGenerales" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content border-0 shadow-lg">
+      <div class="modal-header text-white" style="background:linear-gradient(135deg,#1a4db3,#2563c0)">
+        <h5 class="modal-title fw-bold" id="lblBasesGenerales"><i class="bi bi-journal-text me-2"></i>Bases Generales de Participación</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body p-4">
+        <div class="row g-3">
+          <div class="col-12"><h6 class="fw-bold mb-2"><i class="bi bi-person-check-fill text-primary me-2"></i>Elegibilidad</h6>
+            <ul class="list-unstyled small text-muted"><li><i class="bi bi-check2 me-2"></i>Estudiantes activos de cualquier plantel TecNM a nivel nacional.</li><li><i class="bi bi-check2 me-2"></i>Licenciatura (cualquier semestre) y Posgrado (maestría y doctorado).</li><li><i class="bi bi-check2 me-2"></i>No es requisito tener promedio mínimo para la etapa local.</li></ul>
+          </div>
+          <div class="col-12"><h6 class="fw-bold mb-2"><i class="bi bi-folder2-open text-success me-2"></i>Documentación obligatoria</h6>
+            <ul class="list-unstyled small text-muted"><li><i class="bi bi-check2 me-2"></i>Ficha de registro electrónica (plataforma TecNM).</li><li><i class="bi bi-check2 me-2"></i>Memoria técnica en formato oficial (máx. 20 páginas).</li><li><i class="bi bi-check2 me-2"></i>Video de presentación del proyecto (máx. 5 minutos, YouTube/Drive).</li><li><i class="bi bi-check2 me-2"></i>Carta de originalidad firmada por todos los integrantes y asesor.</li></ul>
+          </div>
+          <div class="col-12"><h6 class="fw-bold mb-2"><i class="bi bi-shield-check text-warning me-2"></i>Restricciones</h6>
+            <ul class="list-unstyled small text-muted"><li><i class="bi bi-x-circle text-danger me-2"></i>No se aceptarán proyectos que promuevan discriminación o violencia.</li><li><i class="bi bi-x-circle text-danger me-2"></i>No se permiten proyectos presentados en ediciones anteriores sin modificaciones sustanciales.</li><li><i class="bi bi-x-circle text-danger me-2"></i>No se admite la participación de egresados como integrantes principales del equipo.</li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer"><button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button><a href="#" class="btn btn-primary btn-sm"><i class="bi bi-download me-1"></i>Descargar Manual</a></div>
+    </div>
+  </div>
+</div>
+
+<script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="scripts.js"></script>
+
+<script>
+  // Sidebar móvil
+  const btn = document.getElementById('mobMenuBtn');
+  const icon = document.getElementById('mobMenuIcon');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  function toggleSidebar(force) {
+    const open = force !== undefined ? force : !sidebar.classList.contains('open');
+    sidebar.classList.toggle('open', open);
+    if(overlay) overlay.classList.toggle('show', open);
+    if(icon) icon.className = open ? 'bi bi-x-lg' : 'bi bi-list';
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  if(btn) btn.addEventListener('click', () => toggleSidebar());
+  if(overlay) overlay.addEventListener('click', () => toggleSidebar(false));
+  window.addEventListener('resize', () => { if(window.innerWidth >= 992) { if(sidebar) sidebar.classList.remove('open'); if(overlay) overlay.classList.remove('show'); if(icon) icon.className = 'bi bi-list'; document.body.style.overflow = ''; } });
+  
+  // Lógica de los botones de login (3 roles)
+  document.querySelectorAll('[data-rol]').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const rol = this.getAttribute('data-rol');
+      let rolTexto = '';
+      if(rol === 'admin') rolTexto = 'ADMINISTRADOR';
+      else if(rol === 'participante') rolTexto = 'PARTICIPANTE';
+      else if(rol === 'evaluador') rolTexto = 'EVALUADOR';
+      const rolSpan = document.getElementById('rolSpan');
+      if(rolSpan) rolSpan.textContent = rolTexto;
+      const rolHidden = document.getElementById('rolHidden');
+      if(rolHidden) rolHidden.value = rol;
+      new bootstrap.Modal(document.getElementById('loginModal')).show();
+    });
+  });
+  
+  // Cerrar sidebar al hacer clic en enlaces (para móvil)
+  document.querySelectorAll('.sidebar .s-link, .sidebar label').forEach(link => {
+    link.addEventListener('click', () => { if(window.innerWidth < 992) toggleSidebar(false); });
+  });
+</script>
+
+</body>
+</html>

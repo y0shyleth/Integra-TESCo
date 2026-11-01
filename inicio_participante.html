@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Integra-TESCO · Participantes | Inicio</title>
+  <!-- Fonts & icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/estilos_participante.css">
+</head>
+<body>
+
+  <!-- Fondo de hexágonos animados -->
+  <div class="bg-hex-container" id="bgHexContainer"></div>
+
+  <!-- ========== NAVBAR PARTICIPANTE ========== -->
+  <nav class="navbar-participante">
+    <div class="navbar-container">
+      <a href="inicio_participante.html" class="nav-title-link">
+        <span class="brand-text">Participantes <span class="brand-accent">| Inicio</span></span>
+      </a>
+
+      <!-- Botón hamburguesa -->
+      <button class="navbar-toggler-participante" id="navbarToggler" aria-label="Abrir menú" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Menú de navegación -->
+      <ul class="nav-menu-participante" id="navMenu">
+        <li><a href="inicio_participante.html" class="nav-link-p active"><i class="fas fa-house"></i> Inicio</a></li>
+        <li><a href="archivosp_participante.html" class="nav-link-p"><i class="fas fa-folder-open"></i> Archivos</a></li>
+        <li><a href="perfil_participante.html" class="nav-link-p"><i class="fas fa-user"></i> Perfil</a></li>
+        <li><a href="index.html" class="nav-link-p nav-link-danger"><i class="fas fa-right-from-bracket"></i> Cerrar sesión</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== CONTENIDO PRINCIPAL ========== -->
+  <main class="main-wrapper main-dashboard">
+
+    <!-- 2. Bienvenida -->
+    <section class="welcome-section">
+      <h1 class="welcome-greeting">Bienvenida <span class="highlight">Lani Yamille</span> <span class="welcome-role">(Participante)</span></h1>
+      <p class="welcome-subtitle">Estos son los equipos a los que perteneces actualmente.</p>
+    </section>
+
+    <!-- 3. Mis equipos -->
+    <section class="section-block">
+      <div class="section-header">
+        <h2 class="section-title"><i class="fas fa-users"></i> Mis equipos</h2>
+        <div class="section-actions">
+          <button class="btn-submit btn-orange btn-sm" id="btnCrearEquipo"><i class="fas fa-plus"></i> Crear equipo</button>
+          <button class="btn-submit btn-outline-orange btn-sm" id="btnUnirseEquipo"><i class="fas fa-link"></i> Unirse a un equipo</button>
+        </div>
+      </div>
+
+      <div class="equipos-grid">
+        <!-- 3.1.1 -->
+        <a href="equipo_participante.html" class="equipo-card">
+          <div class="equipo-card-header">
+            <h3 class="equipo-nombre">Kinoj</h3>
+            <span class="badge-competencia">Certamen · Consumo final</span>
+          </div>
+          <p class="equipo-desc">Página de ayuda a la salud mental.</p>
+          <div class="equipo-card-footer">
+            <span class="equipo-lider"><i class="fas fa-crown"></i> Lani Yamille Fragoso</span>
+          </div>
+        </a>
+
+        <!-- 3.1.2 -->
+        <a href="equipo_participante.html" class="equipo-card">
+          <div class="equipo-card-header">
+            <h3 class="equipo-nombre">TescoWarriors</h3>
+            <span class="badge-competencia">Hackatec</span>
+          </div>
+          <p class="equipo-desc">Guerreros de la programación.</p>
+          <div class="equipo-card-footer">
+            <span class="equipo-lider"><i class="fas fa-crown"></i> Alyson Avril Olmos</span>
+          </div>
+        </a>
+
+        <!-- 3.1.3 -->
+        <a href="equipo_participante.html" class="equipo-card">
+          <div class="equipo-card-header">
+            <h3 class="equipo-nombre">TescoBot</h3>
+            <span class="badge-competencia">Innobótica · Mini Sumo</span>
+          </div>
+          <p class="equipo-desc equipo-desc-empty">Sin descripción</p>
+          <div class="equipo-card-footer">
+            <span class="equipo-lider"><i class="fas fa-crown"></i> Nelly Sánchez</span>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== MODAL CREAR EQUIPO ========== -->
+  <div class="modal-overlay" id="modalCrearEquipo">
+    <div class="modal-container modal-lg">
+      <div class="modal-header">
+        <h3>Creación de equipo</h3>
+        <button class="modal-close" id="closeCrearEquipo" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="formCrearEquipo" novalidate>
+          <div class="form-group">
+            <label for="nuevoNombreEquipo">Nombre del equipo <span class="required">*</span></label>
+            <input type="text" id="nuevoNombreEquipo" class="form-control" placeholder="Ej. Kinoj" required>
+            <small class="error-msg" id="nuevoNombreEquipoError"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="nuevoDescripcion">Descripción</label>
+            <textarea id="nuevoDescripcion" class="form-control" rows="2" placeholder="Breve descripción del equipo"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="nuevoCategoria">Categoría <span class="required">*</span></label>
+            <select id="nuevoCategoria" class="form-control" required>
+              <option value="">Selecciona una categoría</option>
+              <optgroup label="Innobótica">
+                <option value="innobotica-siguelineas">Siguelineas</option>
+                <option value="innobotica-minisumo">Mini sumo</option>
+              </optgroup>
+              <optgroup label="Certamen de proyectos">
+                <option value="certamen-agroindustrial">SECTOR AGROINDUSTRIAL</option>
+                <option value="certamen-electrica">INDUSTRIA ELÉCTRICA ELECTRÓNICA</option>
+                <option value="certamen-electromovilidad">ELECTROMOVILIDAD Y TRANSICIÓN ENERGÉTICA</option>
+                <option value="certamen-salud">SERVICIOS PARA LA SALUD HUMANA</option>
+                <option value="certamen-sostenibilidad">SOSTENIBILIDAD Y CAMBIO CLIMÁTICO</option>
+                <option value="certamen-consumo">BIENES DE CONSUMO FINAL</option>
+              </optgroup>
+              <optgroup label="Hackatec">
+                <option value="hackatec">Hackatec</option>
+              </optgroup>
+            </select>
+            <small class="error-msg" id="nuevoCategoriaError"></small>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group half">
+              <label for="asesorPrimario">Asesor primario</label>
+              <select id="asesorPrimario" class="form-control">
+                <option value="">Sin asesor</option>
+                <option value="jose-luis-camacho">José Luis Camacho Campero</option>
+                <option value="luis-enrique-vivanco">Luis Enrique Vivanco Bienavidez</option>
+                <option value="jose-roberto-perez">José Roberto Pérez Torres</option>
+                <option value="oscar-escobar">Oscar Escobar Domínguez</option>
+                <option value="carlos-gibran">Carlos Gibran Martínez Negrete</option>
+              </select>
+            </div>
+            <div class="form-group half">
+              <label for="asesorSecundario">Asesor secundario</label>
+              <select id="asesorSecundario" class="form-control">
+                <option value="">Sin asesor</option>
+                <option value="jose-luis-camacho">José Luis Camacho Campero</option>
+                <option value="luis-enrique-vivanco">Luis Enrique Vivanco Bienavidez</option>
+                <option value="jose-roberto-perez">José Roberto Pérez Torres</option>
+                <option value="oscar-escobar">Oscar Escobar Domínguez</option>
+                <option value="carlos-gibran">Carlos Gibran Martínez Negrete</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Añadir integrantes</label>
+            <div class="integrantes-grid">
+              <select class="form-control integrante-select" data-index="1">
+                <option value="">Integrante 1</option>
+                <option value="lani">Lani Yamille Fragoso Salinas</option>
+                <option value="danna">Danna Karina Aguilar Márquez</option>
+                <option value="alyson">Alyson Avril Olmos Vera</option>
+                <option value="nelly">Nelly Sánchez Ruíz</option>
+                <option value="axel">Axel Adrián Mejía Lozano</option>
+              </select>
+              <select class="form-control integrante-select" data-index="2">
+                <option value="">Integrante 2</option>
+                <option value="lani">Lani Yamille Fragoso Salinas</option>
+                <option value="danna">Danna Karina Aguilar Márquez</option>
+                <option value="alyson">Alyson Avril Olmos Vera</option>
+                <option value="nelly">Nelly Sánchez Ruíz</option>
+                <option value="axel">Axel Adrián Mejía Lozano</option>
+              </select>
+              <select class="form-control integrante-select" data-index="3">
+                <option value="">Integrante 3</option>
+                <option value="lani">Lani Yamille Fragoso Salinas</option>
+                <option value="danna">Danna Karina Aguilar Márquez</option>
+                <option value="alyson">Alyson Avril Olmos Vera</option>
+                <option value="nelly">Nelly Sánchez Ruíz</option>
+                <option value="axel">Axel Adrián Mejía Lozano</option>
+              </select>
+              <select class="form-control integrante-select" data-index="4">
+                <option value="">Integrante 4</option>
+                <option value="lani">Lani Yamille Fragoso Salinas</option>
+                <option value="danna">Danna Karina Aguilar Márquez</option>
+                <option value="alyson">Alyson Avril Olmos Vera</option>
+                <option value="nelly">Nelly Sánchez Ruíz</option>
+                <option value="axel">Axel Adrián Mejía Lozano</option>
+              </select>
+              <select class="form-control integrante-select" data-index="5">
+                <option value="">Integrante 5</option>
+                <option value="lani">Lani Yamille Fragoso Salinas</option>
+                <option value="danna">Danna Karina Aguilar Márquez</option>
+                <option value="alyson">Alyson Avril Olmos Vera</option>
+                <option value="nelly">Nelly Sánchez Ruíz</option>
+                <option value="axel">Axel Adrián Mejía Lozano</option>
+              </select>
+              <select class="form-control integrante-select" data-index="6">
+                <option value="">Integrante 6</option>
+                <option value="lani">Lani Yamille Fragoso Salinas</option>
+                <option value="danna">Danna Karina Aguilar Márquez</option>
+                <option value="alyson">Alyson Avril Olmos Vera</option>
+                <option value="nelly">Nelly Sánchez Ruíz</option>
+                <option value="axel">Axel Adrián Mejía Lozano</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="codigoEquipo">Código de equipo</label>
+            <div class="codigo-wrapper">
+              <input type="text" id="codigoEquipo" class="form-control codigo-input" readonly value="------" title="Haz clic para copiar">
+              <button type="button" class="tooltip-icon" data-tooltip="tooltipCodigo" aria-label="Información">?</button>
+            </div>
+            <div class="tooltip-content" id="tooltipCodigo">
+              Termina de crear tu equipo y copia el código de invitación para compartirlo a tus compañeros y asesores para que formen parte de tu equipo si no pudiste agregarlos aún.
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" class="btn-submit btn-outline-orange" id="cancelarCrearEquipo">Cancelar</button>
+            <button type="submit" class="btn-submit btn-orange">Crear equipo</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== MODAL UNIRSE A EQUIPO ========== -->
+  <div class="modal-overlay" id="modalUnirseEquipo">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3>Unirse a un equipo</h3>
+        <button class="modal-close" id="closeUnirseEquipo" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-text">Pídele al líder de tu equipo que te pase el código de integración de 6 caracteres y pégalo a continuación para unirte.</p>
+        <div class="form-group">
+          <label for="codigoUnirse">Código de integración</label>
+          <div class="codigo-wrapper">
+            <input type="text" id="codigoUnirse" class="form-control" placeholder="A1B2C3" maxlength="6">
+            <button type="button" class="btn-submit btn-outline-orange btn-sm" id="btnPegarCodigo"><i class="fas fa-paste"></i> Pegar</button>
+          </div>
+          <small class="error-msg" id="codigoUnirseError"></small>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-submit btn-outline-orange" id="cancelarUnirseEquipo">Cancelar</button>
+        <button type="button" class="btn-submit btn-orange" id="btnUnirseConfirmar">Unirse</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer-participante">
+    <div class="footer-content">
+      <p>Integra-Tesco – Módulo de participantes | 2026 Todos los derechos reservados</p>
+      <div class="footer-links">
+        <a href="https://www.tecnm.mx/" target="_blank">TecNM</a>
+        <a href="https://coacalco.tecnm.mx/TECNM/" target="_blank">TESCo</a>
+        <a href="https://innova.tecnm.mx/" target="_blank">Innovatec</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="bootstrap-5.3.8-dist/js/participante_scripts.js"></script>
+
+</body>
+</html>

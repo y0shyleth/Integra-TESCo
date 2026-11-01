@@ -1,0 +1,257 @@
+<!-- ==================== equipos_dir_admin.html ==================== -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Directivo | Equipos</title>
+  <!-- Font Awesome 5 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/estilos_admin.css">
+</head>
+<body>
+
+<!-- ==================== FONDO HEXÁGONOS ==================== -->
+<div class="bg-hex-container" id="bgHexContainer"></div>
+
+<!-- ==================== NAVBAR DIRECTIVO ==================== -->
+<nav class="navbar navbar-expand-lg nav-inutilizable fixed-top always-collapse">
+  <div class="container-fluid position-relative">
+    <a class="navbar-brand" href="inicio_dir_admin.html">
+      <span class="d-none d-sm-inline">PANEL DIRECTIVO | Equipos</span>
+      <span class="d-inline d-sm-none">Equipos</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar" aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="adminNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="inicio_dir_admin.html"><i class="fas fa-home me-1"></i> Inicio</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="evaluaciones_dir_admin.html"><i class="fas fa-clipboard-check me-1"></i> Evaluaciones</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="usuarios_dir_admin.html"><i class="fas fa-users me-1"></i> Usuarios</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="equipos_dir_admin.html"><i class="fas fa-users-cog me-1"></i> Equipos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="inicio_admin.html"><i class="fas fa-arrow-left me-1"></i> Volver</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="index.html"><i class="fas fa-sign-out-alt me-1"></i> Cerrar sesión</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ==================== CONTENIDO ==================== -->
+<main class="main-login" style="margin-top: 76px;">
+  <div class="container">
+
+    <!-- Barra de búsqueda -->
+    <div class="row align-items-center mb-4 g-3">
+      <div class="col-12">
+        <div class="search-wrapper">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" class="form-control search-input" placeholder="Buscar un equipo" id="searchEquipoDir">
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabla de equipos -->
+    <div class="table-responsive table-glass">
+      <table class="table table-admin align-middle mb-0">
+        <thead>
+          <tr>
+            <th>Competencia</th>
+            <th>Equipo</th>
+            <th>Categoría</th>
+            <th>Válido</th>
+            <th>Líder</th>
+            <th>Asesor</th>
+            <th class="text-center" style="width: 90px;">Ver</th>
+          </tr>
+        </thead>
+        <tbody id="equipoDirTableBody">
+          <tr>
+            <td><span class="badge-competencia certamen">Certamen</span></td>
+            <td class="fw-semibold">KINOJ</td>
+            <td>Bienes de consumo final</td>
+            <td class="text-center"><span class="badge-apto">Válido</span></td>
+            <td>Lani Yamille</td>
+            <td>José Camacho</td>
+            <td class="text-center">
+              <button class="btn btn-action btn-view" data-bs-toggle="modal" data-bs-target="#modalVerEquipoDir"
+                data-nombre="KINOJ" data-desc="Aplicación de apoyo a la salud mental"
+                data-comp="Certamen de proyectos" data-cat="Bienes de consumo final">
+                <i class="fas fa-eye"></i>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="badge-competencia certamen">Certamen</span></td>
+            <td class="fw-semibold">AGRO-FUTURO</td>
+            <td>Sector agroindustrial</td>
+            <td class="text-center"><span class="badge-apto">Válido</span></td>
+            <td>Pedro Sánchez</td>
+            <td>María Fernanda López</td>
+            <td class="text-center">
+              <button class="btn btn-action btn-view" data-bs-toggle="modal" data-bs-target="#modalVerEquipoDir"
+                data-nombre="AGRO-FUTURO" data-desc="Sistema de monitoreo agrícola inteligente"
+                data-comp="Certamen de proyectos" data-cat="Sector agroindustrial">
+                <i class="fas fa-eye"></i>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="badge-competencia innobotica">Innobótica</span></td>
+            <td class="fw-semibold">ROBO-SIG</td>
+            <td>Siguelineas</td>
+            <td class="text-center"><span class="badge-apto">Válido</span></td>
+            <td>Carlos Mendoza</td>
+            <td>Ana Torres</td>
+            <td class="text-center">
+              <button class="btn btn-action btn-view" data-bs-toggle="modal" data-bs-target="#modalVerEquipoDir"
+                data-nombre="ROBO-SIG" data-desc="Robot seguidor de línea de alta velocidad"
+                data-comp="Innobótica" data-cat="Siguelineas">
+                <i class="fas fa-eye"></i>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="badge-competencia innobotica">Innobótica</span></td>
+            <td class="fw-semibold">SUMO-TEC</td>
+            <td>Mini sumo</td>
+            <td class="text-center"><span class="badge-apto">Válido</span></td>
+            <td>Diego Ramírez</td>
+            <td>Laura Vega</td>
+            <td class="text-center">
+              <button class="btn btn-action btn-view" data-bs-toggle="modal" data-bs-target="#modalVerEquipoDir"
+                data-nombre="SUMO-TEC" data-desc="Robot de mini sumo autónomo"
+                data-comp="Innobótica" data-cat="Mini sumo">
+                <i class="fas fa-eye"></i>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="badge-competencia hackatec">Hackatec</span></td>
+            <td class="fw-semibold">CODE-WARRIORS</td>
+            <td>Hackatec</td>
+            <td class="text-center"><span class="badge-apto">Válido</span></td>
+            <td>Sofía Herrera</td>
+            <td>Miguel Ángel Ruiz</td>
+            <td class="text-center">
+              <button class="btn btn-action btn-view" data-bs-toggle="modal" data-bs-target="#modalVerEquipoDir"
+                data-nombre="CODE-WARRIORS" data-desc="Solución de ciberseguridad para PyMEs"
+                data-comp="Hackatec" data-cat="Hackatec">
+                <i class="fas fa-eye"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</main>
+
+<!-- ==================== MODAL: VER EQUIPO ==================== -->
+<div class="modal fade" id="modalVerEquipoDir" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content modal-glass">
+      <div class="modal-header modal-header-glass">
+        <h5 class="modal-title" id="dirEquipoNombre">-</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-3 mb-3">
+          <div class="col-12">
+            <p class="modal-equipo-desc" id="dirEquipoDesc">-</p>
+          </div>
+          <div class="col-md-6">
+            <span class="info-label">Competencia</span>
+            <p class="info-valor" id="dirEquipoComp">-</p>
+          </div>
+          <div class="col-md-6">
+            <span class="info-label">Categoría</span>
+            <p class="info-valor" id="dirEquipoCat">-</p>
+          </div>
+        </div>
+        <p class="text-muted-glass small mb-0">
+          <i class="fas fa-info-circle me-1"></i>
+          La información detallada de integrantes, asesores y documentación está disponible únicamente desde el panel de administración.
+        </p>
+      </div>
+      <div class="modal-footer modal-footer-glass">
+        <button type="button" class="btn btn-reset" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer-innovatec text-center py-3">
+  <div class="container">
+    <p class="mb-1 small">&copy; 2026 Tecnológico Nacional de México. Todos los derechos reservados.</p>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <a href="#" class="footer-link small">Innovatec</a>
+      <a href="#" class="footer-link small">TESCo</a>
+      <a href="#" class="footer-link small">TecNM</a>
+      <a href="#" class="footer-link small">Integra</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="bootstrap-5.3.8-dist/js/admin_scripts.js"></script>
+<script>
+  (function() {
+    console.log('Equipos directivo cargados.');
+
+    // ===== Búsqueda =====
+    document.getElementById('searchEquipoDir').addEventListener('keyup', function() {
+      var filtro = this.value.toLowerCase();
+      document.querySelectorAll('#equipoDirTableBody tr').forEach(function(fila) {
+        fila.style.display = fila.textContent.toLowerCase().indexOf(filtro) !== -1 ? '' : 'none';
+      });
+    });
+
+    // ===== Modal ver equipo =====
+    var modalVer = document.getElementById('modalVerEquipoDir');
+    modalVer.addEventListener('show.bs.modal', function(event) {
+      var btn = event.relatedTarget;
+      document.getElementById('dirEquipoNombre').textContent = btn.getAttribute('data-nombre') || 'Equipo';
+      document.getElementById('dirEquipoDesc').textContent = btn.getAttribute('data-desc') || '';
+      document.getElementById('dirEquipoComp').textContent = btn.getAttribute('data-comp') || '';
+      document.getElementById('dirEquipoCat').textContent = btn.getAttribute('data-cat') || '';
+    });
+
+    // ===== Fondo de hexágonos animados =====
+    (function generarHexagonos() {
+      var cont = document.getElementById('bgHexContainer');
+      if (!cont) return;
+      var cantidad = window.innerWidth < 768 ? 12 : 22;
+      for (var i = 0; i < cantidad; i++) {
+        var hex = document.createElement('div');
+        hex.className = 'bg-hexagon';
+        var size = 40 + Math.random() * 120;
+        hex.style.width = size + 'px';
+        hex.style.height = (size * 1.15) + 'px';
+        hex.style.left = Math.random() * 100 + '%';
+        hex.style.top = Math.random() * 100 + '%';
+        hex.style.opacity = (0.2 + Math.random() * 0.4).toFixed(2);
+        var dur = (12 + Math.random() * 18).toFixed(1);
+        hex.style.animation = 'flotarHex ' + dur + 's ease-in-out infinite';
+        hex.style.animationDelay = (-Math.random() * 10).toFixed(1) + 's';
+        hex.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
+        cont.appendChild(hex);
+      }
+    })();
+  })();
+</script>
+</body>
+</html>

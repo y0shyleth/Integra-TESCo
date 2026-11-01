@@ -1,0 +1,1676 @@
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #16101c 0%, #36164e 50%, #3c5586 100%);
+      background-attachment: fixed;
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    /* ==================== FONDO DE HEXÁGONOS ANIMADOS ==================== */
+.bg-hex-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 0; /* Detrás del contenido principal */
+  pointer-events: none; /* Evita que interfiera con clics e interacciones */
+}
+
+/* Base del hexágono usando clip-path */
+.bg-hexagon {
+  position: absolute;
+  width: 120px;
+  height: 138px;
+  background: linear-gradient(135deg, rgba(184, 255, 248, 0.213) 0%, rgba(79, 117, 254, 0.05) 100%);
+  border: 1px solid rgba(226, 254, 255, 0.285);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  will-change: transform, opacity;
+}
+
+/* Asegurar que el contenido de la app quede sobre el fondo */
+body > * {
+  position: relative;
+  z-index: 1;
+}
+    .main-login {
+      flex: 1;
+      padding: 2rem 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    /* NAVBAR */
+    .nav-inutilizable {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.5rem 1rem;
+    }
+    .nav-inutilizable .navbar-brand {
+      color: #ffffff !important;
+      font-weight: 700;
+      font-size: 1.5rem;
+      text-shadow: 0 2px 10px rgba(2, 255, 196, 0.3);
+    }
+    .nav-link-evaluador, .btn-nav-link {
+      color: rgba(255, 255, 255, 0.9) !important;
+      font-weight: 600;
+      border-radius: 12px;
+      padding: 8px 16px !important;
+      transition: all 0.3s ease;
+      background: transparent;
+      border: none;
+    }
+    .nav-link-evaluador:hover, .btn-nav-link:hover {
+      background: rgba(255, 255, 255, 0.25);
+      color: #ffffff !important;
+      transform: translateY(-2px);
+    }
+    /* CARDS & PANELS */
+    .welcome-card, .dashboard-card, .card-panel {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 24px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+    .dashboard-card {
+      height: 100%;
+      cursor: pointer;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      transition: transform 0.25s, background 0.25s, box-shadow 0.25s;
+    }
+    .dashboard-card:hover {
+      transform: translateY(-8px);
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.35);
+    }
+    .welcome-greeting {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #ffffff;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .welcome-subtitle {
+      color: rgba(255, 255, 255, 0.85);
+    }
+    .dashboard-icon {
+      font-size: 2.8rem;
+      color: #00f1fe;
+      text-shadow: 0 0 12px rgba(0, 135, 254, 0.6);
+      margin-bottom: 0.8rem;
+    }
+    .dashboard-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.25rem;
+    }
+    .dashboard-description {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.95rem;
+    }
+    /* Badge */
+    .badge {
+      background: linear-gradient(135deg, #00bafe 0%, #4f75fe 100%) !important;
+      color: #ffffff !important;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+    /* Footer */
+    .footer-innovatec {
+      background: rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.8);
+      margin-top: auto;
+      padding: 1rem 0;
+    }
+    .footer-link {
+      color: #00f2fe;
+      text-decoration: none;
+    }
+    .footer-link:hover {
+      text-decoration: underline;
+    }
+    /* Ajuste para el botón hamburguesa en móvil */
+    .navbar-toggler {
+      border-color: rgba(255,255,255,0.3);
+    }
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+    /* espaciado entre cards */
+    .g-4, .gy-4 {
+      --bs-gutter-y: 1.5rem;
+    }
+    .text-neon {
+      color: #00f1fe;
+      text-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+    }
+    .bg-translucent {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    /* para pantallas pequeñas */
+    @media (max-width: 576px) {
+      .welcome-greeting {
+        font-size: 1.4rem;
+      }
+      .dashboard-card {
+        padding: 1rem 0.5rem;
+      }
+      .dashboard-icon {
+        font-size: 2.2rem;
+      }
+    }
+
+
+
+/* Forzar que el botón hamburguesa siempre esté visible */
+.always-collapse .navbar-toggler {
+    display: block !important;
+}
+
+/* Forzar que el menú siempre se comporte como móvil (vertical) */
+.always-collapse .navbar-collapse {
+    display: none !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: rgba(22, 16, 28, 0.95) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1rem !important;
+    max-height: 80vh !important;
+    overflow-y: auto !important;
+    z-index: 1050 !important;
+}
+
+.always-collapse .navbar-collapse.show {
+    display: block !important;
+}
+
+/* Asegurar que los items del menú se muestren verticalmente */
+.always-collapse .navbar-nav {
+    flex-direction: column !important;
+    width: 100% !important;
+}
+
+.always-collapse .nav-item {
+    width: 100% !important;
+}
+
+.always-collapse .nav-link {
+    padding: 0.75rem 1rem !important;
+    border-radius: 8px !important;
+    width: 100% !important;
+}
+
+/* Ajuste para que el menú no se desborde en móviles */
+@media (max-width: 576px) {
+    .always-collapse .navbar-collapse {
+        max-height: 70vh !important;
+    }
+}
+
+/* ==================== ESTILOS: GESTIÓN DE ADMINISTRADORES ==================== */
+/* Complemento para estilos_admin.css */
+
+/* --- Barra de búsqueda --- */
+.search-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+  pointer-events: none;
+}
+
+.search-input {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  border-radius: 14px !important;
+  color: #ffffff !important;
+  padding: 0.75rem 1rem 0.75rem 2.75rem !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.search-input:focus {
+  background: rgba(255, 255, 255, 0.18) !important;
+  border-color: rgba(0, 241, 254, 0.6) !important;
+  box-shadow: 0 0 0 3px rgba(0, 241, 254, 0.15) !important;
+  outline: none;
+}
+
+/* --- Botón neón --- */
+.btn-neon {
+  background: linear-gradient(135deg, #00bafe 0%, #4f75fe 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 186, 254, 0.35);
+}
+
+.btn-neon:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 186, 254, 0.5);
+  color: #ffffff;
+}
+
+.btn-neon:active {
+  transform: translateY(0);
+}
+
+/* --- Tabla glass --- */
+.table-glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.table-admin {
+  color: #ffffff;
+  margin: 0;
+}
+
+.table-admin thead th {
+  background: rgba(0, 0, 0, 0.25);
+  color: #00f1fe;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 1rem 0.75rem;
+  white-space: nowrap;
+}
+
+.table-admin tbody td {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.85rem 0.75rem;
+  vertical-align: middle;
+  font-size: 0.92rem;
+}
+
+.table-admin tbody tr {
+  transition: background 0.25s ease;
+}
+
+.table-admin tbody tr:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.table-admin tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* --- Botones de acción --- */
+.btn-action {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  padding: 0;
+  font-size: 0.85rem;
+}
+
+.btn-edit:hover {
+  background: rgba(0, 186, 254, 0.3);
+  border-color: rgba(0, 186, 254, 0.6);
+  color: #00f1fe;
+  transform: translateY(-2px);
+}
+
+.btn-delete:hover {
+  background: rgba(255, 70, 90, 0.3);
+  border-color: rgba(255, 70, 90, 0.6);
+  color: #ff6b81;
+  transform: translateY(-2px);
+}
+
+/* --- Switch --- */
+.form-check-input {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+
+.form-check-input:checked {
+  background-color: #00bafe;
+  border-color: #00bafe;
+}
+
+.form-check-input:focus {
+  box-shadow: 0 0 0 3px rgba(0, 186, 254, 0.2);
+}
+
+/* --- Modales glass --- */
+.modal-glass {
+  background: rgba(22, 16, 28, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  color: #ffffff;
+}
+
+.modal-header-glass {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 1.25rem 1.5rem;
+}
+
+.modal-header-glass .modal-title {
+  color: #00f1fe;
+  font-weight: 700;
+  font-size: 1.15rem;
+  text-shadow: 0 0 10px rgba(0, 241, 254, 0.3);
+}
+
+.modal-footer-glass {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 1rem 1.5rem;
+  gap: 0.5rem;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+/* --- Formularios glass --- */
+.form-label {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+
+.form-control-glass {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 12px !important;
+  color: #ffffff !important;
+  padding: 0.65rem 1rem !important;
+  transition: all 0.25s ease;
+}
+
+.form-control-glass:focus {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(0, 241, 254, 0.6) !important;
+  box-shadow: 0 0 0 3px rgba(0, 241, 254, 0.15) !important;
+  color: #ffffff !important;
+}
+
+.form-control-glass::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* --- Tabla de permisos --- */
+.table-permisos {
+  color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.table-permisos thead th {
+  background: rgba(0, 0, 0, 0.3);
+  color: #00f1fe;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.65rem 0.85rem;
+}
+
+.table-permisos tbody td {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.55rem 0.85rem;
+  font-size: 0.9rem;
+}
+
+.table-permisos tbody tr:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.table-permisos tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* --- Botón reset --- */
+.btn-reset {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
+  padding: 0.6rem 1.25rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.btn-reset:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .table-admin thead th {
+    font-size: 0.72rem;
+    padding: 0.7rem 0.5rem;
+  }
+  .table-admin tbody td {
+    font-size: 0.82rem;
+    padding: 0.65rem 0.5rem;
+  }
+  .btn-action {
+    width: 32px;
+    height: 32px;
+    font-size: 0.78rem;
+  }
+  .modal-body {
+    padding: 1rem;
+  }
+  .modal-header-glass,
+  .modal-footer-glass {
+    padding: 0.85rem 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .table-admin {
+    font-size: 0.78rem;
+  }
+  .table-admin thead th:nth-child(4),
+  .table-admin tbody td:nth-child(4) {
+    display: none; /* Ocultar contraseña en móvil muy pequeño */
+  }
+}
+
+/* ==================== ESTILOS: GESTOR DE EQUIPOS ==================== */
+/* Complemento para estilos_admin.css */
+
+/* --- Reutiliza estilos de búsqueda, botones neón y tabla glass --- */
+/* (search-wrapper, search-icon, search-input, btn-neon, table-glass, table-admin, btn-action ya definidos) */
+
+/* --- Botón glass secundario --- */
+.btn-glass {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  border-radius: 14px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* --- Badges de competencia --- */
+.badge-competencia {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.badge-competencia.certamen {
+  background: linear-gradient(135deg, #00bafe 0%, #4f75fe 100%);
+  box-shadow: 0 2px 10px rgba(0, 186, 254, 0.35);
+}
+
+.badge-competencia.innobotica {
+  background: linear-gradient(135deg, #8a2be2 0%, #c74bff 100%);
+  box-shadow: 0 2px 10px rgba(138, 43, 226, 0.35);
+}
+
+.badge-competencia.hackatec {
+  background: linear-gradient(135deg, #ff6b35 0%, #ff2e63 100%);
+  box-shadow: 0 2px 10px rgba(255, 107, 53, 0.35);
+}
+
+/* --- Botón ver --- */
+.btn-view:hover {
+  background: rgba(0, 241, 254, 0.3);
+  border-color: rgba(0, 241, 254, 0.6);
+  color: #00f1fe;
+  transform: translateY(-2px);
+}
+
+/* --- Código de equipo (copiable) --- */
+.codigo-equipo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0, 241, 254, 0.1);
+  border: 1px dashed rgba(0, 241, 254, 0.5);
+  border-radius: 12px;
+  padding: 0.6rem 1.2rem;
+  color: #00f1fe;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  user-select: none;
+}
+
+.codigo-equipo:hover {
+  background: rgba(0, 241, 254, 0.2);
+  border-color: rgba(0, 241, 254, 0.9);
+  box-shadow: 0 0 15px rgba(0, 241, 254, 0.3);
+}
+
+/* --- Select glass --- */
+.form-select.form-control-glass {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 14px;
+  padding-right: 2.5rem;
+}
+
+.form-select.form-control-glass option,
+.form-select.form-control-glass optgroup {
+  background: #20164e;
+  color: #ffffff;
+}
+
+/* --- Texto auxiliar --- */
+.text-muted-glass {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+}
+
+/* --- Input pequeño en tabla --- */
+.form-control-glass.form-control-sm {
+  padding: 0.4rem 0.75rem !important;
+  font-size: 0.85rem;
+  border-radius: 10px !important;
+}
+
+/* --- Modal XL ajuste --- */
+.modal-xl .modal-content {
+  max-height: 90vh;
+}
+
+.modal-xl .modal-body {
+  overflow-y: auto;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .table-admin thead th {
+    font-size: 0.72rem;
+    padding: 0.7rem 0.5rem;
+  }
+  .table-admin tbody td {
+    font-size: 0.82rem;
+    padding: 0.65rem 0.5rem;
+  }
+  .badge-competencia {
+    font-size: 0.68rem;
+    padding: 3px 8px;
+  }
+  .btn-action {
+    width: 32px;
+    height: 32px;
+    font-size: 0.78rem;
+  }
+  .btn-glass,
+  .btn-neon {
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .codigo-equipo {
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    padding: 0.5rem 0.9rem;
+  }
+  .table-admin thead th:nth-child(5),
+  .table-admin tbody td:nth-child(5) {
+    display: none; /* Ocultar líder en pantallas muy pequeñas */
+  }
+}
+
+/* ==================== ESTILOS: VER EQUIPO ==================== */
+/* Complemento para estilos_admin.css */
+
+/* --- Nombre y descripción del equipo --- */
+.equipo-nombre {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(0, 241, 254, 0.5);
+  margin-bottom: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+  outline: none;
+  display: inline-block;
+  min-width: 120px;
+}
+
+.equipo-nombre:hover,
+.equipo-nombre:focus {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 2px rgba(0, 241, 254, 0.3);
+}
+
+.equipo-descripcion {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-style: italic;
+  padding: 0.4rem 1rem;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+  outline: none;
+  display: inline-block;
+  min-width: 200px;
+}
+
+.equipo-descripcion:hover,
+.equipo-descripcion:focus {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 2px rgba(0, 241, 254, 0.3);
+}
+
+/* --- Paneles glass --- */
+.panel-glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.panel-title {
+  color: #00f1fe;
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(0, 241, 254, 0.25);
+  text-shadow: 0 0 10px rgba(0, 241, 254, 0.3);
+}
+
+/* --- Lista de miembros --- */
+.lista-miembros {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.miembro-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.miembro-input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 10px !important;
+  color: #ffffff !important;
+  padding: 0.6rem 1rem !important;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+}
+
+.miembro-input:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.miembro-input:focus {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(0, 241, 254, 0.6) !important;
+  box-shadow: 0 0 0 3px rgba(0, 241, 254, 0.15) !important;
+  color: #ffffff !important;
+}
+
+.miembro-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Líder y asesor principal resaltados */
+.miembro-item.lider .miembro-input,
+.miembro-item.asesor-principal .miembro-input {
+  color: #00f1fe !important;
+  font-weight: 600;
+  border-color: rgba(0, 241, 254, 0.4) !important;
+  background: rgba(0, 241, 254, 0.08) !important;
+}
+
+.miembro-item.lider .miembro-input:focus,
+.miembro-item.asesor-principal .miembro-input:focus {
+  box-shadow: 0 0 0 3px rgba(0, 241, 254, 0.25) !important;
+}
+
+.miembro-rol {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #00f1fe;
+  background: rgba(0, 241, 254, 0.15);
+  border: 1px solid rgba(0, 241, 254, 0.4);
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  text-shadow: 0 0 8px rgba(0, 241, 254, 0.4);
+}
+
+/* --- Botones deshabilitados glass --- */
+.btn-glass:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-glass:disabled:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: none;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .equipo-nombre {
+    font-size: 2rem;
+  }
+  .equipo-descripcion {
+    font-size: 1rem;
+  }
+  .panel-glass {
+    padding: 1.1rem;
+  }
+  .panel-title {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .equipo-nombre {
+    font-size: 1.7rem;
+  }
+  .miembro-rol {
+    font-size: 0.6rem;
+    padding: 2px 7px;
+  }
+  .miembro-input {
+    font-size: 0.88rem;
+    padding: 0.5rem 0.8rem !important;
+  }
+  .d-flex.justify-content-end {
+    flex-direction: column-reverse;
+  }
+  .d-flex.justify-content-end .btn {
+    width: 100%;
+  }
+}
+
+/* ==================== ESTILOS: CONTROL DE REGLAS ==================== */
+/* Complemento para estilos_admin.css */
+
+/* --- Subnavbar de reglas --- */
+.subnavbar-reglas {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  margin-top: 76px;
+  padding: 0.5rem 0;
+}
+
+.subnav-tabs {
+  gap: 0.5rem;
+  border: none;
+}
+
+.subnav-link {
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 0.5rem 1.25rem !important;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.subnav-link:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.subnav-link.active {
+  color: #00f1fe !important;
+  background: rgba(0, 241, 254, 0.12);
+  border-color: rgba(0, 241, 254, 0.4);
+  text-shadow: 0 0 8px rgba(0, 241, 254, 0.4);
+}
+
+/* --- Tercer navbar (competencias) --- */
+.competencia-navbar {
+  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.6rem 0;
+}
+
+.competencia-tabs {
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.competencia-link {
+  color: rgba(255, 255, 255, 0.75) !important;
+  font-weight: 500;
+  border-radius: 10px;
+  padding: 0.45rem 1.1rem !important;
+  transition: all 0.25s ease;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.9rem;
+}
+
+.competencia-link:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.competencia-link.active {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #00bafe 0%, #4f75fe 100%);
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(0, 186, 254, 0.4);
+}
+
+/* --- Lista de requisitos --- */
+.lista-requisitos {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.requisito-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  transition: all 0.25s ease;
+}
+
+.requisito-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.requisito-texto {
+  flex: 1;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.92rem;
+  outline: none;
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.requisito-texto:focus {
+  background: rgba(0, 241, 254, 0.1);
+  box-shadow: 0 0 0 2px rgba(0, 241, 254, 0.3);
+}
+
+.requisito-acciones {
+  display: flex;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+/* --- Botones pequeños --- */
+.btn-neon.btn-sm,
+.btn-glass.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  border-radius: 10px;
+}
+
+/* --- Info en modal --- */
+.info-label {
+  display: block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #00f1fe;
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+}
+
+.info-valor {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.modal-equipo-desc {
+  color: rgba(255, 255, 255, 0.85);
+  font-style: italic;
+  font-size: 1.05rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- Secciones en modal --- */
+.seccion-titulo {
+  color: #00f1fe;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 1.25rem 0 0.75rem 0;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(0, 241, 254, 0.25);
+  text-shadow: 0 0 8px rgba(0, 241, 254, 0.3);
+}
+
+/* --- Integrantes en modal --- */
+.lista-integrantes-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.integrante-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 0.65rem 1rem;
+  transition: all 0.25s ease;
+}
+
+.integrante-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.integrante-card.lider {
+  border-color: rgba(0, 241, 254, 0.4);
+  background: rgba(0, 241, 254, 0.06);
+}
+
+.nombre-lider {
+  color: #00f1fe;
+  text-shadow: 0 0 10px rgba(0, 241, 254, 0.4);
+}
+
+.nombre-asesor {
+  color: #00f1fe;
+  text-shadow: 0 0 10px rgba(0, 241, 254, 0.4);
+}
+
+.integrante-card.asesor {
+  border-color: rgba(0, 241, 254, 0.4);
+  background: rgba(0, 241, 254, 0.06);
+}
+
+.tag-lider,
+.tag-asesor {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #00f1fe;
+  background: rgba(0, 241, 254, 0.15);
+  border: 1px solid rgba(0, 241, 254, 0.4);
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-left: 0.5rem;
+}
+
+/* --- Botón info --- */
+.btn-info:hover {
+  background: rgba(0, 241, 254, 0.3);
+  border-color: rgba(0, 241, 254, 0.6);
+  color: #00f1fe;
+  transform: translateY(-2px);
+}
+
+/* --- Archivos --- */
+.archivo-link {
+  color: #00f2fe;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.archivo-link:hover {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(0, 241, 254, 0.6);
+}
+
+.lista-archivos {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.lista-archivos li {
+  padding: 0.2rem 0;
+}
+
+/* ==================== ESTILOS: RÚBRICAS ==================== */
+
+/* --- Lista de puntos de rúbrica --- */
+.lista-puntos {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.punto-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+  transition: all 0.25s ease;
+}
+
+.punto-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.punto-handle {
+  color: rgba(255, 255, 255, 0.4);
+  cursor: grab;
+  font-size: 1rem;
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.punto-handle:hover {
+  color: #00f1fe;
+}
+
+.punto-handle:active {
+  cursor: grabbing;
+}
+
+.punto-contenido {
+  flex: 1;
+  min-width: 0;
+}
+
+.punto-nombre {
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+  outline: none;
+  padding: 0.15rem 0.3rem;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.punto-nombre:focus {
+  background: rgba(0, 241, 254, 0.1);
+  box-shadow: 0 0 0 2px rgba(0, 241, 254, 0.3);
+}
+
+.punto-desc {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.88rem;
+  outline: none;
+  padding: 0.15rem 0.3rem;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.punto-desc:focus {
+  background: rgba(0, 241, 254, 0.1);
+  box-shadow: 0 0 0 2px rgba(0, 241, 254, 0.3);
+}
+
+.punto-valor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  flex-shrink: 0;
+}
+
+.input-valor {
+  width: 75px;
+  text-align: center;
+  font-weight: 700;
+  color: #00f1fe !important;
+  font-size: 1.05rem;
+  padding: 0.4rem 0.5rem !important;
+}
+
+.valor-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.punto-acciones {
+  display: flex;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+/* --- Botón puntaje --- */
+.btn-puntaje:hover {
+  background: rgba(0, 241, 254, 0.3);
+  border-color: rgba(0, 241, 254, 0.6);
+  color: #00f1fe;
+  transform: translateY(-2px);
+}
+
+/* --- Tipos de evaluador (cards) --- */
+.lista-tipos-evaluador {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.tipo-evaluador-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  padding: 0.85rem 1.1rem;
+  transition: all 0.25s ease;
+}
+
+.tipo-evaluador-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.tipo-nombre {
+  color: #00f1fe;
+  font-size: 1rem;
+  text-shadow: 0 0 8px rgba(0, 241, 254, 0.3);
+}
+
+.tipo-desc {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.85rem;
+  margin: 0.15rem 0 0 0;
+}
+
+/* --- Formulario nuevo tipo --- */
+.form-nuevo-tipo {
+  background: rgba(0, 241, 254, 0.06);
+  border: 1px dashed rgba(0, 241, 254, 0.4);
+  border-radius: 14px;
+  padding: 1rem;
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Lista puntaje por evaluador --- */
+.lista-puntaje-evaluador {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.puntaje-eval-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  transition: all 0.25s ease;
+}
+
+.puntaje-eval-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.puntaje-eval-item .form-check {
+  flex: 1;
+  margin: 0;
+}
+
+.puntaje-eval-item .form-check-label {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.input-puntos {
+  width: 110px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .punto-card {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+  }
+  .punto-contenido {
+    flex: 1 1 100%;
+    order: 2;
+  }
+  .punto-handle {
+    order: 1;
+  }
+  .punto-valor {
+    order: 3;
+    flex-direction: row;
+    gap: 0.4rem;
+  }
+  .punto-acciones {
+    order: 4;
+    margin-left: auto;
+  }
+  .input-valor {
+    width: 65px;
+  }
+  .competencia-link {
+    font-size: 0.82rem;
+    padding: 0.4rem 0.9rem !important;
+  }
+  .subnav-link {
+    font-size: 0.85rem;
+    padding: 0.45rem 1rem !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .requisito-item {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.65rem 0.85rem;
+  }
+  .requisito-texto {
+    font-size: 0.85rem;
+    flex: 1 1 100%;
+  }
+  .requisito-acciones {
+    margin-left: auto;
+  }
+  .tipo-evaluador-card {
+    flex-wrap: wrap;
+    padding: 0.75rem 0.9rem;
+  }
+  .puntaje-eval-item {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .input-puntos {
+    width: 100%;
+  }
+  .integrante-card {
+    padding: 0.55rem 0.85rem;
+  }
+  .seccion-titulo {
+    font-size: 0.82rem;
+  }
+}
+
+
+/* ==================== ESTILOS: EVALUACIONES ADMIN ==================== */
+/* Complemento para estilos_admin.css */
+
+/* ===== Animación de hexágonos ===== */
+@keyframes flotarHex {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  33%  { transform: translate(20px, -30px) rotate(120deg); }
+  66%  { transform: translate(-25px, 20px) rotate(240deg); }
+  100% { transform: translate(0, 0) rotate(360deg); }
+}
+
+/* ===== Navbar de categorías (debajo del navbar de competencias) ===== */
+.categoria-navbar {
+  background: rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.55rem 0;
+}
+
+.categoria-tabs {
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.categoria-link {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-weight: 500;
+  border-radius: 30px;
+  padding: 0.4rem 1.15rem !important;
+  transition: all 0.25s ease;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.categoria-link:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+.categoria-link.active {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #00bafe 0%, #4f75fe 100%);
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(0, 186, 254, 0.45);
+}
+
+/* ===== Lista de evaluaciones ===== */
+.evaluaciones-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-top: 1rem;
+}
+
+/* Tarjeta de equipo con sus evaluaciones */
+.equipo-eval-card {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+}
+
+.equipo-eval-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.equipo-eval-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  flex-wrap: wrap;
+}
+
+.equipo-eval-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.equipo-eval-nombre {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.2rem;
+  text-shadow: 0 0 15px rgba(0, 241, 254, 0.35);
+}
+
+.equipo-eval-desc {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.9rem;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Badge APTO */
+.badge-apto {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #16a34a;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 0.4rem 1.1rem;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(22, 163, 74, 0.45);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Ítems de evaluación (una fila por evaluador) */
+.evaluaciones-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.evaluacion-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 0.75rem 1.1rem;
+  transition: all 0.25s ease;
+  flex-wrap: wrap;
+}
+
+.evaluacion-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: translateX(4px);
+}
+
+.evaluador-nombre {
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 600;
+  font-size: 0.95rem;
+  flex: 1;
+  min-width: 180px;
+}
+
+.evaluacion-acciones {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+/* Badge de puntaje */
+.puntaje-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 52px;
+  padding: 0.35rem 0.9rem;
+  background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.95rem;
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.4);
+  letter-spacing: 0.5px;
+}
+
+/* Puntaje grande en modal */
+.puntaje-grande {
+  font-size: 1.6rem !important;
+  font-weight: 800;
+  color: #00f1fe !important;
+  text-shadow: 0 0 15px rgba(0, 241, 254, 0.5);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 992px) {
+  .categoria-link {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.95rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .equipo-eval-card {
+    padding: 1.15rem;
+  }
+  .equipo-eval-nombre {
+    font-size: 1.2rem;
+  }
+  .equipo-eval-desc {
+    font-size: 0.82rem;
+  }
+  .evaluacion-item {
+    padding: 0.65rem 0.9rem;
+  }
+  .evaluador-nombre {
+    font-size: 0.88rem;
+  }
+  .puntaje-badge {
+    font-size: 0.85rem;
+    min-width: 46px;
+    padding: 0.3rem 0.75rem;
+  }
+  .categoria-tabs {
+    gap: 0.35rem;
+  }
+  .categoria-link {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .equipo-eval-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .badge-apto {
+    align-self: flex-start;
+  }
+  .evaluacion-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .evaluacion-acciones {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .equipo-eval-nombre {
+    font-size: 1.1rem;
+  }
+}
+
+.badge-inactivo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #dc2626;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.9rem;
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+}

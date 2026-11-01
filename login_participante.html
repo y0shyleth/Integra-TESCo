@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Integra-TESCO · Acceso Participante</title>
+  <!-- Fonts & icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/estilos_participante.css">
+</head>
+<body>
+
+  <!-- Fondo de hexágonos animados (se genera con JS) -->
+  <div class="bg-hex-container" id="bgHexContainer"></div>
+
+  <!-- ========== NAVBAR PARTICIPANTE ========== -->
+  <nav class="navbar-participante">
+    <div class="navbar-container">
+      <a href="index.html" class="btn-back" aria-label="Volver al inicio">
+        <i class="fas fa-arrow-left"></i>
+        <span class="back-text">Volver</span>
+      </a>
+      <div class="nav-brand">
+        <span class="brand-text">INTEGRA<span class="brand-accent">·TESCO</span></span>
+      </div>
+      <div class="nav-spacer"></div>
+    </div>
+  </nav>
+
+  <!-- ========== CONTENEDOR PRINCIPAL (LOGIN / REGISTRO) ========== -->
+  <main class="main-wrapper">
+    <!-- LOGIN CARD -->
+    <div class="auth-card login-card" id="loginCard">
+      <div class="card-header">
+        <h2 class="card-title">Inicia sesión como <br><span class="highlight">Participante o Asesor</span></h2>
+      </div>
+      <form id="loginForm" novalidate>
+        <div class="form-group">
+          <label for="loginEmail">Correo</label>
+          <input type="email" id="loginEmail" class="form-control" placeholder="ejemplo@correo.com" required>
+          <small class="error-msg" id="loginEmailError"></small>
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Contraseña</label>
+          <div class="password-wrapper">
+            <input type="password" id="loginPassword" class="form-control" placeholder="••••••••" required>
+            <button type="button" class="toggle-password" id="toggleLoginPassword" aria-label="Mostrar contraseña">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+          <small class="error-msg" id="loginPasswordError"></small>
+        </div>
+        <div class="form-links">
+          <a href="#" class="link-register" id="showRegisterLink">¿No tienes cuenta? <u>Regístrate</u></a>
+          <a href="#" class="link-forgot" id="forgotPasswordLink">Olvidé tu contraseña</a>
+        </div>
+        <button type="submit" class="btn-submit btn-orange">Iniciar sesión</button>
+      </form>
+    </div>
+
+    <!-- REGISTRO CARD (oculto inicialmente) -->
+    <div class="auth-card register-card hidden" id="registerCard">
+      <div class="card-header">
+        <h2 class="card-title">Crea tu cuenta</h2>
+        <p class="card-subtitle">Los campos con <span class="required">*</span> son obligatorios</p>
+      </div>
+      <form id="registerForm" novalidate>
+
+        <!-- 3.1 ROL (siempre visible) -->
+        <div class="form-group role-group">
+          <label>Seleccione su rol <span class="required">*</span></label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="rol" value="participante" checked> Participante
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="rol" value="asesor"> Asesor
+            </label>
+          </div>
+        </div>
+
+        <!-- 3.2 Datos personales (#) → visible para AMBOS roles -->
+        <div class="section-divider" data-role="ambos"><span>Datos personales</span></div>
+
+        <!-- 3.3–3.6 (#) → visibles para AMBOS roles -->
+        <div class="form-row" data-role="ambos">
+          <div class="form-group half">
+            <label for="regNombre">Nombre(s) <span class="required">*</span></label>
+            <input type="text" id="regNombre" class="form-control" placeholder="Ej. Ana" required>
+            <small class="error-msg" id="regNombreError"></small>
+          </div>
+          <div class="form-group half">
+            <label for="regApellidoPaterno">Apellido Paterno <span class="required">*</span></label>
+            <input type="text" id="regApellidoPaterno" class="form-control" placeholder="Ej. García" required>
+            <small class="error-msg" id="regApellidoPaternoError"></small>
+          </div>
+        </div>
+        <div class="form-row" data-role="ambos">
+          <div class="form-group half">
+            <label for="regApellidoMaterno">Apellido Materno <span class="required">*</span></label>
+            <input type="text" id="regApellidoMaterno" class="form-control" placeholder="Ej. López" required>
+            <small class="error-msg" id="regApellidoMaternoError"></small>
+          </div>
+          <div class="form-group half">
+            <label for="regCurp">CURP <span class="required">*</span></label>
+            <input type="text" id="regCurp" class="form-control" placeholder="Ej. GALA850101MDFRPN01" required>
+            <small class="error-msg" id="regCurpError"></small>
+          </div>
+        </div>
+
+        <!-- 3.7 SEXO (sin #) → SOLO participante -->
+        <div class="form-group" data-role="participante">
+          <label>Sexo <span class="required">*</span></label>
+          <div class="radio-group gender-group">
+            <label class="radio-label gender-label">
+              <input type="radio" name="sexo" value="femenino" checked>
+              <i class="fas fa-venus"></i> M
+            </label>
+            <label class="radio-label gender-label">
+              <input type="radio" name="sexo" value="masculino">
+              <i class="fas fa-mars"></i> H
+            </label>
+            <a href="#" class="tooltip-link" id="sexoTooltipLink">¿Por qué pedimos esto?</a>
+          </div>
+          <div class="tooltip-content" id="sexoTooltip">
+            De acuerdo con el manual de operación de Innovatec, es necesario confirmar el sexo del participante para garantizar una integración mixta.
+            Consulte el manual haciendo <a href="https://innova.tecnm.mx/documentos/local/Manual-de-Procedimientos-InnovaTecNM-8dc1458dc146.pdf" target="_blank">click en el hipervínculo</a>.
+          </div>
+        </div>
+
+        <!-- 3.8 Datos de registro (#) → AMBOS roles -->
+        <div class="section-divider" data-role="ambos"><span>Datos de registro</span></div>
+
+        <!-- 3.9–3.10 (#) → AMBOS roles -->
+        <div class="form-group" data-role="ambos">
+          <label for="regEmail">Correo <span class="required">*</span></label>
+          <input type="email" id="regEmail" class="form-control" placeholder="ejemplo@correo.com" required>
+          <small class="error-msg" id="regEmailError"></small>
+        </div>
+        <div class="form-group" data-role="ambos">
+          <label for="regPassword">Contraseña <span class="required">*</span></label>
+          <div class="password-wrapper">
+            <input type="password" id="regPassword" class="form-control" placeholder="Mín. 8 caracteres" required>
+            <button type="button" class="toggle-password" id="toggleRegPassword" aria-label="Mostrar contraseña">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+          <small class="error-msg" id="regPasswordError"></small>
+        </div>
+
+        <!-- 3.11 Código de equipo (sin #) → SOLO participante -->
+        <div class="form-group" data-role="participante">
+          <label for="regCodigoEquipo">¿Te invitaron a un equipo?<br><span class="small-hint">Pega tu código para unirte automáticamente al terminar tu registro</span></label>
+          <input type="text" id="regCodigoEquipo" class="form-control" placeholder="Ej. A1B2C3" maxlength="6">
+          <small class="error-msg" id="regCodigoEquipoError"></small>
+        </div>
+
+        <!-- 3.12–3.17 Datos académicos (sin #) → SOLO participante -->
+        <div class="section-divider" data-role="participante"><span>Datos académicos</span></div>
+
+        <div class="form-row" data-role="participante">
+          <div class="form-group half">
+            <label for="regMatricula">Matrícula <span class="required">*</span></label>
+            <input type="text" id="regMatricula" class="form-control" placeholder="Ej. 123456789" maxlength="9" required>
+            <small class="error-msg" id="regMatriculaError"></small>
+          </div>
+          <div class="form-group half">
+            <label for="regPlantel">Plantel <span class="required">*</span></label>
+            <select id="regPlantel" class="form-control" required>
+              <option value="">Selecciona</option>
+              <option value="TESCo">TESCo</option>
+              <option value="TESCo Otumba">TESCo Otumba</option>
+            </select>
+            <small class="error-msg" id="regPlantelError"></small>
+          </div>
+        </div>
+
+        <div class="form-row" data-role="participante">
+          <div class="form-group half">
+            <label for="regCarrera">Carrera <span class="required">*</span></label>
+            <select id="regCarrera" class="form-control" required>
+              <option value="">Selecciona</option>
+              <option value="EMI">EMI</option><option value="IND">IND</option><option value="SIC">SIC</option>
+              <option value="LAM">LAM</option><option value="MEC">MEC</option><option value="AMB">AMB</option>
+              <option value="IGE">IGE</option><option value="IQU">IQU</option><option value="ICV">ICV</option>
+              <option value="TIC">TIC</option><option value="IMA">IMA</option><option value="IFV">IFV</option>
+            </select>
+            <small class="error-msg" id="regCarreraError"></small>
+          </div>
+          <div class="form-group half">
+            <label for="regSemestre">Semestre <span class="required">*</span></label>
+            <select id="regSemestre" class="form-control" required>
+              <option value="">Selecciona</option>
+              <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+              <option value="7">7</option><option value="8">8</option><option value="9">9</option>
+            </select>
+            <small class="error-msg" id="regSemestreError"></small>
+          </div>
+        </div>
+
+        <div class="form-group" data-role="participante">
+          <label for="regGrupo">Grupo <span class="required">*</span></label>
+          <input type="text" id="regGrupo" class="form-control" placeholder="Ej. 8412" required>
+          <small class="error-msg" id="regGrupoError"></small>
+        </div>
+
+        <!-- 3.18–3.21 Datos de contacto (#) → AMBOS roles -->
+        <div class="section-divider" data-role="ambos"><span>Datos de contacto</span></div>
+
+        <div class="form-group" data-role="ambos">
+          <label for="regCorreoInstitucional">Correo institucional <span class="required">*</span></label>
+          <input type="email" id="regCorreoInstitucional" class="form-control" placeholder="institucional@tesco.edu.mx" required>
+          <small class="error-msg" id="regCorreoInstitucionalError"></small>
+        </div>
+        <div class="form-group" data-role="ambos">
+          <label for="regCorreoPersonal">Correo personal</label>
+          <input type="email" id="regCorreoPersonal" class="form-control" placeholder="personal@correo.com">
+          <small class="error-msg" id="regCorreoPersonalError"></small>
+        </div>
+        <div class="form-group" data-role="ambos">
+          <label for="regTelefono">Número telefónico</label>
+          <input type="tel" id="regTelefono" class="form-control" placeholder="Ej. 5512345678">
+          <small class="error-msg" id="regTelefonoError"></small>
+        </div>
+
+        <!-- 3.22 Ya tengo cuenta (#) → AMBOS roles (según regla) -->
+        <div class="form-links" data-role="ambos">
+          <a href="#" class="link-login" id="showLoginLink">Ya tengo cuenta</a>
+        </div>
+
+        <!-- 3.23 Botón Registrar (#) → AMBOS roles -->
+        <button type="submit" class="btn-submit btn-orange" data-role="ambos">Registrarse</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- ========== MODAL OLVIDÉ MI CONTRASEÑA ========== -->
+  <div class="modal-overlay" id="forgotModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3>Restablecer contraseña</h3>
+        <button class="modal-close" id="closeForgotModal" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Ingresa tu correo o CURP para solicitar el restablecimiento.</p>
+        <div class="form-group">
+          <label for="forgotEmail">Correo electrónico</label>
+          <input type="email" id="forgotEmail" class="form-control" placeholder="ejemplo@correo.com">
+          <small class="error-msg" id="forgotEmailError"></small>
+        </div>
+        <div class="form-group">
+          <label for="forgotCurp">CURP</label>
+          <input type="text" id="forgotCurp" class="form-control" placeholder="Ej. GALA850101MDFRPN01">
+          <small class="error-msg" id="forgotCurpError"></small>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-submit btn-orange" id="sendResetBtn">Enviar solicitud</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer-participante">
+    <div class="footer-content">
+      <p>Integra-Tesco – Módulo de participantes | 2026 Todos los derechos reservados</p>
+      <div class="footer-links">
+        <a href="https://www.tecnm.mx/" target="_blank">TecNM</a>
+        <a href="https://coacalco.tecnm.mx/TECNM/" target="_blank">TESCo</a>
+        <a href="https://innova.tecnm.mx/" target="_blank">Innovatec</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="bootstrap-5.3.8-dist/js/participante_scripts.js"></script>
+
+</body>
+</html>

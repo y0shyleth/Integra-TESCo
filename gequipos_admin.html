@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Administrador | Gestor de equipos</title>
+  <!-- Font Awesome 5 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/estilos_admin.css">
+</head>
+<body>
+<div class="bg-hex-container">
+  <div class="bg-hexagon" style="top: 10%; left: 8%;"></div>
+  <div class="bg-hexagon" style="top: 25%; right: 12%;"></div>
+  <div class="bg-hexagon" style="top: 60%; left: 15%;"></div>
+  <div class="bg-hexagon" style="top: 75%; right: 20%;"></div>
+  <div class="bg-hexagon" style="top: 45%; left: 50%;"></div>
+  <div class="bg-hexagon" style="top: 85%; left: 5%;"></div>
+</div>
+<!-- ==================== NAVBAR ADMIN ==================== -->
+<nav class="navbar navbar-expand-lg nav-inutilizable fixed-top always-collapse">
+  <div class="container-fluid position-relative">
+    <a class="navbar-brand" href="inicio_admin.html">
+      <span class="d-none d-sm-inline">Panel Admin | Gestor de equipos</span>
+      <span class="d-inline d-sm-none">Gestor de equipos</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar" aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="adminNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="inicio_admin.html"><i class="fas fa-home me-1"></i> Inicio</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="gadmin_admin.html"><i class="fas fa-user-cog me-1"></i> Gestión de administradores</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="gequipos_admin.html"><i class="fas fa-users-cog me-1"></i> Gestión de equipos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="reglas_admin.html"><i class="fas fa-gavel me-1"></i> Control de reglas</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="evaluaciones_admin.html"><i class="fas fa-clipboard-check me-1"></i> Evaluaciones</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="gcuentas_admin.html"><i class="fas fa-id-card me-1"></i> Gestión de cuentas</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="certificados_admin.html"><i class="fas fa-certificate me-1"></i> Certificados</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="garchivos_admin.html"><i class="fas fa-folder-open me-1"></i> Gestor de archivos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="avisos_admin.html"><i class="fas fa-bullhorn me-1"></i> Avisos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="widget_admin.html"><i class="fas fa-puzzle-piece me-1"></i> Widgets</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="inicio_dir_admin.html"><i class="fas fa-user-tie me-1"></i> Directivos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="index.html"><i class="fas fa-sign-out-alt me-1"></i> Salir</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ==================== CONTENIDO PRINCIPAL ==================== -->
+<main class="main-login" style="margin-top: 76px;">
+  <div class="container">
+
+    <!-- Barra de búsqueda + Filtro + Añadir -->
+    <div class="row align-items-center mb-4 g-3">
+      <div class="col-12 col-md-5 col-lg-6">
+        <div class="search-wrapper">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" class="form-control search-input" placeholder="Buscar un equipo" id="searchEquipo">
+        </div>
+      </div>
+      <div class="col-6 col-md-3 col-lg-3">
+        <button class="btn btn-glass w-100" data-bs-toggle="modal" data-bs-target="#modalFiltrar">
+          <i class="fas fa-filter me-1"></i> Filtrar
+        </button>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <button class="btn btn-neon w-100" data-bs-toggle="modal" data-bs-target="#modalAddEquipo">
+          <i class="fas fa-plus me-1"></i> Añadir
+        </button>
+      </div>
+    </div>
+
+    <!-- Tabla de equipos -->
+    <div class="table-responsive table-glass">
+      <table class="table table-admin align-middle mb-0">
+        <thead>
+          <tr>
+            <th>Competencia</th>
+            <th>Equipo</th>
+            <th>Categoría</th>
+            <th>Válido</th>
+            <th>Líder</th>
+            <th>Asesor</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="equipoTableBody">
+          <!-- KINOJ (real) -->
+          <tr>
+            <td><span class="badge-competencia certamen">Certamen</span></td>
+            <td class="fw-semibold">KINOJ</td>
+            <td>Bienes de consumo final</td>
+            <td class="text-center">
+              <div class="form-check d-flex justify-content-center">
+                <input class="form-check-input" type="radio" name="valido1" checked>
+              </div>
+            </td>
+            <td>Lani Yamille</td>
+            <td>José Camacho</td>
+            <td class="text-center">
+              <a href="vequipo_admin.html" class="btn btn-action btn-view" title="Ver equipo">
+                <i class="fas fa-eye"></i>
+              </a>
+            </td>
+          </tr>
+          <!-- Innobótica - Siguelineas -->
+          <tr>
+            <td><span class="badge-competencia innobotica">Innobótica</span></td>
+            <td class="fw-semibold">ROBO-SIG</td>
+            <td>Siguelineas</td>
+            <td class="text-center">
+              <div class="form-check d-flex justify-content-center">
+                <input class="form-check-input" type="radio" name="valido2" checked>
+              </div>
+            </td>
+            <td>Carlos Mendoza</td>
+            <td>Ana Torres</td>
+            <td class="text-center">
+              <a href="vequipo_admin.html" class="btn btn-action btn-view"><i class="fas fa-eye"></i></a>
+            </td>
+          </tr>
+          <!-- Innobótica - Mini sumo -->
+          <tr>
+            <td><span class="badge-competencia innobotica">Innobótica</span></td>
+            <td class="fw-semibold">SUMO-TEC</td>
+            <td>Mini sumo</td>
+            <td class="text-center">
+              <div class="form-check d-flex justify-content-center">
+                <input class="form-check-input" type="radio" name="valido3">
+              </div>
+            </td>
+            <td>Diego Ramírez</td>
+            <td>Laura Vega</td>
+            <td class="text-center">
+              <a href="vequipo_admin.html" class="btn btn-action btn-view"><i class="fas fa-eye"></i></a>
+            </td>
+          </tr>
+          <!-- Hackatec -->
+          <tr>
+            <td><span class="badge-competencia hackatec">Hackatec</span></td>
+            <td class="fw-semibold">CODE-WARRIORS</td>
+            <td>Hackatec</td>
+            <td class="text-center">
+              <div class="form-check d-flex justify-content-center">
+                <input class="form-check-input" type="radio" name="valido4" checked>
+              </div>
+            </td>
+            <td>Sofía Herrera</td>
+            <td>Miguel Ángel Ruiz</td>
+            <td class="text-center">
+              <a href="vequipo_admin.html" class="btn btn-action btn-view"><i class="fas fa-eye"></i></a>
+            </td>
+          </tr>
+          <!-- Certamen - Sector Agroindustrial -->
+          <tr>
+            <td><span class="badge-competencia certamen">Certamen</span></td>
+            <td class="fw-semibold">AGRO-FUTURO</td>
+            <td>Sector agroindustrial</td>
+            <td class="text-center">
+              <div class="form-check d-flex justify-content-center">
+                <input class="form-check-input" type="radio" name="valido5" checked>
+              </div>
+            </td>
+            <td>Pedro Sánchez</td>
+            <td>María Fernanda López</td>
+            <td class="text-center">
+              <a href="vequipo_admin.html" class="btn btn-action btn-view"><i class="fas fa-eye"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</main>
+
+<!-- ==================== MODAL: FILTRAR ==================== -->
+<div class="modal fade" id="modalFiltrar" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content modal-glass">
+      <div class="modal-header modal-header-glass">
+        <h5 class="modal-title">Filtrar equipos</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formFiltrar">
+          <div class="row g-3">
+            <!-- Categoría -->
+            <div class="col-12 col-md-6">
+              <label class="form-label">Categoría</label>
+              <select class="form-select form-control-glass" id="filtroCategoria">
+                <option value="">Todas</option>
+                <optgroup label="Innobótica">
+                  <option>Siguelineas</option>
+                  <option>Mini sumo</option>
+                </optgroup>
+                <optgroup label="Certamen de proyectos">
+                  <option>SECTOR AGROINDUSTRIAL</option>
+                  <option>INDUSTRIA ELÉCTRICA ELECTRÓNICA</option>
+                  <option>ELECTROMOVILIDAD Y TRANSICIÓN ENERGÉTICA</option>
+                  <option>SERVICIOS PARA LA SALUD HUMANA</option>
+                  <option>SOSTENIBILIDAD Y CAMBIO CLIMÁTICO</option>
+                  <option>BIENES DE CONSUMO FINAL</option>
+                </optgroup>
+                <optgroup label="Hackatec">
+                  <option>Hackatec</option>
+                </optgroup>
+              </select>
+            </div>
+            <!-- Carrera -->
+            <div class="col-12 col-md-6">
+              <label class="form-label">Carrera</label>
+              <select class="form-select form-control-glass" id="filtroCarrera">
+                <option value="">Todas</option>
+                <option>EMI</option><option>IND</option><option>SIC</option>
+                <option>LAM</option><option>MEC</option><option>AMB</option>
+                <option>IGE</option><option>IQU</option><option>ICV</option>
+                <option>TIC</option><option>IMA</option><option>IFV</option>
+              </select>
+            </div>
+            <!-- Asesor -->
+            <div class="col-12 col-md-6">
+              <label class="form-label">Asesor</label>
+              <input type="text" class="form-control form-control-glass" id="filtroAsesor" placeholder="Nombre del asesor">
+            </div>
+            <!-- Lider -->
+            <div class="col-12 col-md-6">
+              <label class="form-label">Líder</label>
+              <input type="text" class="form-control form-control-glass" id="filtroLider" placeholder="Nombre del líder">
+            </div>
+            <!-- Plantel -->
+            <div class="col-12 col-md-6">
+              <label class="form-label">Plantel</label>
+              <select class="form-select form-control-glass" id="filtroPlantel">
+                <option value="">Todos</option>
+                <option>TESCo</option>
+                <option>TESCo Otumba</option>
+              </select>
+            </div>
+            <!-- Habilitado -->
+            <div class="col-12 col-md-6">
+              <label class="form-label">Habilitado</label>
+              <select class="form-select form-control-glass" id="filtroHabilitado">
+                <option value="">Todos</option>
+                <option>Sí</option>
+                <option>No</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer modal-footer-glass">
+        <button type="button" class="btn btn-reset" id="btnResetFiltro">
+          <i class="fas fa-undo me-1"></i> Limpiar
+        </button>
+        <button type="button" class="btn btn-neon" id="btnApplyFiltro">
+          <i class="fas fa-filter me-1"></i> Aplicar filtros
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== MODAL: AÑADIR EQUIPO ==================== -->
+<div class="modal fade" id="modalAddEquipo" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content modal-glass">
+      <div class="modal-header modal-header-glass">
+        <h5 class="modal-title">Añadir equipo manualmente</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formAddEquipo">
+          <div class="row g-4">
+            <!-- Columna izquierda -->
+            <div class="col-12 col-lg-6">
+              <div class="mb-3">
+                <label class="form-label">Nombre *</label>
+                <input type="text" class="form-control form-control-glass" id="addNombreEquipo" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Competencia *</label>
+                <select class="form-select form-control-glass" id="addCompetencia" required>
+                  <option value="">Selecciona una competencia</option>
+                  <option>Innobótica</option>
+                  <option>Certamen de proyectos</option>
+                  <option>Hackatec</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Categoría</label>
+                <select class="form-select form-control-glass" id="addCategoria">
+                  <option value="">Selecciona una categoría</option>
+                  <option>Siguelineas</option>
+                  <option>Mini sumo</option>
+                  <option>SECTOR AGROINDUSTRIAL</option>
+                  <option>INDUSTRIA ELÉCTRICA ELECTRÓNICA</option>
+                  <option>ELECTROMOVILIDAD Y TRANSICIÓN ENERGÉTICA</option>
+                  <option>SERVICIOS PARA LA SALUD HUMANA</option>
+                  <option>SOSTENIBILIDAD Y CAMBIO CLIMÁTICO</option>
+                  <option>BIENES DE CONSUMO FINAL</option>
+                  <option>Hackatec</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Asesor primario *</label>
+                <input type="text" class="form-control form-control-glass" id="addAsesorPrimario" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Asesor secundario</label>
+                <input type="text" class="form-control form-control-glass" id="addAsesorSecundario">
+              </div>
+            </div>
+
+            <!-- Columna derecha -->
+            <div class="col-12 col-lg-6">
+              <div class="mb-3">
+                <label class="form-label">Líder del equipo *</label>
+                <input type="text" class="form-control form-control-glass" id="addLider" required>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Añadir miembros</label>
+                <div class="table-responsive">
+                  <table class="table table-permisos mb-0">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Nombre del miembro</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>1</td><td><input type="text" class="form-control form-control-glass form-control-sm" placeholder="Nombre completo"></td></tr>
+                      <tr><td>2</td><td><input type="text" class="form-control form-control-glass form-control-sm" placeholder="Nombre completo"></td></tr>
+                      <tr><td>3</td><td><input type="text" class="form-control form-control-glass form-control-sm" placeholder="Nombre completo"></td></tr>
+                      <tr><td>4</td><td><input type="text" class="form-control form-control-glass form-control-sm" placeholder="Nombre completo"></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Código de equipo</label>
+                <div class="codigo-equipo" id="codigoEquipo" title="Clic para copiar">
+                  <span id="codigoTexto">ABC123</span>
+                  <i class="fas fa-copy ms-2"></i>
+                </div>
+                <small class="text-muted-glass">Haz clic para copiar el código</small>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Descripción</label>
+                <textarea class="form-control form-control-glass" id="addDescripcion" rows="3" placeholder="Descripción breve del proyecto"></textarea>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer modal-footer-glass">
+        <button type="button" class="btn btn-reset" id="btnResetEquipo">
+          <i class="fas fa-undo me-1"></i> Limpiar campos
+        </button>
+        <button type="button" class="btn btn-neon" id="btnSaveEquipo">
+          <i class="fas fa-save me-1"></i> Registrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer-innovatec text-center py-3">
+  <div class="container">
+    <p class="mb-1 small">&copy; 2026 Tecnológico Nacional de México. Todos los derechos reservados.</p>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <a href="#" class="footer-link small">Innovatec</a>
+      <a href="#" class="footer-link small">TESCo</a>
+      <a href="#" class="footer-link small">TecNM</a>
+      <a href="#" class="footer-link small">Integra</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="bootstrap-5.3.8-dist/js/admin_scripts.js"></script>
+<script>
+  (function() {
+    console.log('Gestión de equipos cargada.');
+
+    // ===== Filtro de búsqueda =====
+    document.getElementById('searchEquipo').addEventListener('keyup', function() {
+      var filtro = this.value.toLowerCase();
+      document.querySelectorAll('#equipoTableBody tr').forEach(function(fila) {
+        fila.style.display = fila.textContent.toLowerCase().indexOf(filtro) !== -1 ? '' : 'none';
+      });
+    });
+
+    // ===== Modal filtros =====
+    document.getElementById('btnApplyFiltro').addEventListener('click', function() {
+      alert('Filtros aplicados (demo).');
+      bootstrap.Modal.getInstance(document.getElementById('modalFiltrar')).hide();
+    });
+
+    document.getElementById('btnResetFiltro').addEventListener('click', function() {
+      document.getElementById('formFiltrar').reset();
+    });
+
+    // ===== Código de equipo aleatorio =====
+    function generarCodigo() {
+      var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      var codigo = '';
+      for (var i = 0; i < 6; i++) {
+        codigo += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return codigo;
+    }
+    var codigoActual = generarCodigo();
+    document.getElementById('codigoTexto').textContent = codigoActual;
+
+    // ===== Copiar código =====
+    document.getElementById('codigoEquipo').addEventListener('click', function() {
+      var texto = document.getElementById('codigoTexto').textContent;
+      navigator.clipboard.writeText(texto).then(function() {
+        var el = document.getElementById('codigoEquipo');
+        var original = el.innerHTML;
+        el.innerHTML = '<span><i class="fas fa-check me-2"></i>Copiado</span>';
+        setTimeout(function() { el.innerHTML = original; }, 1200);
+      });
+    });
+
+    // ===== Reset modal añadir =====
+    document.getElementById('btnResetEquipo').addEventListener('click', function() {
+      document.getElementById('formAddEquipo').reset();
+      codigoActual = generarCodigo();
+      document.getElementById('codigoTexto').textContent = codigoActual;
+    });
+
+    // ===== Guardar equipo (demo) =====
+    document.getElementById('btnSaveEquipo').addEventListener('click', function() {
+      var nombre = document.getElementById('addNombreEquipo').value.trim();
+      var competencia = document.getElementById('addCompetencia').value;
+      var asesor = document.getElementById('addAsesorPrimario').value.trim();
+      var lider = document.getElementById('addLider').value.trim();
+
+      if (!nombre || !competencia || !asesor || !lider) {
+        alert('Completa los campos obligatorios (*).');
+        return;
+      }
+      alert('Equipo registrado (demo).');
+      bootstrap.Modal.getInstance(document.getElementById('modalAddEquipo')).hide();
+      document.getElementById('formAddEquipo').reset();
+      codigoActual = generarCodigo();
+      document.getElementById('codigoTexto').textContent = codigoActual;
+    });
+  })();
+</script>
+</body>
+</html>

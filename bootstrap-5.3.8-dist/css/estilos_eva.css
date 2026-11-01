@@ -1,0 +1,1415 @@
+/* =========================================================
+   MÓDULO EVALUADOR - INTEGRA-TESCO
+   Paleta: #9DD900 → #268C36 (verde)
+   ========================================================= */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --eva-verde-claro: #9DD900;
+    --eva-verde-medio: #5BBF3A;
+    --eva-verde-oscuro: #268C36;
+    --eva-verde-neon: #A8F04C;
+    --eva-glass: rgba(255, 255, 255, 0.10);
+    --eva-glass-hover: rgba(255, 255, 255, 0.18);
+    --eva-border: rgba(255, 255, 255, 0.22);
+    --eva-text: #ffffff;
+    --eva-text-muted: rgba(255, 255, 255, 0.78);
+}
+
+body.eva-body {
+    font-family: 'Inter', 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #0d1a10 0%, #143a1e 45%, #1c5c30 100%);
+    background-attachment: fixed;
+    color: var(--eva-text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===================== FONDO DE HEXÁGONOS ===================== */
+.bg-hex-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+.bg-hex-container svg { position: absolute; }
+
+/* ===================== CONTENEDOR PRINCIPAL ===================== */
+/* ===================== CONTENEDOR PRINCIPAL ===================== */
+.eva-main {
+    position: relative;
+    z-index: 1;
+    flex: 1 0 auto;
+    padding-top: 8.5rem !important; /* Despeja completamente la navbar fija */
+}
+
+@media (max-width: 991.98px) {
+    .eva-main {
+        padding-top: 7.5rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .eva-main {
+        padding-top: 7rem !important;
+    }
+}
+
+/* ===================== NAVBAR ===================== */
+.navbar-eva {
+    background: rgba(10, 25, 15, 0.55);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--eva-border);
+    z-index: 1030;
+}
+.brand-eva {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fff !important;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+}
+.brand-icon {
+    color: var(--eva-verde-claro);
+    font-size: 1.3rem;
+    filter: drop-shadow(0 0 8px rgba(157, 217, 0, 0.7));
+}
+.btn-nav-eva {
+    background: transparent;
+    border: 1px solid var(--eva-border);
+    color: #fff;
+    border-radius: 12px;
+    padding: 0.4rem 1rem;
+    font-weight: 600;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+}
+.btn-nav-eva:hover {
+    background: var(--eva-glass-hover);
+    border-color: rgba(168, 240, 76, 0.6);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(157, 217, 0, 0.25);
+}
+
+/* ===================== CARDS GLASS ===================== */
+.eva-card,
+.registro-card {
+    background: var(--eva-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--eva-border);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+/* ===================== HEADER DEL REGISTRO ===================== */
+.registro-header { padding-bottom: 0.5rem; }
+.registro-icon-wrap {
+    width: 74px; height: 74px;
+    margin: 0 auto 0.9rem;
+    border-radius: 22px;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--eva-verde-claro) 0%, var(--eva-verde-oscuro) 100%);
+    box-shadow: 0 8px 28px rgba(157, 217, 0, 0.45);
+}
+.registro-icon-wrap i {
+    font-size: 2.2rem;
+    color: #0d1a10;
+    font-weight: 700;
+}
+.registro-titulo {
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 0 18px rgba(168, 240, 76, 0.35);
+    margin-bottom: 0.25rem;
+}
+.registro-subtitulo {
+    color: var(--eva-text-muted);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* ===================== SECCIONES ===================== */
+.seccion-titulo {
+    color: var(--eva-verde-neon);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin: 0.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(168, 240, 76, 0.3);
+    text-shadow: 0 0 10px rgba(168, 240, 76, 0.35);
+}
+
+/* ===================== FORMULARIOS ===================== */
+.form-label-eva {
+    color: rgba(255, 255, 255, 0.92);
+    font-weight: 600;
+    font-size: 0.88rem;
+    margin-bottom: 0.4rem;
+    display: block;
+}
+.req { color: var(--eva-verde-neon); font-weight: 800; }
+
+.form-control-eva {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid var(--eva-border) !important;
+    color: #fff !important;
+    border-radius: 12px !important;
+    padding: 0.7rem 1rem !important;
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
+}
+.form-control-eva:focus {
+    background: rgba(255, 255, 255, 0.14) !important;
+    border-color: rgba(168, 240, 76, 0.7) !important;
+    box-shadow: 0 0 0 3px rgba(168, 240, 76, 0.18) !important;
+    outline: none;
+    color: #fff !important;
+}
+.form-control-eva::placeholder { color: rgba(255, 255, 255, 0.4); }
+.form-control-eva.is-invalid {
+    border-color: #ff6b81 !important;
+    box-shadow: 0 0 0 3px rgba(255, 107, 129, 0.18) !important;
+}
+.form-select.form-control-eva option {
+    background: #143a1e;
+    color: #fff;
+}
+
+.input-group .form-control-eva { border-right: none !important; }
+.btn-eye {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid var(--eva-border) !important;
+    color: var(--eva-text-muted) !important;
+    border-radius: 0 12px 12px 0 !important;
+    padding: 0 0.85rem !important;
+    transition: all 0.2s ease;
+}
+.btn-eye:hover { color: var(--eva-verde-neon) !important; }
+
+.form-text-eva {
+    color: var(--eva-text-muted) !important;
+    font-size: 0.78rem;
+    margin-top: 0.35rem;
+}
+
+.invalid-feedback {
+    color: #ff9aa8 !important;
+    font-size: 0.78rem;
+    margin-top: 0.25rem;
+}
+
+/* ===================== CHIPS DE COMPETENCIAS ===================== */
+.chip-eva {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid var(--eva-border);
+    color: var(--eva-text-muted);
+    border-radius: 30px;
+    padding: 0.55rem 1.2rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+}
+.chip-eva:hover {
+    background: rgba(168, 240, 76, 0.12);
+    border-color: rgba(168, 240, 76, 0.5);
+    color: #fff;
+    transform: translateY(-2px);
+}
+.chip-eva.active {
+    background: linear-gradient(135deg, var(--eva-verde-claro) 0%, var(--eva-verde-oscuro) 100%);
+    border-color: transparent;
+    color: #0d1a10;
+    box-shadow: 0 4px 18px rgba(157, 217, 0, 0.45);
+}
+.chip-eva.active i { color: #0d1a10; }
+
+/* ===================== BOTONES ===================== */
+.btn-eva-neon {
+    background: linear-gradient(135deg, var(--eva-verde-claro) 0%, var(--eva-verde-oscuro) 100%);
+    color: #0d1a10;
+    border: none;
+    border-radius: 14px;
+    padding: 0.75rem 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(157, 217, 0, 0.35);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-eva-neon:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(157, 217, 0, 0.55);
+    color: #0d1a10;
+    filter: brightness(1.08);
+}
+.btn-eva-neon:active { transform: translateY(0); }
+
+.btn-eva-reset {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--eva-border);
+    color: rgba(255, 255, 255, 0.9);
+    border-radius: 14px;
+    padding: 0.75rem 1.6rem;
+    font-weight: 600;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-eva-reset:hover {
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+/* ===================== FOOTER ===================== */
+.footer-eva {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--eva-border);
+    color: var(--eva-text-muted);
+    padding: 1rem 0;
+    margin-top: auto;
+    position: relative;
+    z-index: 1;
+    font-size: 0.85rem;
+}
+.footer-links { display: inline-flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.footer-links a {
+    color: var(--eva-verde-neon);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+.footer-links a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(168, 240, 76, 0.6);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.footer-sep { color: rgba(255, 255, 255, 0.3); }
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 768px) {
+    .registro-card { padding: 1.5rem 1.15rem; }
+    .registro-titulo { font-size: 1.5rem; }
+    .registro-icon-wrap { width: 62px; height: 62px; border-radius: 18px; }
+    .registro-icon-wrap i { font-size: 1.8rem; }
+    .btn-eva-neon, .btn-eva-reset { padding: 0.7rem 1.2rem; font-size: 0.92rem; }
+    .chip-eva { padding: 0.5rem 1rem; font-size: 0.85rem; }
+}
+
+@media (max-width: 576px) {
+    .eva-card, .registro-card { border-radius: 20px; padding: 1.25rem 1rem; }
+    .registro-titulo { font-size: 1.3rem; }
+    .seccion-titulo { font-size: 0.78rem; }
+    .d-flex.flex-sm-row > .btn-eva-neon,
+    .d-flex.flex-sm-row > .btn-eva-reset { width: 100%; }
+}
+
+/* =========================================================
+   NAVBAR EVALUADOR (reutilizable en todo el módulo)
+   ========================================================= */
+.navbar-eva {
+    background: rgba(10, 25, 15, 0.55);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--eva-border);
+    z-index: 1030;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+}
+
+.navbar-toggler-eva {
+    border: 1px solid var(--eva-border);
+    border-radius: 12px;
+    padding: 0.35rem 0.6rem;
+    color: #fff;
+    transition: all 0.25s ease;
+}
+.navbar-toggler-eva i { font-size: 1.4rem; color: #fff; }
+.navbar-toggler-eva:focus {
+    box-shadow: 0 0 0 3px rgba(168, 240, 76, 0.25);
+    outline: none;
+}
+.navbar-toggler-eva:hover { background: var(--eva-glass-hover); }
+
+.nav-link-eva {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 12px;
+    padding: 0.55rem 1rem !important;
+    transition: all 0.25s ease;
+    border: 1px solid transparent;
+    display: inline-flex;
+    align-items: center;
+}
+.nav-link-eva:hover {
+    background: var(--eva-glass-hover);
+    color: #fff !important;
+    transform: translateY(-2px);
+}
+.nav-link-eva.active {
+    color: var(--eva-verde-neon) !important;
+    background: rgba(168, 240, 76, 0.12);
+    border-color: rgba(168, 240, 76, 0.4);
+    text-shadow: 0 0 8px rgba(168, 240, 76, 0.4);
+}
+
+.btn-logout-eva {
+    background: transparent;
+    border: 1px solid rgba(255, 107, 129, 0.5);
+    color: #ff9aa8;
+    border-radius: 12px;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    width: auto;
+}
+.btn-logout-eva:hover {
+    background: rgba(255, 107, 129, 0.18);
+    border-color: rgba(255, 107, 129, 0.8);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Collapse móvil: panel vertical glass */
+@media (max-width: 991.98px) {
+    .navbar-eva .navbar-collapse {
+        margin-top: 0.75rem;
+        padding: 0.75rem;
+        background: rgba(10, 25, 15, 0.92);
+        border: 1px solid var(--eva-border);
+        border-radius: 16px;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+    .navbar-eva .nav-link-eva {
+        width: 100%;
+        padding: 0.7rem 1rem !important;
+    }
+    .navbar-eva .btn-logout-eva {
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+}
+
+/* =========================================================
+   WELCOME / SALUDO
+   ========================================================= */
+.welcome-eva {
+    text-align: center;
+    padding: 1rem 0 0.5rem;
+}
+.welcome-titulo {
+    font-size: 1.9rem;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 0 18px rgba(168, 240, 76, 0.35);
+    margin-bottom: 0.35rem;
+    line-height: 1.25;
+}
+.welcome-nombre {
+    background: linear-gradient(135deg, var(--eva-verde-claro) 0%, var(--eva-verde-neon) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+    filter: drop-shadow(0 0 12px rgba(168, 240, 76, 0.4));
+}
+.welcome-sub {
+    color: var(--eva-text-muted);
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* =========================================================
+   CARDS DE ACCESO RÁPIDO
+   ========================================================= */
+.card-acceso-eva {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    height: 100%;
+    padding: 2rem 1.5rem;
+    background: var(--eva-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--eva-border);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+.card-acceso-eva::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(168, 240, 76, 0.14), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+}
+.card-acceso-eva:hover {
+    transform: translateY(-8px);
+    background: var(--eva-glass-hover);
+    border-color: rgba(168, 240, 76, 0.55);
+    box-shadow: 0 14px 42px rgba(0, 0, 0, 0.4), 0 0 22px rgba(168, 240, 76, 0.25);
+    color: #fff;
+}
+.card-acceso-eva:hover::before { opacity: 1; }
+
+.card-acceso-icon {
+    width: 74px;
+    height: 74px;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--eva-verde-claro) 0%, var(--eva-verde-oscuro) 100%);
+    box-shadow: 0 8px 26px rgba(157, 217, 0, 0.4);
+    margin-bottom: 0.75rem;
+    transition: transform 0.3s ease;
+}
+.card-acceso-icon i {
+    font-size: 2.1rem;
+    color: #0d1a10;
+}
+.card-acceso-eva:hover .card-acceso-icon {
+    transform: scale(1.08) rotate(-4deg);
+}
+
+.card-acceso-titulo {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #fff;
+    margin: 0;
+    letter-spacing: 0.3px;
+}
+.card-acceso-desc {
+    color: var(--eva-text-muted);
+    font-size: 0.92rem;
+    margin: 0.15rem 0 0.75rem;
+    line-height: 1.45;
+}
+.card-acceso-cta {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--eva-verde-neon);
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: gap 0.25s ease;
+}
+.card-acceso-eva:hover .card-acceso-cta { gap: 0.6rem; }
+
+/* =========================================================
+   RESPONSIVE - INICIO EVALUADOR
+   ========================================================= */
+@media (max-width: 768px) {
+    .welcome-titulo { font-size: 1.5rem; }
+    .welcome-sub { font-size: 0.9rem; }
+    .card-acceso-eva { padding: 1.6rem 1.1rem; }
+    .card-acceso-icon { width: 62px; height: 62px; border-radius: 18px; }
+    .card-acceso-icon i { font-size: 1.75rem; }
+    .card-acceso-titulo { font-size: 1.15rem; }
+    .card-acceso-desc { font-size: 0.86rem; }
+}
+
+@media (max-width: 576px) {
+    .welcome-titulo { font-size: 1.3rem; }
+    .card-acceso-eva { border-radius: 20px; padding: 1.4rem 1rem; }
+    .card-acceso-icon { width: 56px; height: 56px; }
+    .card-acceso-icon i { font-size: 1.55rem; }
+}
+
+/* =========================================================
+   EQUIPOS EVALUADOR - BÚSQUEDA
+   ========================================================= */
+.equipos-header { padding-top: 0.25rem; }
+
+.buscador-eva { position: relative; }
+.buscador-wrap { position: relative; max-width: 560px; }
+.buscador-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--eva-verde-neon);
+    font-size: 1rem;
+    pointer-events: none;
+    z-index: 2;
+}
+.buscador-input {
+    padding-left: 2.6rem !important;
+    padding-right: 2.6rem !important;
+    border-radius: 14px !important;
+    height: 48px;
+}
+.buscador-clear {
+    position: absolute;
+    right: 0.6rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 10px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--eva-text-muted);
+    transition: all 0.2s ease;
+    z-index: 2;
+}
+.buscador-clear:hover {
+    background: rgba(255, 107, 129, 0.25);
+    color: #ff9aa8;
+}
+
+/* =========================================================
+   SUBNVBAR CATEGORÍAS (scroll horizontal)
+   ========================================================= */
+.categorias-scroll {
+    position: relative;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 0.6rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(168, 240, 76, 0.4) transparent;
+}
+.categorias-scroll::-webkit-scrollbar { height: 6px; }
+.categorias-scroll::-webkit-scrollbar-track { background: transparent; }
+.categorias-scroll::-webkit-scrollbar-thumb {
+    background: rgba(168, 240, 76, 0.35);
+    border-radius: 10px;
+}
+.categorias-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(168, 240, 76, 0.6);
+}
+
+.categorias-tabs {
+    display: flex;
+    gap: 0.5rem;
+    min-width: max-content;
+    padding: 0.25rem 0.15rem;
+}
+
+.cat-tab {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--eva-border);
+    color: var(--eva-text-muted);
+    border-radius: 30px;
+    padding: 0.5rem 1.1rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+}
+.cat-tab:hover {
+    background: rgba(168, 240, 76, 0.1);
+    border-color: rgba(168, 240, 76, 0.45);
+    color: #fff;
+    transform: translateY(-2px);
+}
+.cat-tab.active {
+    background: linear-gradient(135deg, var(--eva-verde-claro) 0%, var(--eva-verde-oscuro) 100%);
+    border-color: transparent;
+    color: #0d1a10;
+    box-shadow: 0 4px 15px rgba(157, 217, 0, 0.45);
+}
+
+/* =========================================================
+   CARDS DE EQUIPO
+   ========================================================= */
+.card-equipo-eva {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    height: 100%;
+    padding: 1.35rem;
+    background: var(--eva-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--eva-border);
+    border-radius: 20px;
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+.card-equipo-eva::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(168, 240, 76, 0.12), transparent 65%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+}
+.card-equipo-eva:hover {
+    transform: translateY(-6px);
+    background: var(--eva-glass-hover);
+    border-color: rgba(168, 240, 76, 0.5);
+    box-shadow: 0 14px 38px rgba(0, 0, 0, 0.4), 0 0 20px rgba(168, 240, 76, 0.2);
+    color: #fff;
+}
+.card-equipo-eva:hover::before { opacity: 1; }
+
+.card-equipo-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+.card-equipo-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--eva-verde-claro) 0%, var(--eva-verde-oscuro) 100%);
+    box-shadow: 0 6px 18px rgba(157, 217, 0, 0.4);
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+.card-equipo-avatar i {
+    font-size: 1.25rem;
+    color: #0d1a10;
+}
+.card-equipo-eva:hover .card-equipo-avatar {
+    transform: scale(1.08) rotate(-4deg);
+}
+
+.badge-cat-eva {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(168, 240, 76, 0.14);
+    border: 1px solid rgba(168, 240, 76, 0.35);
+    color: var(--eva-verde-neon);
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    padding: 0.28rem 0.7rem;
+    border-radius: 20px;
+    white-space: nowrap;
+    max-width: 65%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-equipo-nombre {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #fff;
+    margin: 0;
+    line-height: 1.3;
+}
+.card-equipo-carrera {
+    color: var(--eva-text-muted);
+    font-size: 0.85rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+.card-equipo-carrera i { color: var(--eva-verde-neon); }
+
+.card-equipo-cta {
+    margin-top: auto;
+    padding-top: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--eva-verde-neon);
+    font-weight: 700;
+    font-size: 0.85rem;
+    transition: gap 0.25s ease;
+}
+.card-equipo-eva:hover .card-equipo-cta { gap: 0.6rem; }
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px dashed var(--eva-border);
+    border-radius: 20px;
+    color: var(--eva-text-muted);
+}
+.empty-state i {
+    font-size: 2.8rem;
+    color: var(--eva-verde-neon);
+    display: block;
+    margin-bottom: 0.75rem;
+    opacity: 0.7;
+}
+
+/* =========================================================
+   RESPONSIVE - EQUIPOS EVALUADOR
+   ========================================================= */
+@media (max-width: 768px) {
+    .buscador-input { height: 44px; font-size: 0.92rem; }
+    .cat-tab { font-size: 0.8rem; padding: 0.45rem 0.95rem; }
+    .card-equipo-eva { padding: 1.15rem; border-radius: 18px; }
+    .card-equipo-nombre { font-size: 1.05rem; }
+    .card-equipo-avatar { width: 42px; height: 42px; }
+    .card-equipo-avatar i { font-size: 1.1rem; }
+    .badge-cat-eva { font-size: 0.62rem; padding: 0.22rem 0.55rem; }
+}
+
+@media (max-width: 576px) {
+    .card-equipo-eva { padding: 1rem; }
+    .card-equipo-nombre { font-size: 1rem; }
+    .empty-state { padding: 2rem 1rem; }
+    .empty-state i { font-size: 2.2rem; }
+}
+
+/* =========================================================
+   MÓDULO EVALUADOR - INTEGRA-TESCO
+   Paleta: #9DD900 → #268C36 (verde)
+   ========================================================= */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --eva-verde-claro: #9DD900;
+    --eva-verde-medio: #5BBF3A;
+    --eva-verde-oscuro: #268C36;
+    --eva-verde-neon: #A8F04C;
+    --eva-glass: rgba(255, 255, 255, 0.10);
+    --eva-glass-hover: rgba(255, 255, 255, 0.18);
+    --eva-border: rgba(255, 255, 255, 0.22);
+    --eva-text: #ffffff;
+    --eva-text-muted: rgba(255, 255, 255, 0.78);
+}
+
+body.eva-body {
+    font-family: 'Inter', 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #0d1a10 0%, #143a1e 45%, #1c5c30 100%);
+    background-attachment: fixed;
+    color: var(--eva-text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===================== FONDO DE HEXÁGONOS ===================== */
+.bg-hex-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+.bg-hex-container svg { position: absolute; }
+
+
+
+/* ===================== NAVBAR ===================== */
+.navbar-eva {
+    background: rgba(10, 25, 15, 0.55);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--eva-border);
+    z-index: 1030;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+}
+.brand-eva {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fff !important;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+}
+.brand-icon {
+    color: var(--eva-verde-claro);
+    font-size: 1.3rem;
+    filter: drop-shadow(0 0 8px rgba(157, 217, 0, 0.7));
+}
+.btn-nav-eva {
+    background: transparent;
+    border: 1px solid var(--eva-border);
+    color: #fff;
+    border-radius: 12px;
+    padding: 0.4rem 1rem;
+    font-weight: 600;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+}
+.btn-nav-eva:hover {
+    background: var(--eva-glass-hover);
+    border-color: rgba(168, 240, 76, 0.6);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(157, 217, 0, 0.25);
+}
+
+.navbar-toggler-eva {
+    border: 1px solid var(--eva-border);
+    border-radius: 12px;
+    padding: 0.35rem 0.6rem;
+    color: #fff;
+    transition: all 0.25s ease;
+}
+.navbar-toggler-eva i { font-size: 1.4rem; color: #fff; }
+.navbar-toggler-eva:focus {
+    box-shadow: 0 0 0 3px rgba(168, 240, 76, 0.25);
+    outline: none;
+}
+.navbar-toggler-eva:hover { background: var(--eva-glass-hover); }
+
+.nav-link-eva {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 12px;
+    padding: 0.55rem 1rem !important;
+    transition: all 0.25s ease;
+    border: 1px solid transparent;
+    display: inline-flex;
+    align-items: center;
+}
+.nav-link-eva:hover {
+    background: var(--eva-glass-hover);
+    color: #fff !important;
+    transform: translateY(-2px);
+}
+.nav-link-eva.active {
+    color: var(--eva-verde-neon) !important;
+    background: rgba(168, 240, 76, 0.12);
+    border-color: rgba(168, 240, 76, 0.4);
+    text-shadow: 0 0 8px rgba(168, 240, 76, 0.4);
+}
+
+.btn-logout-eva {
+    background: transparent;
+    border: 1px solid rgba(255, 107, 129, 0.5);
+    color: #ff9aa8;
+    border-radius: 12px;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    width: auto;
+}
+.btn-logout-eva:hover {
+    background: rgba(255, 107, 129, 0.18);
+    border-color: rgba(255, 107, 129, 0.8);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 991.98px) {
+    .navbar-eva .navbar-collapse {
+        margin-top: 0.75rem;
+        padding: 0.75rem;
+        background: rgba(10, 25, 15, 0.92);
+        border: 1px solid var(--eva-border);
+        border-radius: 16px;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+    .navbar-eva .nav-link-eva {
+        width: 100%;
+        padding: 0.7rem 1rem !important;
+    }
+    .navbar-eva .btn-logout-eva {
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+}
+
+/* ===================== CARDS GLASS ===================== */
+.eva-card,
+.registro-card {
+    background: var(--eva-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--eva-border);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+/* ===================== HEADER DEL REGISTRO ===================== */
+.registro-header { padding-bottom: 0.5rem; }
+.registro-icon-wrap {
+    width: 74px; height: 74px;
+    margin: 0 auto 0.9rem;
+    border-radius: 22px;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--eva-verde-claro) 0%, var(--eva-verde-oscuro) 100%);
+    box-shadow: 0 8px 28px rgba(157, 217, 0, 0.45);
+}
+.registro-icon-wrap i {
+    font-size: 2.2rem;
+    color: #0d1a10;
+    font-weight: 700;
+}
+.registro-titulo {
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 0 18px rgba(168, 240, 76, 0.35);
+    margin-bottom: 0.25rem;
+}
+.registro-subtitulo {
+    color: var(--eva-text-muted);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* ===================== SECCIONES ===================== */
+.seccion-titulo {
+    color: var(--eva-verde-neon);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin: 0.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(168, 240, 76, 0.3);
+    text-shadow: 0 0 10px rgba(168, 240, 76, 0.35);
+}
+
+/* ===================== FORMULARIOS ===================== */
+.form-label-eva {
+    color: rgba(255, 255, 255, 0.92);
+    font-weight: 600;
+    font-size: 0.88rem;
+    margin-bottom: 0.4rem;
+    display: block;
+}
+.req { color: var(--eva-verde-neon); font-weight: 800; }
+
+.form-control-eva {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid var(--eva-border) !important;
+    color: #fff !important;
+    border-radius: 12px !important;
+    padding: 0.7rem 1rem !important;
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
+}
+.form-control-eva:focus {
+    background: rgba(255, 255, 255, 0.14) !important;
+    border-color: rgba(168, 240, 76, 0.7) !important;
+    box-shadow: 0 0 0 3px rgba(168, 240, 76, 0.18) !important;
+    outline: none;
+    color: #fff !important;
+}
+.form-control-eva::placeholder { color: rgba(255, 255, 255, 0.4); }
+.form-control-eva.is-invalid {
+    border-color: #ff6b81 !important;
+    box-shadow: 0 0 0 3px rgba(255, 107, 129, 0.18) !important;
+}
+.form-select.form-control-eva option {
+    background: #143a1e;
+    color: #fff;
+}
+
+.input-group .form-control-eva { border-right: none !important; }
+.btn-eye {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid var(--eva-border) !important;
+    color: var(--eva-text-muted) !important;
+    border-radius: 0 12px 12px 0 !important;
+    padding: 0 0.85rem !important;
+    transition: all 0.2s ease;
+}
+.btn-eye:hover { color: var(--eva-verde-neon) !important; }
+
+.form-text-eva {
+    color: var(--eva-text-muted) !important;
+    font-size: 0.78rem;
+    margin-top: 0.35rem;
+}
+
+.invalid-feedback {
+    color: #ff9aa8 !important;
+    font-size: 0.78rem;
+    margin-top: 0.25rem;
+}
+
+/* ===================== CHIPS Y BADGES ===================== */
+.chip-eva {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid var(--eva-border);
+    color: var(--eva-text-muted);
+    border-radius: 30px;
+    padding: 0.55rem 1.2rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+}
+.chip-eva:hover {
+    background: rgba(168, 240, 76, 0.12);
+    border-color: rgba(168, 240, 76, 0.5);
+    color: #fff;
+    transform: translateY(-2px);
+}
+.chip-eva.active {
+    background: linear-gradient(135deg, var(--eva-verde-claro) 0%, var(--eva-verde-oscuro) 100%);
+    border-color: transparent;
+    color: #0d1a10;
+    box-shadow: 0 4px 18px rgba(157, 217, 0, 0.45);
+}
+.chip-eva.active i { color: #0d1a10; }
+
+.badge-cat-eva {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(168, 240, 76, 0.14);
+    border: 1px solid rgba(168, 240, 76, 0.35);
+    color: var(--eva-verde-neon);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+.badge-sub-eva {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--eva-border);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+}
+
+/* ===================== BOTONES ===================== */
+.btn-eva-neon {
+    background: linear-gradient(135deg, var(--eva-verde-claro) 0%, var(--eva-verde-oscuro) 100%);
+    color: #0d1a10;
+    border: none;
+    border-radius: 14px;
+    padding: 0.75rem 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(157, 217, 0, 0.35);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+.btn-eva-neon:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(157, 217, 0, 0.55);
+    color: #0d1a10;
+    filter: brightness(1.08);
+}
+.btn-eva-neon:active { transform: translateY(0); }
+/*
+.btn-eva-reset {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--eva-border);
+    color: rgba(255, 255, 255, 0.9);
+    border-radius: 14px;
+    padding: 0.75rem 1.6rem;
+    font-weight: 600;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+.btn-eva-reset:hover {
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+*/
+.text-danger-eva { color: #ff9aa8 !important; }
+.btn-danger-neon {
+    background: linear-gradient(135deg, #ff6b81 0%, #c82333 100%) !important;
+    color: #fff !important;
+    box-shadow: 0 4px 15px rgba(255, 107, 129, 0.35) !important;
+}
+.btn-danger-neon:hover {
+    box-shadow: 0 8px 25px rgba(255, 107, 129, 0.55) !important;
+}
+.text-eva-neon { color: var(--eva-verde-neon) !important; }
+
+/* ===================== LISTAS DE GRUPO ===================== */
+.list-group-eva .list-group-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--eva-border);
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0.5rem;
+    border-radius: 12px !important;
+    padding: 0.75rem 1rem;
+    transition: all 0.25s ease;
+}
+.list-group-eva button.list-group-item:hover {
+    background: var(--eva-glass-hover);
+    border-color: rgba(168, 240, 76, 0.4);
+    color: #fff;
+    transform: translateX(4px);
+}
+.list-group-eva .item-lider {
+    border-color: rgba(168, 240, 76, 0.4);
+    background: rgba(168, 240, 76, 0.08);
+}
+.list-group-eva .item-lider span {
+    font-weight: 700;
+    color: var(--eva-verde-neon);
+}
+
+/* ===================== VISOR PDF Y TABS ===================== 
+main
+bi-star
+*/
+.nav-pills-eva .nav-link {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--eva-border);
+    color: var(--eva-text-muted);
+    border-radius: 12px;
+    padding: 0.5rem 1rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: all 0.25s ease;
+}
+.nav-pills-eva .nav-link:hover {
+    background: rgba(168, 240, 76, 0.1);
+    border-color: rgba(168, 240, 76, 0.45);
+    color: #fff;
+}
+.nav-pills-eva .nav-link.active {
+    background: linear-gradient(135deg, var(--eva-verde-claro) 0%, var(--eva-verde-oscuro) 100%);
+    color: #0d1a10;
+    border-color: transparent;
+    box-shadow: 0 4px 15px rgba(157, 217, 0, 0.35);
+}
+
+.pdf-viewer-wrap {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--eva-border);
+    background: rgba(0, 0, 0, 0.3);
+}
+.pdf-viewer-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* ===================== MODALES GLASS ===================== */
+.modal-glass {
+    background: rgba(10, 25, 15, 0.94);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--eva-border);
+    border-radius: 20px;
+    color: #ffffff;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+}
+.info-label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--eva-verde-neon);
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+}
+.info-valor {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 0.95rem;
+}
+
+/* ===================== FOOTER ===================== */
+.footer-eva {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--eva-border);
+    color: var(--eva-text-muted);
+    padding: 1rem 0;
+    margin-top: auto;
+    position: relative;
+    z-index: 1;
+    font-size: 0.85rem;
+}
+.footer-links { display: inline-flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.footer-links a {
+    color: var(--eva-verde-neon);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+.footer-links a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(168, 240, 76, 0.6);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.footer-sep { color: rgba(255, 255, 255, 0.3); }
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 768px) {
+    .eva-card, .registro-card { padding: 1.5rem 1.15rem; }
+    .registro-titulo { font-size: 1.5rem; }
+    .btn-eva-neon, .btn-eva-reset { padding: 0.7rem 1.2rem; font-size: 0.92rem; }
+    .pdf-viewer-wrap { height: 380px; }
+}
+
+@media (max-width: 576px) {
+    .eva-card, .registro-card { border-radius: 20px; padding: 1.25rem 1rem; }
+    .registro-titulo { font-size: 1.3rem; }
+    .pdf-viewer-wrap { height: 300px; }
+}
+
+/* =========================================================
+   ESTILOS ADICIONALES PARA EVALUAR_EVALUADOR.HTML
+   ========================================================= */
+.card-puntaje-total {
+    background: var(--eva-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--eva-border);
+    border-radius: 18px;
+    padding: 0.8rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    /* Removido margin-top para no empujar la card hacia arriba */
+}
+.puntaje-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--eva-text-muted);
+    font-weight: 700;
+}
+.puntaje-val {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--eva-verde-neon);
+    text-shadow: 0 0 12px rgba(168, 240, 76, 0.4);
+    line-height: 1;
+}
+.puntaje-max {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 600;
+}
+
+.input-score {
+    width: 90px !important;
+    height: 48px !important;
+    font-size: 1.2rem !important;
+    color: var(--eva-verde-neon) !important;
+    border-color: rgba(168, 240, 76, 0.4) !important;
+}
+.border-eva-neon {
+    border-color: rgba(168, 240, 76, 0.5) !important;
+}
+
+@media (max-width: 576px) {
+    .card-puntaje-total {
+        width: 100%;
+    }
+    .input-score {
+        width: 80px !important;
+        height: 44px !important;
+        font-size: 1.1rem !important;
+    }
+}
+
+/* =========================================================
+   ESTILOS ADICIONALES PARA RANKING_EVALUADOR.HTML
+   ========================================================= */
+.fs-7 {
+    font-size: 0.78rem !important;
+}
+
+@media (max-width: 576px) {
+    #listaRanking .card-equipo-eva {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+    #listaRanking .card-equipo-eva .text-end {
+        text-align: left !important;
+        width: 100%;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 0.6rem;
+    }
+}
+
+/* =========================================================
+   ESTILOS ADICIONALES PARA PERFIL_EVALUADOR.HTML
+   ========================================================= */
+.border-danger-eva {
+    border-color: rgba(255, 107, 129, 0.4) !important;
+}
+.border-danger-eva:hover {
+    border-color: rgba(255, 107, 129, 0.8) !important;
+}

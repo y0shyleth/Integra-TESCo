@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Integra-TESCO · Participantes | Equipo</title>
+  <!-- Fonts & icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Estilos base del participante -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/estilos_participante.css">
+  <!-- Estilos específicos de esta vista -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/estilos_equipo_participante.css">
+</head>
+<body>
+
+  <!-- Fondo de hexágonos animados -->
+  <div class="bg-hex-container" id="bgHexContainer"></div>
+
+  <!-- ========== NAVBAR PARTICIPANTE ========== -->
+  <nav class="navbar-participante">
+    <div class="navbar-container">
+      <a href="inicio_participante.html" class="nav-title-link">
+        <span class="brand-text">Participantes <span class="brand-accent">| Equipo</span></span>
+      </a>
+
+      <button class="navbar-toggler-participante" id="navbarToggler" aria-label="Abrir menú" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <ul class="nav-menu-participante" id="navMenu">
+        <li><a href="inicio_participante.html" class="nav-link-p"><i class="fas fa-house"></i> Inicio</a></li>
+        <li><a href="archivosp_participante.html" class="nav-link-p"><i class="fas fa-folder-open"></i> Archivos</a></li>
+        <li><a href="perfil_participante.html" class="nav-link-p"><i class="fas fa-user"></i> Perfil</a></li>
+        <li><a href="index.html" class="nav-link-p nav-link-danger"><i class="fas fa-right-from-bracket"></i> Cerrar sesión</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== CONTENIDO PRINCIPAL ========== -->
+  <main class="main-wrapper main-dashboard">
+
+    <!-- Encabezado del equipo -->
+    <section class="equipo-hero">
+      <div class="equipo-hero-info">
+        <input type="text" id="equipoNombre" class="equipo-titulo-input" value="Kinoj" aria-label="Nombre del equipo">
+        <textarea id="equipoDescripcion" class="equipo-descripcion-input" rows="2" aria-label="Descripción del equipo">Página de ayuda a la salud mental</textarea>
+      </div>
+      <div class="equipo-hero-actions">
+        <button class="btn-submit btn-outline-orange btn-sm" id="btnRequisitos"><i class="fas fa-clipboard-check"></i> Requisitos</button>
+        <button class="btn-submit btn-outline-orange btn-sm" id="btnVerEvaluaciones"><i class="fas fa-chart-bar"></i> Ver evaluaciones</button>
+        <button class="btn-submit btn-outline-orange btn-sm" id="btnSubirArchivos"><i class="fas fa-cloud-arrow-up"></i> Cargar archivos</button>
+      </div>
+    </section>
+
+    <!-- Grid principal -->
+    <div class="equipo-grid">
+
+      <!-- Columna izquierda -->
+      <div class="equipo-col">
+
+        <!-- Competencia -->
+        <div class="panel-glass">
+          <h3 class="panel-title"><i class="fas fa-trophy"></i> Competencia</h3>
+          <div class="form-group">
+            <label for="equipoCategoria" class="visually-hidden">Competencia</label>
+            <select id="equipoCategoria" class="form-control">
+              <optgroup label="Innobótica">
+                <option value="innobotica-siguelineas">Siguelineas</option>
+                <option value="innobotica-minisumo">Mini sumo</option>
+              </optgroup>
+              <optgroup label="Certamen de proyectos">
+                <option value="certamen-agroindustrial">SECTOR AGROINDUSTRIAL</option>
+                <option value="certamen-electrica">INDUSTRIA ELÉCTRICA ELECTRÓNICA</option>
+                <option value="certamen-electromovilidad">ELECTROMOVILIDAD Y TRANSICIÓN ENERGÉTICA</option>
+                <option value="certamen-salud">SERVICIOS PARA LA SALUD HUMANA</option>
+                <option value="certamen-sostenibilidad">SOSTENIBILIDAD Y CAMBIO CLIMÁTICO</option>
+                <option value="certamen-consumo" selected>BIENES DE CONSUMO FINAL</option>
+              </optgroup>
+              <optgroup label="Hackatec">
+                <option value="hackatec">Hackatec</option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
+
+        <!-- Líder -->
+        <div class="panel-glass">
+          <h3 class="panel-title"><i class="fas fa-crown"></i> Líder de equipo</h3>
+          <div class="persona-row">
+            <div class="persona-info">
+              <span class="persona-nombre">Lani Yamille Fragoso Salinas</span>
+              <span class="persona-rol">Líder</span>
+            </div>
+            <button type="button" class="btn-icon-ver" data-persona="lani" title="Ver información">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Integrantes -->
+        <div class="panel-glass">
+          <h3 class="panel-title"><i class="fas fa-users"></i> Integrantes</h3>
+          <div class="persona-lista" id="listaIntegrantes">
+            <!-- Líder no se repite como integrante -->
+            <div class="persona-row">
+              <div class="persona-info">
+                <span class="persona-nombre">Danna Karina Aguilar Márquez</span>
+              </div>
+              <div class="persona-actions">
+                <button type="button" class="btn-icon-ver" data-persona="danna" title="Ver información"><i class="fas fa-eye"></i></button>
+                <button type="button" class="btn-icon-del" data-persona="danna" title="Eliminar integrante"><i class="fas fa-trash"></i></button>
+              </div>
+            </div>
+            <div class="persona-row">
+              <div class="persona-info">
+                <span class="persona-nombre">Alyson Avril Olmos Vera</span>
+              </div>
+              <div class="persona-actions">
+                <button type="button" class="btn-icon-ver" data-persona="alyson" title="Ver información"><i class="fas fa-eye"></i></button>
+                <button type="button" class="btn-icon-del" data-persona="alyson" title="Eliminar integrante"><i class="fas fa-trash"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Agregar integrante -->
+          <div class="add-persona-row">
+            <select class="form-control" id="selectNuevoIntegrante">
+              <option value="">Selecciona un participante</option>
+              <option value="nelly">Nelly Sánchez Ruíz</option>
+              <option value="axel">Axel Adrián Mejía Lozano</option>
+            </select>
+            <button type="button" class="btn-submit btn-orange btn-sm" id="btnAgregarIntegrante"><i class="fas fa-plus"></i> Agregar</button>
+          </div>
+        </div>
+
+        <!-- Asesores -->
+        <div class="panel-glass">
+          <h3 class="panel-title"><i class="fas fa-user-tie"></i> Asesores</h3>
+          <div class="persona-lista" id="listaAsesores">
+            <div class="persona-row">
+              <div class="persona-info">
+                <span class="persona-nombre">José Luis Camacho Campero</span>
+                <span class="persona-rol">Asesor primario</span>
+              </div>
+              <div class="persona-actions">
+                <button type="button" class="btn-icon-ver" data-persona="jose-luis" title="Ver información"><i class="fas fa-eye"></i></button>
+                <button type="button" class="btn-icon-del" data-persona="jose-luis" title="Eliminar asesor"><i class="fas fa-trash"></i></button>
+              </div>
+            </div>
+            <div class="persona-row">
+              <div class="persona-info">
+                <span class="persona-nombre">Luis Enrique Vivanco Bienavidez</span>
+                <span class="persona-rol">Asesor secundario</span>
+              </div>
+              <div class="persona-actions">
+                <button type="button" class="btn-icon-ver" data-persona="luis-enrique" title="Ver información"><i class="fas fa-eye"></i></button>
+                <button type="button" class="btn-icon-del" data-persona="luis-enrique" title="Eliminar asesor"><i class="fas fa-trash"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="add-persona-row">
+            <select class="form-control" id="selectNuevoAsesor">
+              <option value="">Selecciona un asesor</option>
+              <option value="jose-roberto">José Roberto Pérez Torres</option>
+              <option value="oscar">Oscar Escobar Domínguez</option>
+              <option value="carlos">Carlos Gibran Martínez Negrete</option>
+            </select>
+            <button type="button" class="btn-submit btn-orange btn-sm" id="btnAgregarAsesor"><i class="fas fa-plus"></i> Agregar</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Columna derecha -->
+      <div class="equipo-col">
+
+        <!-- Código de equipo -->
+        <div class="panel-glass">
+          <h3 class="panel-title"><i class="fas fa-key"></i> Código de equipo</h3>
+          <div class="codigo-wrapper">
+            <input type="text" id="codigoEquipoView" class="form-control codigo-input" readonly value="K1N0J7" title="Haz clic para copiar">
+            <button type="button" class="tooltip-icon" data-tooltip="tooltipCodigoView" aria-label="Información">?</button>
+          </div>
+          <div class="tooltip-content" id="tooltipCodigoView">
+            Comparte este código con tus compañeros y asesores para que puedan unirse a tu equipo.
+          </div>
+        </div>
+
+        <!-- Acciones del equipo -->
+        <div class="panel-glass acciones-panel">
+          <h3 class="panel-title"><i class="fas fa-gear"></i> Acciones</h3>
+          <div class="acciones-lista">
+            <button type="button" class="btn-submit btn-outline-orange btn-block" id="btnSalirEquipo">
+              <i class="fas fa-right-from-bracket"></i> Salir del equipo
+            </button>
+            <button type="button" class="btn-submit btn-danger-soft btn-block" id="btnDeshacerEquipo">
+              <i class="fas fa-trash-can"></i> Deshacer equipo
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ========== MODAL INFO PERSONA ========== -->
+  <div class="modal-overlay" id="modalPersona">
+    <div class="modal-container modal-md">
+      <div class="modal-header">
+        <h3 id="personaModalTitle">Información del integrante</h3>
+        <button class="modal-close" data-close-modal="modalPersona" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="info-grid" id="personaInfoGrid">
+          <!-- Se llena con JS -->
+        </div>
+        <div class="info-files-block">
+          <h4 class="info-subtitle"><i class="fas fa-paperclip"></i> Archivos personales</h4>
+          <ul class="info-files-list" id="personaFilesList">
+            <!-- Se llena con JS -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== MODAL REQUISITOS ========== -->
+  <div class="modal-overlay" id="modalRequisitos">
+    <div class="modal-container modal-md">
+      <div class="modal-header">
+        <h3>Requisitos del equipo</h3>
+        <button class="modal-close" data-close-modal="modalRequisitos" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-text">Verifica que tu equipo cumpla con los siguientes requisitos antes de enviar la validación.</p>
+        <ul class="requisitos-lista">
+          <li><i class="fas fa-check-circle"></i> Todos los integrantes deben estar registrados en la plataforma.</li>
+          <li><i class="fas fa-check-circle"></i> El equipo debe tener al menos un asesor asignado.</li>
+          <li><i class="fas fa-check-circle"></i> Se debe contar con la documentación de inscripción de cada integrante.</li>
+          <li><i class="fas fa-check-circle"></i> La categoría y competencia deben estar correctamente seleccionadas.</li>
+          <li><i class="fas fa-check-circle"></i> El líder del equipo debe tener su perfil completo.</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-submit btn-outline-orange" data-close-modal="modalRequisitos">Aceptar</button>
+        <button type="button" class="btn-submit btn-orange" id="btnEnviarValidacion">Enviar validación</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== MODAL DESHACER EQUIPO ========== -->
+  <div class="modal-overlay" id="modalDeshacerEquipo">
+    <div class="modal-container modal-md">
+      <div class="modal-header">
+        <h3>Deshacer equipo</h3>
+        <button class="modal-close" data-close-modal="modalDeshacerEquipo" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="warning-box">
+          <i class="fas fa-triangle-exclamation"></i>
+          <p>Esta acción eliminará permanentemente el equipo y todos los archivos que se hayan subido. Guarda los archivos que necesites antes de continuar.</p>
+        </div>
+        <div class="form-group">
+          <label for="passwordDeshacer">Contraseña</label>
+          <div class="password-wrapper">
+            <input type="password" id="passwordDeshacer" class="form-control" placeholder="Ingresa tu contraseña">
+            <button type="button" class="toggle-password" id="togglePasswordDeshacer" aria-label="Mostrar contraseña">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+          <small class="error-msg" id="passwordDeshacerError"></small>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-submit btn-outline-orange" data-close-modal="modalDeshacerEquipo">Cancelar</button>
+        <button type="button" class="btn-submit btn-danger-soft" id="btnConfirmarDeshacer">Eliminar equipo</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer-participante">
+    <div class="footer-content">
+      <p>Integra-Tesco – Módulo de participantes | 2026 Todos los derechos reservados</p>
+      <div class="footer-links">
+        <a href="https://www.tecnm.mx/" target="_blank">TecNM</a>
+        <a href="https://coacalco.tecnm.mx/TECNM/" target="_blank">TESCo</a>
+        <a href="https://innova.tecnm.mx/" target="_blank">Innovatec</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="bootstrap-5.3.8-dist/js/participante_scripts.js"></script>
+
+</body>
+</html>

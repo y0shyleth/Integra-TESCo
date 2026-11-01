@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Administración | Gestión de archivos</title>
+  <!-- Font Awesome 5 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/estilos_admin.css">
+</head>
+<body>
+
+<!-- ==================== FONDO HEXÁGONOS ==================== -->
+<div class="bg-hex-container" id="bgHexContainer"></div>
+
+<!-- ==================== NAVBAR ADMIN ==================== -->
+<nav class="navbar navbar-expand-lg nav-inutilizable fixed-top always-collapse">
+  <div class="container-fluid position-relative">
+    <a class="navbar-brand" href="inicio_admin.html">
+      <span class="d-none d-sm-inline">Panel de Administración - José Pérez | Gestión de archivos</span>
+      <span class="d-inline d-sm-none">Gestión de archivos</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar" aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="adminNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="inicio_admin.html"><i class="fas fa-home me-1"></i> Inicio</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="gadmin_admin.html"><i class="fas fa-user-cog me-1"></i> Gestión de administradores</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="gequipos_admin.html"><i class="fas fa-users-cog me-1"></i> Gestión de equipos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="reglas_admin.html"><i class="fas fa-gavel me-1"></i> Control de reglas</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="evaluaciones_admin.html"><i class="fas fa-clipboard-check me-1"></i> Evaluaciones</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="gcuentas_admin.html"><i class="fas fa-id-card me-1"></i> Gestión de cuentas</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="certificados_admin.html"><i class="fas fa-certificate me-1"></i> Certificados</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="garchivos_admin.html"><i class="fas fa-folder-open me-1"></i> Gestor de archivos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="avisos_admin.html"><i class="fas fa-bullhorn me-1"></i> Avisos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="widget_admin.html"><i class="fas fa-puzzle-piece me-1"></i> Widgets</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="inicio_dir_admin.html"><i class="fas fa-user-tie me-1"></i> Directivos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="index.html"><i class="fas fa-sign-out-alt me-1"></i> Salir</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ==================== CONTENIDO PRINCIPAL ==================== -->
+<main class="main-login" style="margin-top: 76px;">
+  <div class="container">
+
+    <!-- Barra de búsqueda + Filtrar -->
+    <div class="row align-items-center mb-4 g-3">
+      <div class="col-12 col-md-8 col-lg-9">
+        <div class="search-wrapper">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" class="form-control search-input" placeholder="Buscar un archivo, propietario o equipo" id="searchArchivo">
+        </div>
+      </div>
+      <div class="col-12 col-md-4 col-lg-3">
+        <button class="btn btn-glass w-100" data-bs-toggle="modal" data-bs-target="#modalFiltrarArchivos">
+          <i class="fas fa-filter me-1"></i> Filtrar
+        </button>
+      </div>
+    </div>
+
+    <!-- Tabla de archivos -->
+    <div class="table-responsive table-glass">
+      <table class="table table-admin align-middle mb-0">
+        <thead>
+          <tr>
+            <th>Propietario</th>
+            <th>Equipo</th>
+            <th>Nombre del archivo</th>
+            <th>Tipo de archivo</th>
+            <th class="text-center" style="width: 90px;">Ver/Descargar</th>
+            <th class="text-center" style="width: 90px;">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="archivosTableBody">
+          <tr>
+            <td>Lani Yamille Fragoso Salinas</td>
+            <td>Kinoj</td>
+            <td class="archivo-nombre">Doc_Prototipo.pdf</td>
+            <td>Prototipo</td>
+            <td class="text-center">
+              <button class="btn btn-action btn-view" title="Ver / Descargar">
+                <i class="fas fa-download"></i>
+              </button>
+            </td>
+            <td class="text-center">
+              <button class="btn btn-action btn-delete" title="Eliminar">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>Lani Yamille Fragoso Salinas</td>
+            <td>Kinoj</td>
+            <td class="archivo-nombre">Memoria_Tecnica_Kinoj.pdf</td>
+            <td>Memoria Técnica</td>
+            <td class="text-center">
+              <button class="btn btn-action btn-view"><i class="fas fa-download"></i></button>
+            </td>
+            <td class="text-center">
+              <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>Francisco Javier Camarillo</td>
+            <td>Kinoj</td>
+            <td class="archivo-nombre">Justificacion_Proyecto.pdf</td>
+            <td>Justificación</td>
+            <td class="text-center">
+              <button class="btn btn-action btn-view"><i class="fas fa-download"></i></button>
+            </td>
+            <td class="text-center">
+              <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>José Luis Camacho Campero</td>
+            <td>Kinoj</td>
+            <td class="archivo-nombre">Certificado_Asesor.pdf</td>
+            <td>Certificado</td>
+            <td class="text-center">
+              <button class="btn btn-action btn-view"><i class="fas fa-download"></i></button>
+            </td>
+            <td class="text-center">
+              <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>Chelsea Molina Valdamiz</td>
+            <td>Kinoj</td>
+            <td class="archivo-nombre">Identificacion_Chelsea.pdf</td>
+            <td>Identificación</td>
+            <td class="text-center">
+              <button class="btn btn-action btn-view"><i class="fas fa-download"></i></button>
+            </td>
+            <td class="text-center">
+              <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>Pedro Sánchez</td>
+            <td>Agro-Futuro</td>
+            <td class="archivo-nombre">Memoria_AgroFuturo.pdf</td>
+            <td>Memoria Técnica</td>
+            <td class="text-center">
+              <button class="btn btn-action btn-view"><i class="fas fa-download"></i></button>
+            </td>
+            <td class="text-center">
+              <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>María Fernanda López</td>
+            <td>Agro-Futuro</td>
+            <td class="archivo-nombre">Justificacion_Agro.pdf</td>
+            <td>Justificación</td>
+            <td class="text-center">
+              <button class="btn btn-action btn-view"><i class="fas fa-download"></i></button>
+            </td>
+            <td class="text-center">
+              <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>Carlos Mendoza</td>
+            <td>ROBO-SIG</td>
+            <td class="archivo-nombre">Prototipo_RoboSig.zip</td>
+            <td>Prototipo</td>
+            <td class="text-center">
+              <button class="btn btn-action btn-view"><i class="fas fa-download"></i></button>
+            </td>
+            <td class="text-center">
+              <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>Sofía Herrera</td>
+            <td>CODE-WARRIORS</td>
+            <td class="archivo-nombre">Codigo_Fuente_Hackatec.zip</td>
+            <td>Memoria Técnica</td>
+            <td class="text-center">
+              <button class="btn btn-action btn-view"><i class="fas fa-download"></i></button>
+            </td>
+            <td class="text-center">
+              <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>Dana Karina Aguilar Martínez</td>
+            <td>Kinoj</td>
+            <td class="archivo-nombre">Certificado_Dana.pdf</td>
+            <td>Certificado</td>
+            <td class="text-center">
+              <button class="btn btn-action btn-view"><i class="fas fa-download"></i></button>
+            </td>
+            <td class="text-center">
+              <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</main>
+
+<!-- ==================== MODAL: FILTRAR ARCHIVOS ==================== -->
+<div class="modal fade" id="modalFiltrarArchivos" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content modal-glass">
+      <div class="modal-header modal-header-glass">
+        <h5 class="modal-title">Filtrar archivos</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formFiltrarArchivos">
+          <div class="row g-3">
+            <div class="col-12 col-md-6">
+              <label class="form-label">Equipo</label>
+              <select class="form-select form-control-glass" id="filtroEquipo">
+                <option value="">Todos</option>
+                <option>Kinoj</option>
+                <option>Agro-Futuro</option>
+                <option>ROBO-SIG</option>
+                <option>SUMO-TEC</option>
+                <option>CODE-WARRIORS</option>
+              </select>
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label">Tipo de archivo</label>
+              <select class="form-select form-control-glass" id="filtroTipoArchivo">
+                <option value="">Todos</option>
+                <option>Justificación</option>
+                <option>Memoria Técnica</option>
+                <option>Prototipo</option>
+                <option>Certificado</option>
+                <option>Identificación</option>
+              </select>
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label">Propietario</label>
+              <input type="text" class="form-control form-control-glass" id="filtroPropietario" placeholder="Nombre del propietario">
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label">Rol del propietario</label>
+              <select class="form-select form-control-glass" id="filtroRol">
+                <option value="">Todos</option>
+                <option>Participante</option>
+                <option>Líder</option>
+                <option>Asesor</option>
+              </select>
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label">Extensión</label>
+              <select class="form-select form-control-glass" id="filtroExtension">
+                <option value="">Todas</option>
+                <option>PDF</option>
+                <option>DOCX</option>
+                <option>ZIP</option>
+                <option>PNG</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer modal-footer-glass">
+        <button type="button" class="btn btn-reset" id="btnResetFiltroArchivos">
+          <i class="fas fa-undo me-1"></i> Limpiar
+        </button>
+        <button type="button" class="btn btn-neon" id="btnApplyFiltroArchivos">
+          <i class="fas fa-filter me-1"></i> Aplicar filtros
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer-innovatec text-center py-3">
+  <div class="container">
+    <p class="mb-1 small">&copy; 2026 Tecnológico Nacional de México. Todos los derechos reservados.</p>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <a href="#" class="footer-link small">Innovatec</a>
+      <a href="#" class="footer-link small">TESCo</a>
+      <a href="#" class="footer-link small">TecNM</a>
+      <a href="#" class="footer-link small">Integra</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="bootstrap-5.3.8-dist/js/admin_scripts.js"></script>
+<script>
+  (function() {
+    console.log('Gestión de archivos cargada.');
+
+    // ===== Búsqueda general =====
+    document.getElementById('searchArchivo').addEventListener('keyup', function() {
+      var filtro = this.value.toLowerCase();
+      document.querySelectorAll('#archivosTableBody tr').forEach(function(fila) {
+        fila.style.display = fila.textContent.toLowerCase().indexOf(filtro) !== -1 ? '' : 'none';
+      });
+    });
+
+    // ===== Modal filtros =====
+    document.getElementById('btnApplyFiltroArchivos').addEventListener('click', function() {
+      alert('Filtros aplicados (demo).');
+      bootstrap.Modal.getInstance(document.getElementById('modalFiltrarArchivos')).hide();
+    });
+
+    document.getElementById('btnResetFiltroArchivos').addEventListener('click', function() {
+      document.getElementById('formFiltrarArchivos').reset();
+    });
+
+    // ===== Botones ver / eliminar (demo) =====
+    document.querySelectorAll('.btn-view').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var fila = this.closest('tr');
+        var nombre = fila ? fila.querySelector('.archivo-nombre').textContent : 'archivo';
+        alert('Previsualizando: ' + nombre + ' (demo)');
+      });
+    });
+
+    document.querySelectorAll('.btn-delete').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var fila = this.closest('tr');
+        if (fila && confirm('¿Eliminar permanentemente este archivo? (demo)')) {
+          fila.remove();
+        }
+      });
+    });
+
+    // ===== Fondo de hexágonos animados =====
+    (function generarHexagonos() {
+      var cont = document.getElementById('bgHexContainer');
+      if (!cont) return;
+      var cantidad = window.innerWidth < 768 ? 12 : 22;
+      for (var i = 0; i < cantidad; i++) {
+        var hex = document.createElement('div');
+        hex.className = 'bg-hexagon';
+        var size = 40 + Math.random() * 120;
+        hex.style.width = size + 'px';
+        hex.style.height = (size * 1.15) + 'px';
+        hex.style.left = Math.random() * 100 + '%';
+        hex.style.top = Math.random() * 100 + '%';
+        hex.style.opacity = (0.2 + Math.random() * 0.4).toFixed(2);
+        var dur = (12 + Math.random() * 18).toFixed(1);
+        hex.style.animation = 'flotarHex ' + dur + 's ease-in-out infinite';
+        hex.style.animationDelay = (-Math.random() * 10).toFixed(1) + 's';
+        hex.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
+        cont.appendChild(hex);
+      }
+    })();
+  })();
+</script>
+</body>
+</html>

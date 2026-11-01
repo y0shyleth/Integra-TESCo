@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Integra-TESCO · Participantes | Archivos de equipo</title>
+  
+  <!-- Fonts & icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Estilos base del participante -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/estilos_participante.css">
+  <!-- Estilos específicos de esta vista -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/estilos_archivos_participante.css">
+</head>
+<body>
+
+  <!-- Fondo de hexágonos animados -->
+  <div class="bg-hex-container" id="bgHexContainer"></div>
+
+  <!-- ========== NAVBAR PARTICIPANTE ========== -->
+  <nav class="navbar-participante">
+    <div class="navbar-container">
+      <a href="inicio_participante.html" class="nav-title-link">
+        <span class="brand-text">Participantes <span class="brand-accent">| Archivos de equipo</span></span>
+      </a>
+
+      <button class="navbar-toggler-participante" id="navbarToggler" aria-label="Abrir menú" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <ul class="nav-menu-participante" id="navMenu">
+        <li><a href="inicio_participante.html" class="nav-link-p"><i class="fas fa-house"></i> Inicio</a></li>
+        <li><a href="archivosp_participante.html" class="nav-link-p active"><i class="fas fa-folder-open"></i> Archivos</a></li>
+        <li><a href="perfil_participante.html" class="nav-link-p"><i class="fas fa-user"></i> Perfil</a></li>
+        <li><a href="index.html" class="nav-link-p nav-link-danger"><i class="fas fa-right-from-bracket"></i> Cerrar sesión</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== CONTENIDO PRINCIPAL ========== -->
+  <main class="main-wrapper main-dashboard">
+
+    <!-- Encabezado -->
+    <section class="welcome-section">
+      <h1 class="welcome-greeting">Cargar archivos <span class="highlight">(Kinoj)</span></h1>
+      <p class="welcome-subtitle" id="contadorArchivosTexto">Se han enviado 2/3 archivos</p>
+    </section>
+
+    <!-- Panel de tabla -->
+    <div class="panel-glass panel-archivos">
+      <div class="table-responsive">
+        <table class="table-glass table-archivos">
+          <thead>
+            <tr>
+              <th>Tipo de archivo</th>
+              <th>Nombre del archivo</th>
+              <th class="text-center">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tablaArchivosBody">
+            <!-- Fila 1: Cargado -->
+            <tr data-tipo="Memoria técnica">
+              <td data-label="Tipo de archivo">Memoria técnica</td>
+              <td data-label="Nombre del archivo" class="nombre-archivo">memoria.pdf</td>
+              <td data-label="Acciones" class="acciones-cell">
+                <button type="button" class="btn-tabla btn-cargar" title="Cargar"><i class="fas fa-upload"></i> Cargar</button>
+                <button type="button" class="btn-tabla btn-ver" title="Ver"><i class="fas fa-eye"></i> Ver</button>
+                <button type="button" class="btn-tabla btn-eliminar" title="Eliminar"><i class="fas fa-trash"></i> Eliminar</button>
+                <input type="file" class="input-file-hidden" style="display: none;">
+              </td>
+            </tr>
+            <!-- Fila 2: Vacío -->
+            <tr data-tipo="Bitácora">
+              <td data-label="Tipo de archivo">Bitácora</td>
+              <td data-label="Nombre del archivo" class="nombre-archivo sin-archivo">—</td>
+              <td data-label="Acciones" class="acciones-cell">
+                <button type="button" class="btn-tabla btn-cargar" title="Cargar"><i class="fas fa-upload"></i> Cargar</button>
+                <button type="button" class="btn-tabla btn-ver" title="Ver" disabled><i class="fas fa-eye"></i> Ver</button>
+                <button type="button" class="btn-tabla btn-eliminar" title="Eliminar" disabled><i class="fas fa-trash"></i> Eliminar</button>
+                <input type="file" class="input-file-hidden" style="display: none;">
+              </td>
+            </tr>
+            <!-- Fila 3: Cargado -->
+            <tr data-tipo="Presentación">
+              <td data-label="Tipo de archivo">Presentación</td>
+              <td data-label="Nombre del archivo" class="nombre-archivo">Kinoj.pptx</td>
+              <td data-label="Acciones" class="acciones-cell">
+                <button type="button" class="btn-tabla btn-cargar" title="Cargar"><i class="fas fa-upload"></i> Cargar</button>
+                <button type="button" class="btn-tabla btn-ver" title="Ver"><i class="fas fa-eye"></i> Ver</button>
+                <button type="button" class="btn-tabla btn-eliminar" title="Eliminar"><i class="fas fa-trash"></i> Eliminar</button>
+                <input type="file" class="input-file-hidden" style="display: none;">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Botón Volver -->
+    <div class="volver-container">
+      <a href="equipo_participante.html" class="btn-volver">
+        Volver
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer-participante">
+    <div class="footer-content">
+      <p>Integra-Tesco – Módulo de participantes | 2026 Todos los derechos reservados</p>
+      <div class="footer-links">
+        <a href="https://www.tecnm.mx/" target="_blank">TecNM</a>
+        <a href="https://coacalco.tecnm.mx/TECNM/" target="_blank">TESCo</a>
+        <a href="https://innova.tecnm.mx/" target="_blank">Innovatec</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="bootstrap-5.3.8-dist/js/participante_scripts.js"></script>
+
+</body>
+</html>

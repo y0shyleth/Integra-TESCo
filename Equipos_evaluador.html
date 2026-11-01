@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integra-Tesco | Equipos - Evaluador</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/estilos_eva.css">
+</head>
+<body class="eva-body">
+
+<!--fondo de hexágonos-->
+<div class="bg-hex-container" id="bgHex"></div>
+
+<!--navbar evaluador-->
+<nav class="navbar navbar-expand-lg navbar-eva fixed-top">
+    <div class="container-fluid px-3 px-md-4">
+        <a class="navbar-brand brand-eva" href="inicio_evaluador.html">
+            <i class="bi bi-hexagon-fill brand-icon"></i>
+            <span>Evaluador | Buscar equipo</span>
+        </a>
+
+        <button class="navbar-toggler navbar-toggler-eva" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navEva"
+                aria-controls="navEva" aria-expanded="false" aria-label="Menú">
+            <i class="bi bi-list"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navEva">
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+                <li class="nav-item">
+                    <a class="nav-link nav-link-eva" href="inicio_evaluador.html">
+                        <i class="bi bi-house-door me-1"></i>Inicio
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-eva active" href="equipos_evaluador.html">
+                        <i class="bi bi-people me-1"></i>Equipos
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-eva" href="evaluaciones_evaluador.html">
+                        <i class="bi bi-clipboard-check me-1"></i>Evaluaciones
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-eva" href="ranking_evaluador.html">
+                        <i class="bi bi-bar-chart me-1"></i>Clasificación
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-eva" href="perfil_evaluador.html">
+                        <i class="bi bi-person-circle me-1"></i>Perfil
+                    </a>
+                </li>
+                <li class="nav-item ms-lg-2">
+                    <a class="btn btn-logout-eva" href="index.html">
+                        <i class="bi bi-box-arrow-right me-1"></i>Cerrar sesión
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!--contenido principal-->
+<main class="eva-main container py-5">
+
+    <!--encabezado-->
+    <div class="equipos-header mb-4">
+        <h1 class="welcome-titulo text-start mb-1">Equipos a evaluar</h1>
+        <p class="welcome-sub text-start mb-0">Selecciona una categoría y revisa los equipos participantes</p>
+    </div>
+
+    <!--barra de búsqueda-->
+    <div class="buscador-eva mb-4">
+        <div class="buscador-wrap">
+            <i class="bi bi-search buscador-icon"></i>
+            <input type="text" class="form-control form-control-eva buscador-input"
+                   id="buscadorEquipos" placeholder="Buscar equipo por nombre..." autocomplete="off">
+            <button type="button" class="buscador-clear d-none" id="buscadorClear" aria-label="Limpiar búsqueda">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+    </div>
+
+    <!--subnavbar de categorías-->
+    <div class="categorias-scroll mb-4">
+        <div class="categorias-tabs" id="categoriasTabs">
+            <button class="cat-tab active" data-cat="agroindustrial">Sector agroindustrial</button>
+            <button class="cat-tab" data-cat="electrica">Industria eléctrica electrónica</button>
+            <button class="cat-tab" data-cat="electromovilidad">Electromovilidad y transición energética</button>
+            <button class="cat-tab" data-cat="salud">Servicios para la salud humana</button>
+            <button class="cat-tab" data-cat="sostenibilidad">Sostenibilidad y cambio climático</button>
+            <button class="cat-tab" data-cat="consumo">Bienes de consumo final</button>
+            <button class="cat-tab" data-cat="sumo">Mini-Sumo</button>
+            <button class="cat-tab" data-cat="siguelineas">Siguelíneas</button>
+            <button class="cat-tab" data-cat="hackatec">Hackatec</button>
+        </div>
+    </div>
+
+    <!--lista de equipos-->
+    <div class="row g-3 g-md-4" id="equiposGrid"></div>
+
+    <!--estado vacío-->
+    <div class="empty-state d-none" id="emptyState">
+        <i class="bi bi-search"></i>
+        <p class="mb-0">No se encontraron equipos con ese nombre.</p>
+    </div>
+
+</main>
+
+<!--footer-->
+<footer class="footer-eva">
+    <div class="container">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+            <p class="footer-text mb-0">Integra-Tesco – Módulo de evaluador | 2026 Todos los derechos reservados</p>
+            <div class="footer-links">
+                <a href="https://www.tecnm.mx/" target="_blank" rel="noopener">TecNM</a>
+                <span class="footer-sep">|</span>
+                <a href="https://coacalco.tecnm.mx/TECNM/" target="_blank" rel="noopener">TESCo</a>
+                <span class="footer-sep">|</span>
+                <a href="https://innova.tecnm.mx/" target="_blank" rel="noopener">Innovatec</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+<script src="bootstrap-5.3.8-dist/js/script_evaluador.js"></script>
+<script>
+/* ==== Lógica exclusiva: Equipos evaluador ==== */
+(function () {
+    // Simulación de datos (en producción vendrá del backend/PHP)
+    const EQUIPOS = {
+        agroindustrial: [
+            { nombre: "AgroTech Coacalco", carrera: "Ing. Química" },
+            { nombre: "GreenField", carrera: "Ing. Ambientala" },
+            { nombre: "HidroCultivo MX", carrera: "Ing. Ambiental" },
+            { nombre: "Semillas del Valle", carrera: "Ing. Química" }
+        ],
+        electrica: [
+            { nombre: "Circuit Masters", carrera: "Ing. Electromecánica" },
+            { nombre: "Voltios TESCo", carrera: "Ing. Electromecánica" },
+            { nombre: "PowerWave", carrera: "Ing. Mecatrónica" },
+            { nombre: "MicroChip MX", carrera: "Ing. en Sistemas" }
+        ],
+        electromovilidad: [
+            { nombre: "EcoDrive", carrera: "Ing. Mecatrónica" },
+            { nombre: "VoltRide", carrera: "Ing. TICS" },
+            { nombre: "SolarMove", carrera: "Ing. en Materiales" }
+        ],
+        salud: [
+            { nombre: "MediTech Lab", carrera: "Ing. Ferroviaria" },
+            { nombre: "SaludPlus", carrera: "Lic. en en Sistemas" },
+            { nombre: "VitalSense", carrera: "Ing. Ambiental" }
+        ],
+        sostenibilidad: [
+            { nombre: "EcoRaíces", carrera: "Ing. Ambiental" },
+            { nombre: "ZeroWaste", carrera: "Ing. Industrial" },
+            { nombre: "CarbonoCero", carrera: "Ing. en Materiales" }
+        ],
+        consumo: [
+            { nombre: "KINOJ", carrera: "Ing. en Sistemas" },
+            { nombre: "NovaHome", carrera: "Ing. Industrial" },
+            { nombre: "UrbanoLab", carrera: "Lic. en Administración" },
+            { nombre: "Craft & Co", carrera: "Ing. en Sistemas" }
+        ],
+        sumo: [
+            { nombre: "RoninBot", carrera: "Ing. Mecatrónica" },
+            { nombre: "Titan-Sumo", carrera: "Ing. Electromecánica" }
+        ],
+        siguelineas: [
+            { nombre: "LineRacer", carrera: "Ing. Mecatrónica" },
+            { nombre: "SpeedTrace", carrera: "Ing. Electromecánica" },
+            { nombre: "TrackMaster", carrera: "Ing. Mecatrónica" }
+        ],
+        hackatec: [
+            { nombre: "CodeStorm", carrera: "Ing. en Sistemas Computacionales" },
+            { nombre: "ByteForce", carrera: "Ing. en TIC's" },
+            { nombre: "DevSquad TESCo", carrera: "Ing. en Sistemas Computacionales" }
+        ]
+    };
+
+    const CATEGORIAS_LABEL = {
+        agroindustrial: "Sector agroindustrial",
+        electrica: "Industria eléctrica electrónica",
+        electromovilidad: "Electromovilidad y transición energética",
+        salud: "Servicios para la salud humana",
+        sostenibilidad: "Sostenibilidad y cambio climático",
+        consumo: "Bienes de consumo final",
+        sumo: "Mini-Sumo",
+        siguelineas: "Siguelíneas",
+        hackatec: "Hackatec"
+    };
+
+    const grid = document.getElementById('equiposGrid');
+    const emptyState = document.getElementById('emptyState');
+    const buscador = document.getElementById('buscadorEquipos');
+    const clearBtn = document.getElementById('buscadorClear');
+    const tabs = document.querySelectorAll('.cat-tab');
+
+    let categoriaActual = 'agroindustrial';
+    let busqueda = '';
+
+    function render() {
+        const equiposCat = EQUIPOS[categoriaActual] || [];
+        const filtrados = equiposCat.filter(e =>
+            e.nombre.toLowerCase().includes(busqueda.toLowerCase())
+        );
+
+        grid.innerHTML = '';
+
+        if (filtrados.length === 0) {
+            emptyState.classList.remove('d-none');
+            return;
+        }
+        emptyState.classList.add('d-none');
+
+        filtrados.forEach(eq => {
+            const col = document.createElement('div');
+            col.className = 'col-12 col-sm-6 col-lg-4';
+            col.innerHTML = `
+                <a href="revision_evaluador.html?equipo=${encodeURIComponent(eq.nombre)}" class="card-equipo-eva">
+                    <div class="card-equipo-top">
+                        <div class="card-equipo-avatar">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                        <span class="badge-cat-eva">${CATEGORIAS_LABEL[categoriaActual]}</span>
+                    </div>
+                    <h3 class="card-equipo-nombre">${eq.nombre}</h3>
+                    <p class="card-equipo-carrera">
+                        <i class="bi bi-mortarboard me-1"></i>${eq.carrera}
+                    </p>
+                    <span class="card-equipo-cta">Revisar equipo <i class="bi bi-arrow-right"></i></span>
+                </a>
+            `;
+            grid.appendChild(col);
+        });
+    }
+
+    // Cambio de categoría
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            categoriaActual = tab.dataset.cat;
+            render();
+        });
+    });
+
+    // Buscador
+    buscador.addEventListener('input', (e) => {
+        busqueda = e.target.value.trim();
+        clearBtn.classList.toggle('d-none', busqueda.length === 0);
+        render();
+    });
+
+    clearBtn.addEventListener('click', () => {
+        buscador.value = '';
+        busqueda = '';
+        clearBtn.classList.add('d-none');
+        buscador.focus();
+        render();
+    });
+
+    render();
+})();
+</script>
+</body>
+</html>

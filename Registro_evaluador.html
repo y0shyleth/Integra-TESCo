@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integra-Tesco | Registro como evaluador</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/estilos_eva.css">
+</head>
+<body class="eva-body">
+
+<!--fondo de hexágonos-->
+<div class="bg-hex-container" id="bgHex"></div>
+
+<!--navbar-->
+<nav class="navbar navbar-expand navbar-eva fixed-top">
+    <div class="container-fluid px-3 px-md-4">
+        <a class="navbar-brand brand-eva" href="index.html">
+            <i class="bi bi-hexagon-fill brand-icon"></i>
+            <span>Integra-Tesco</span>
+        </a>
+        <div class="ms-auto">
+            <a href="index.html" class="btn btn-nav-eva">
+                <i class="bi bi-arrow-left me-1"></i>
+                <span class="d-none d-sm-inline">Volver</span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!--contenido principal-->
+<main class="eva-main container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+
+            <div class="eva-card registro-card">
+                <div class="registro-header text-center mb-4">
+                    <div class="registro-icon-wrap">
+                        <i class="bi bi-person-badge-fill"></i>
+                    </div>
+                    <h1 class="registro-titulo">Registro de Evaluador</h1>
+                    <p class="registro-subtitulo">Completa tus datos para formar parte del comité evaluador de Innovatec</p>
+                </div>
+
+                <form id="formRegistroEvaluador" novalidate>
+                    <!--datos personales-->
+                    <h2 class="seccion-titulo">Datos personales</h2>
+                    <div class="row g-3 mb-4">
+                        <div class="col-12 col-md-4">
+                            <label for="nombre" class="form-label-eva">Nombre(s) <span class="req">*</span></label>
+                            <input type="text" class="form-control form-control-eva" id="nombre" name="nombre" required maxlength="60">
+                            <div class="invalid-feedback">Ingresa tu(s) nombre(s).</div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <label for="apellidoPaterno" class="form-label-eva">Apellido Paterno <span class="req">*</span></label>
+                            <input type="text" class="form-control form-control-eva" id="apellidoPaterno" name="apellidoPaterno" required maxlength="40">
+                            <div class="invalid-feedback">Ingresa tu apellido paterno.</div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <label for="apellidoMaterno" class="form-label-eva">Apellido Materno <span class="req">*</span></label>
+                            <input type="text" class="form-control form-control-eva" id="apellidoMaterno" name="apellidoMaterno" required maxlength="40">
+                            <div class="invalid-feedback">Ingresa tu apellido materno.</div>
+                        </div>
+
+                        <div class="col-12 col-md-7">
+                            <label for="curp" class="form-label-eva">CURP <span class="req">*</span></label>
+                            <input type="text" class="form-control form-control-eva text-uppercase" id="curp" name="curp" required maxlength="18" placeholder="ABCD123456HDFXYZ01">
+                            <div class="invalid-feedback">CURP inválida. Verifica el formato.</div>
+                        </div>
+                        <div class="col-12 col-md-5">
+                            <label for="telefono" class="form-label-eva">Teléfono</label>
+                            <input type="tel" class="form-control form-control-eva" id="telefono" name="telefono" maxlength="15" placeholder="55 1234 5678">
+                        </div>
+                    </div>
+
+                    <!--datos de evaluación-->
+                    <h2 class="seccion-titulo">Datos de evaluación</h2>
+
+                    <div class="mb-3">
+                        <label class="form-label-eva">Competencias a evaluar <span class="req">*</span></label>
+                        <div class="d-flex flex-wrap gap-2" id="competenciasWrap" role="group">
+                            <button type="button" class="chip-eva" data-comp="hackatec">
+                                <i class="bi bi-cpu me-1"></i>Hackatec
+                            </button>
+                            <button type="button" class="chip-eva" data-comp="innovotica">
+                                <i class="bi bi-lightbulb me-1"></i>Innovótica
+                            </button>
+                            <button type="button" class="chip-eva" data-comp="certamen">
+                                <i class="bi bi-trophy me-1"></i>Certámen de Proyectos
+                            </button>
+                        </div>
+                        <div class="invalid-feedback d-block d-none" id="compFeedback">Selecciona al menos una competencia.</div>
+                    </div>
+
+                    <!--tipo de evaluador (solo si certamen)-->
+                    <div class="mb-3 d-none" id="tipoEvaluadorWrap">
+                        <label for="tipoEvaluador" class="form-label-eva">Tipo de evaluador <span class="req">*</span></label>
+                        <select class="form-select form-control-eva" id="tipoEvaluador" name="tipoEvaluador">
+                            <option value="">Selecciona una opción</option>
+                            <option value="interno">Interno</option>
+                            <option value="externo">Externo</option>
+                        </select>
+                        <div class="invalid-feedback">Selecciona el tipo de evaluador.</div>
+                    </div>
+
+                    <!--contraseñas-->
+                    <h2 class="seccion-titulo">Seguridad</h2>
+                    <div class="row g-3 mb-4">
+                        <div class="col-12 col-md-6">
+                            <label for="password" class="form-label-eva">Nueva Contraseña <span class="req">*</span></label>
+                            <div class="input-group">
+                                <input type="password" class="form-control form-control-eva" id="password" name="password" required minlength="8">
+                                <button class="btn btn-eye" type="button" data-target="password" aria-label="Mostrar contraseña">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            </div>
+                            <div class="form-text form-text-eva">Mínimo 8 caracteres.</div>
+                            <div class="invalid-feedback">La contraseña debe tener al menos 8 caracteres.</div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="confirmPassword" class="form-label-eva">Confirmar contraseña <span class="req">*</span></label>
+                            <div class="input-group">
+                                <input type="password" class="form-control form-control-eva" id="confirmPassword" name="confirmPassword" required minlength="8">
+                                <button class="btn btn-eye" type="button" data-target="confirmPassword" aria-label="Mostrar contraseña">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            </div>
+                            <div class="invalid-feedback">Las contraseñas no coinciden.</div>
+                        </div>
+                    </div>
+
+                    <!--botones-->
+                    <div class="d-flex flex-column flex-sm-row justify-content-end gap-2 mt-4">
+                        <button type="reset" class="btn btn-eva-reset">
+                            <i class="bi bi-eraser me-1"></i>Limpiar
+                        </button>
+                        <button type="submit" class="btn btn-eva-neon">
+                            <i class="bi bi-check-circle me-1"></i>Registrarse
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<!--footer-->
+<footer class="footer-eva">
+    <div class="container">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+            <p class="footer-text mb-0">Integra-Tesco – Módulo de evaluador | 2026 Todos los derechos reservados</p>
+            <div class="footer-links">
+                <a href="https://www.tecnm.mx/" target="_blank" rel="noopener">TecNM</a>
+                <span class="footer-sep">|</span>
+                <a href="https://coacalco.tecnm.mx/TECNM/" target="_blank" rel="noopener">TESCo</a>
+                <span class="footer-sep">|</span>
+                <a href="https://innova.tecnm.mx/" target="_blank" rel="noopener">Innovatec</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+<script src="bootstrap-5.3.8-dist/js/script_evaluador.js"></script>
+<script>
+/* ==== Lógica exclusiva: Registro de evaluador ==== */
+(function () {
+    const form = document.getElementById('formRegistroEvaluador');
+    const curpInput = document.getElementById('curp');
+    const compButtons = document.querySelectorAll('#competenciasWrap .chip-eva');
+    const compFeedback = document.getElementById('compFeedback');
+    const tipoWrap = document.getElementById('tipoEvaluadorWrap');
+    const tipoSelect = document.getElementById('tipoEvaluador');
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirmPassword');
+
+    const CURP_REGEX = /^[A-Z]{4}\d{6}[A-Z]{6}[A-Z0-9]{2}$/;
+
+    // Mostrar/ocultar contraseña
+    document.querySelectorAll('.btn-eye').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const input = document.getElementById(btn.dataset.target);
+            const icon = btn.querySelector('i');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.replace('bi-eye', 'bi-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.replace('bi-eye-slash', 'bi-eye');
+            }
+        });
+    });
+
+    // Chips de competencias
+    compButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.classList.toggle('active');
+            actualizarTipoEvaluador();
+            compFeedback.classList.add('d-none');
+        });
+    });
+
+    function competenciasSeleccionadas() {
+        return Array.from(compButtons)
+            .filter(b => b.classList.contains('active'))
+            .map(b => b.dataset.comp);
+    }
+
+    function actualizarTipoEvaluador() {
+        const comps = competenciasSeleccionadas();
+        const tieneCertamen = comps.includes('certamen');
+        tipoWrap.classList.toggle('d-none', !tieneCertamen);
+        if (!tieneCertamen) {
+            tipoSelect.value = '';
+            tipoSelect.classList.remove('is-invalid');
+        }
+    }
+
+    // Validación en vivo de contraseñas
+    function validarCoincidencia() {
+        if (confirmPassword.value && password.value !== confirmPassword.value) {
+            confirmPassword.setCustomValidity('no-match');
+        } else {
+            confirmPassword.setCustomValidity('');
+        }
+    }
+    password.addEventListener('input', validarCoincidencia);
+    confirmPassword.addEventListener('input', validarCoincidencia);
+
+    // Envío
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let valido = true;
+
+        // Limpiar estados previos
+        form.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
+
+        // Nombre/apellidos
+        ['nombre', 'apellidoPaterno', 'apellidoMaterno'].forEach(id => {
+            const el = document.getElementById(id);
+            if (!el.value.trim()) {
+                el.classList.add('is-invalid');
+                valido = false;
+            }
+        });
+
+        // CURP
+        curpInput.value = curpInput.value.toUpperCase().trim();
+        if (!CURP_REGEX.test(curpInput.value)) {
+            curpInput.classList.add('is-invalid');
+            valido = false;
+        }
+
+        // Competencias
+        if (competenciasSeleccionadas().length === 0) {
+            compFeedback.classList.remove('d-none');
+            valido = false;
+        }
+
+        // Tipo de evaluador si aplica
+        if (!tipoWrap.classList.contains('d-none') && !tipoSelect.value) {
+            tipoSelect.classList.add('is-invalid');
+            valido = false;
+        }
+
+        // Contraseñas
+        if (password.value.length < 8) {
+            password.classList.add('is-invalid');
+            valido = false;
+        }
+        if (confirmPassword.value !== password.value) {
+            confirmPassword.classList.add('is-invalid');
+            valido = false;
+        }
+
+        if (!valido) {
+            const firstInvalid = form.querySelector('.is-invalid');
+            if (firstInvalid) firstInvalid.focus();
+            return;
+        }
+
+        // Redirección al panel de evaluador
+        window.location.href = 'inicio_evaluador.html';
+    });
+
+    // Reset personalizado
+    form.addEventListener('reset', () => {
+        setTimeout(() => {
+            compButtons.forEach(b => b.classList.remove('active'));
+            compFeedback.classList.add('d-none');
+            tipoWrap.classList.add('d-none');
+            tipoSelect.value = '';
+            form.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
+        }, 0);
+    });
+})();
+</script>
+</body>
+</html>

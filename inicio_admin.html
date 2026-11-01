@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Administrador | Inicio</title>
+  <!-- Font Awesome 5 (legacy) -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS 5.3.8 -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Font Awesome 6 (compatible) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Estilos propios del admin -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/estilos_admin.css">
+  
+</head>
+<body>
+<!-- Contenedor de hexágonos en el fondo -->
+<div class="bg-hex-container">
+  <div class="bg-hexagon" style="top: 10%; left: 8%;"></div>
+  <div class="bg-hexagon" style="top: 25%; right: 12%;"></div>
+  <div class="bg-hexagon" style="top: 60%; left: 15%;"></div>
+  <div class="bg-hexagon" style="top: 75%; right: 20%;"></div>
+  <div class="bg-hexagon" style="top: 45%; left: 50%;"></div>
+  <div class="bg-hexagon" style="top: 85%; left: 5%;"></div>
+</div>
+<div class="bg-hex-container" id="bgHexContainer"></div>
+<!-- ==================== NAVBAR ADMIN ==================== -->
+<nav class="navbar navbar-expand-lg nav-inutilizable fixed-top always-collapse">
+  <div class="container-fluid">
+    <!-- Marca / título -->
+    <a class="navbar-brand" href="inicio_admin.html">
+      <span class="d-none d-sm-inline">Panel Administrador | Inicio</span>
+      <span class="d-inline d-sm-none">Inicio</span>
+    </a>
+    <!-- Botón hamburguesa (colapsa en móvil) -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar" aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Opciones colapsables (incluyen Inicio y Salir en móvil) -->
+    <div class="collapse navbar-collapse" id="adminNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+        <!-- Inicio (visible en móvil dentro del menú) -->
+        <li class="nav-item d-block">
+          <a class="nav-link nav-link-evaluador" href="inicio_admin.html">
+            <i class="fas fa-home me-1"></i> Inicio
+          </a>
+        </li>
+        <!-- Gestión de administradores -->
+        <li class="nav-item">
+          <a class="nav-link nav-link-evaluador" href="gadmin_admin.html">
+            <i class="fas fa-user-cog me-1"></i> Gestión de administradores
+          </a>
+        </li>
+        <!-- Gestión de equipos -->
+        <li class="nav-item">
+          <a class="nav-link nav-link-evaluador" href="gequipos_admin.html">
+            <i class="fas fa-users-cog me-1"></i> Gestión de equipos
+          </a>
+        </li>
+        <!-- Control de reglas -->
+        <li class="nav-item">
+          <a class="nav-link nav-link-evaluador" href="reglas_admin.html">
+            <i class="fas fa-gavel me-1"></i> Control de reglas
+          </a>
+        </li>
+        <!-- Evaluaciones -->
+        <li class="nav-item">
+          <a class="nav-link nav-link-evaluador" href="evaluaciones_admin.html">
+            <i class="fas fa-clipboard-check me-1"></i> Evaluaciones
+          </a>
+        </li>
+        <!-- Gestión de cuentas -->
+        <li class="nav-item">
+          <a class="nav-link nav-link-evaluador" href="gcuentas_admin.html">
+            <i class="fas fa-id-card me-1"></i> Gestión de cuentas
+          </a>
+        </li>
+        <!-- Certificados -->
+        <li class="nav-item">
+          <a class="nav-link nav-link-evaluador" href="certificados_admin.html">
+            <i class="fas fa-certificate me-1"></i> Certificados
+          </a>
+        </li>
+        <!-- Gestor de archivos -->
+        <li class="nav-item">
+          <a class="nav-link nav-link-evaluador" href="garchivos_admin.html">
+            <i class="fas fa-folder-open me-1"></i> Gestor de archivos
+          </a>
+        </li>
+        <!-- Avisos -->
+        <li class="nav-item">
+          <a class="nav-link nav-link-evaluador" href="avisos_admin.html">
+            <i class="fas fa-bullhorn me-1"></i> Avisos
+          </a>
+        </li>
+        <!-- Widgets -->
+        <li class="nav-item">
+          <a class="nav-link nav-link-evaluador" href="widget_admin.html">
+            <i class="fas fa-puzzle-piece me-1"></i> Widgets
+          </a>
+        </li>
+        <!-- Directivos -->
+        <li class="nav-item">
+          <a class="nav-link nav-link-evaluador" href="inicio_dir_admin.html">
+            <i class="fas fa-user-tie me-1"></i> Directivos
+          </a>
+        </li>
+        <!-- Salir (visible en móvil dentro del menú) -->
+        <li class="nav-item d-block">
+          <a class="nav-link nav-link-evaluador" href="index.html">
+            <i class="fas fa-sign-out-alt me-1"></i> Salir
+          </a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ==================== CONTENIDO PRINCIPAL ==================== -->
+<main class="main-login" style="margin-top: 76px;"> <!-- margen para navbar fija -->
+  <div class="container">
+    <!-- Bienvenida con efecto neón -->
+    <div class="text-center my-4 my-md-5">
+      <h1 class="welcome-greeting text-neon" style="font-size: 2.8rem; font-weight: 700;">
+        Bienvenido ADMIN
+      </h1>
+      <p class="welcome-subtitle fs-5">Panel de control · Innovatec TESCo</p>
+    </div>
+
+    <!-- Cards de acceso (10 módulos) -->
+    <div class="row g-4">
+      <!-- 1. Gestión de administradores -->
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <a href="gadmin_admin.html" class="text-decoration-none">
+          <div class="dashboard-card">
+            <div class="dashboard-icon"><i class="fas fa-user-shield"></i></div>
+            <div class="dashboard-title">Gestión de administradores</div>
+            <div class="dashboard-description">Gestiona las cuentas del personal administrativo.</div>
+          </div>
+        </a>
+      </div>
+      <!-- 2. Gestión de equipos -->
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <a href="gequipos_admin.html" class="text-decoration-none">
+          <div class="dashboard-card">
+            <div class="dashboard-icon"><i class="fas fa-users"></i></div>
+            <div class="dashboard-title">Gestión de equipos</div>
+            <div class="dashboard-description">Gestiona los equipos de distintas competencias.</div>
+          </div>
+        </a>
+      </div>
+      <!-- 3. Control de reglas -->
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <a href="reglas_admin.html" class="text-decoration-none">
+          <div class="dashboard-card">
+            <div class="dashboard-icon"><i class="fas fa-balance-scale"></i></div>
+            <div class="dashboard-title">Control de reglas</div>
+            <div class="dashboard-description">Actualiza requisitos de participación y rúbricas de evaluación.</div>
+          </div>
+        </a>
+      </div>
+      <!-- 4. Evaluaciones -->
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <a href="evaluaciones_admin.html" class="text-decoration-none">
+          <div class="dashboard-card">
+            <div class="dashboard-icon"><i class="fas fa-check-double"></i></div>
+            <div class="dashboard-title">Evaluaciones</div>
+            <div class="dashboard-description">Gestiona las evaluaciones en tiempo real.</div>
+          </div>
+        </a>
+      </div>
+      <!-- 5. Gestión de cuentas -->
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <a href="gcuentas_admin.html" class="text-decoration-none">
+          <div class="dashboard-card">
+            <div class="dashboard-icon"><i class="fas fa-id-badge"></i></div>
+            <div class="dashboard-title">Gestión de cuentas</div>
+            <div class="dashboard-description">Administra las cuentas de participantes, asesores y evaluadores.</div>
+          </div>
+        </a>
+      </div>
+      <!-- 6. Generador de certificados -- >
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <a href="certificados_admin.html" class="text-decoration-none">
+          <div class="dashboard-card">
+            <div class="dashboard-icon"><i class="fas fa-award"></i></div>
+            <div class="dashboard-title">Generador de certificados</div>
+            <div class="dashboard-description">Genera certificaciones al instante para los ganadores.</div>
+          </div>
+        </a>
+      </div>
+      < !-- 7. Gestor de archivos -->
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <a href="garchivos_admin.html" class="text-decoration-none">
+          <div class="dashboard-card">
+            <div class="dashboard-icon"><i class="fas fa-file-archive"></i></div>
+            <div class="dashboard-title">Gestor de archivos</div>
+            <div class="dashboard-description">Accede a los archivos cargados por participantes y asesores.</div>
+          </div>
+        </a>
+      </div>
+      <!-- 8. Avisos -->
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <a href="avisos_admin.html" class="text-decoration-none">
+          <div class="dashboard-card">
+            <div class="dashboard-icon"><i class="fas fa-bullhorn"></i></div>
+            <div class="dashboard-title">Avisos</div>
+            <div class="dashboard-description">Programa avisos que se mostrarán en la página de inicio.</div>
+          </div>
+        </a>
+      </div>
+      <!-- 9. Widgets -- >
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <a href="widget_admin.html" class="text-decoration-none">
+          <div class="dashboard-card">
+            <div class="dashboard-icon"><i class="fas fa-th-large"></i></div>
+            <div class="dashboard-title">Widgets</div>
+            <div class="dashboard-description">Agrega noticias y otros paneles en la página de inicio.</div>
+          </div>
+        </a>
+      </div>
+      < !-- 10. Directivos -->
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <a href="inicio_dir_admin.html" class="text-decoration-none">
+          <div class="dashboard-card">
+            <div class="dashboard-icon"><i class="fas fa-user-graduate"></i></div>
+            <div class="dashboard-title">Directivos</div>
+            <div class="dashboard-description">Sección exclusiva para directivos.</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer-innovatec text-center py-3">
+  <div class="container">
+    <p class="mb-1 small">&copy; 2026 Tecnológico Nacional de México. Todos los derechos reservados.</p>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <a href="#" class="footer-link small">Innovatec</a>
+      <a href="#" class="footer-link small">TESCo</a>
+      <a href="#" class="footer-link small">TecNM</a>
+      <a href="#" class="footer-link small">Integra</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== SCRIPTS (Bootstrap, JQuery, scripts generales) ==================== -->
+<script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="bootstrap-5.3.8-dist/js/admin_scripts.js"></script>
+<script>
+  (function() {
+    console.log('Panel administrador cargado.');
+  })();
+</script>
+<!-- CDN de Anime.js v3.2.1 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Animación continua y flotante para cada hexágono
+    anime({
+      targets: '.bg-hexagon',
+      translateY: () => anime.random(-35, 35),
+      translateX: () => anime.random(-25, 25),
+      rotate: () => anime.random(-180, 180),
+      scale: () => anime.random(0.7, 1.4),
+      opacity: () => anime.random(0.08, 0.25),
+      duration: () => anime.random(6000, 12000),
+      easing: 'easeInOutQuad',
+      direction: 'alternate',
+      loop: true,
+      delay: anime.stagger(400)
+    });
+  });
+</script>
+</body>
+</html>

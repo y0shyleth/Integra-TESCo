@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Administración | Gestor de avisos</title>
+  <!-- Font Awesome 5 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/estilos_admin.css">
+</head>
+<body>
+
+<!-- ==================== FONDO HEXÁGONOS ==================== -->
+<div class="bg-hex-container" id="bgHexContainer"></div>
+
+<!-- ==================== NAVBAR ADMIN ==================== -->
+<nav class="navbar navbar-expand-lg nav-inutilizable fixed-top always-collapse">
+  <div class="container-fluid position-relative">
+    <a class="navbar-brand" href="inicio_admin.html">
+      <span class="d-none d-sm-inline">Panel de Administración | Gestor de avisos</span>
+      <span class="d-inline d-sm-none">Gestor de avisos</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar" aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="adminNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="inicio_admin.html"><i class="fas fa-home me-1"></i> Inicio</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="gadmin_admin.html"><i class="fas fa-user-cog me-1"></i> Gestión de administradores</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="gequipos_admin.html"><i class="fas fa-users-cog me-1"></i> Gestión de equipos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="reglas_admin.html"><i class="fas fa-gavel me-1"></i> Control de reglas</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="evaluaciones_admin.html"><i class="fas fa-clipboard-check me-1"></i> Evaluaciones</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="gcuentas_admin.html"><i class="fas fa-id-card me-1"></i> Gestión de cuentas</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="certificados_admin.html"><i class="fas fa-certificate me-1"></i> Certificados</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="garchivos_admin.html"><i class="fas fa-folder-open me-1"></i> Gestor de archivos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="avisos_admin.html"><i class="fas fa-bullhorn me-1"></i> Avisos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="widget_admin.html"><i class="fas fa-puzzle-piece me-1"></i> Widgets</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="inicio_dir_admin.html"><i class="fas fa-user-tie me-1"></i> Directivos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="index.html"><i class="fas fa-sign-out-alt me-1"></i> Salir</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ==================== CONTENIDO PRINCIPAL ==================== -->
+<main class="main-login" style="margin-top: 76px;">
+  <div class="container">
+
+    <!-- Botón Nuevo -->
+    <div class="d-flex justify-content-end mb-3">
+      <button class="btn btn-neon" data-bs-toggle="modal" data-bs-target="#modalAviso" id="btnNuevoAviso">
+        <i class="fas fa-plus me-1"></i> Nuevo
+      </button>
+    </div>
+
+    <!-- Tabla de avisos -->
+    <div class="table-responsive table-glass">
+      <table class="table table-admin align-middle mb-0">
+        <thead>
+          <tr>
+            <th>Título</th>
+            <th>Aviso</th>
+            <th>Link</th>
+            <th>Publicación</th>
+            <th>Expiración</th>
+            <th class="text-center" style="width: 110px;">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="avisosTableBody">
+          <tr>
+            <td class="aviso-titulo">Inicio de registro Innovatec 2026</td>
+            <td class="aviso-desc">Ya está abierto el periodo de inscripción para la competencia local Innovatec 2026. Consulta el reglamento en la sección de noticias.</td>
+            <td><a href="#" class="archivo-link">innova.tesco/registro</a></td>
+            <td>15/03/2026</td>
+            <td>30/04/2026</td>
+            <td class="text-center">
+              <div class="d-flex gap-2 justify-content-center">
+                <button class="btn btn-action btn-edit" data-bs-toggle="modal" data-bs-target="#modalAviso"
+                  data-titulo="Inicio de registro Innovatec 2026"
+                  data-desc="Ya está abierto el periodo de inscripción para la competencia local Innovatec 2026. Consulta el reglamento en la sección de noticias."
+                  data-link="innova.tesco/registro"
+                  data-pub="2026-03-15"
+                  data-exp="2026-04-30">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="aviso-titulo">Entrega de memoria técnica</td>
+            <td class="aviso-desc">La fecha límite para subir la memoria técnica es el próximo 20 de abril. Verifica el formato solicitado en la sección de requisitos.</td>
+            <td>-</td>
+            <td>01/04/2026</td>
+            <td>21/04/2026</td>
+            <td class="text-center">
+              <div class="d-flex gap-2 justify-content-center">
+                <button class="btn btn-action btn-edit" data-bs-toggle="modal" data-bs-target="#modalAviso"
+                  data-titulo="Entrega de memoria técnica"
+                  data-desc="La fecha límite para subir la memoria técnica es el próximo 20 de abril. Verifica el formato solicitado en la sección de requisitos."
+                  data-link=""
+                  data-pub="2026-04-01"
+                  data-exp="2026-04-21">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="aviso-titulo">Resultados de la etapa local</td>
+            <td class="aviso-desc">Los resultados de la etapa local se publicarán el 5 de mayo. Permanece atento a la campanita de la plataforma.</td>
+            <td><a href="#" class="archivo-link">innova.tesco/resultados</a></td>
+            <td>05/05/2026</td>
+            <td>15/05/2026</td>
+            <td class="text-center">
+              <div class="d-flex gap-2 justify-content-center">
+                <button class="btn btn-action btn-edit" data-bs-toggle="modal" data-bs-target="#modalAviso"
+                  data-titulo="Resultados de la etapa local"
+                  data-desc="Los resultados de la etapa local se publicarán el 5 de mayo. Permanece atento a la campanita de la plataforma."
+                  data-link="innova.tesco/resultados"
+                  data-pub="2026-05-05"
+                  data-exp="2026-05-15">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="aviso-titulo">Ceremonia de premiación</td>
+            <td class="aviso-desc">La ceremonia de premiación se llevará a cabo el 20 de mayo en el auditorio principal del TESCo. Asiste con tu equipo.</td>
+            <td>-</td>
+            <td>10/05/2026</td>
+            <td>21/05/2026</td>
+            <td class="text-center">
+              <div class="d-flex gap-2 justify-content-center">
+                <button class="btn btn-action btn-edit" data-bs-toggle="modal" data-bs-target="#modalAviso"
+                  data-titulo="Ceremonia de premiación"
+                  data-desc="La ceremonia de premiación se llevará a cabo el 20 de mayo en el auditorio principal del TESCo. Asiste con tu equipo."
+                  data-link=""
+                  data-pub="2026-05-10"
+                  data-exp="2026-05-21">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</main>
+
+<!-- ==================== MODAL: AVISO ==================== -->
+<div class="modal fade" id="modalAviso" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content modal-glass">
+      <div class="modal-header modal-header-glass">
+        <h5 class="modal-title" id="tituloModalAviso">Nuevo aviso</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formAviso">
+          <div class="row g-3">
+            <!-- Título -->
+            <div class="col-12">
+              <label class="form-label">Título *</label>
+              <input type="text" class="form-control form-control-glass" id="avisoTitulo" placeholder="Título del aviso" required>
+            </div>
+            <!-- Descripción -->
+            <div class="col-12">
+              <label class="form-label">Descripción * (máx. 255 caracteres)</label>
+              <textarea class="form-control form-control-glass" id="avisoDesc" rows="4" maxlength="255" placeholder="Contenido del aviso" required></textarea>
+              <small class="text-muted-glass d-block mt-1"><span id="contadorChars">0</span>/255 caracteres</small>
+            </div>
+            <!-- Link -->
+            <div class="col-12">
+              <label class="form-label">Link adjunto (opcional)</label>
+              <input type="text" class="form-control form-control-glass" id="avisoLink" placeholder="Ej. innova.tesco/registro">
+            </div>
+            <!-- Publicación -->
+            <div class="col-12 col-md-6">
+              <label class="form-label">Fecha de publicación *</label>
+              <input type="date" class="form-control form-control-glass" id="avisoPub" required>
+            </div>
+            <!-- Expiración -->
+            <div class="col-12 col-md-6">
+              <label class="form-label">Fecha de expiración *</label>
+              <input type="date" class="form-control form-control-glass" id="avisoExp" required>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer modal-footer-glass">
+        <button type="button" class="btn btn-reset" id="btnResetAviso">
+          <i class="fas fa-undo me-1"></i> Limpiar
+        </button>
+        <button type="button" class="btn btn-neon" id="btnGuardarAviso">
+          <i class="fas fa-save me-1"></i> Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer-innovatec text-center py-3">
+  <div class="container">
+    <p class="mb-1 small">&copy; 2026 Tecnológico Nacional de México. Todos los derechos reservados.</p>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <a href="#" class="footer-link small">Innovatec</a>
+      <a href="#" class="footer-link small">TESCo</a>
+      <a href="#" class="footer-link small">TecNM</a>
+      <a href="#" class="footer-link small">Integra</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="bootstrap-5.3.8-dist/js/admin_scripts.js"></script>
+<script>
+  (function() {
+    console.log('Gestor de avisos cargado.');
+
+    // ===== Contador de caracteres =====
+    var desc = document.getElementById('avisoDesc');
+    var contador = document.getElementById('contadorChars');
+    desc.addEventListener('input', function() {
+      contador.textContent = this.value.length;
+    });
+
+    // ===== Modal aviso: configurar edición =====
+    var modalAviso = document.getElementById('modalAviso');
+    modalAviso.addEventListener('show.bs.modal', function(event) {
+      var btn = event.relatedTarget;
+      var titulo = document.getElementById('tituloModalAviso');
+      var form = document.getElementById('formAviso');
+
+      if (btn && btn.id === 'btnNuevoAviso') {
+        titulo.textContent = 'Nuevo aviso';
+        form.reset();
+        contador.textContent = '0';
+        return;
+      }
+
+      if (btn && btn.classList.contains('btn-edit')) {
+        titulo.textContent = 'Modificar aviso';
+        document.getElementById('avisoTitulo').value = btn.getAttribute('data-titulo') || '';
+        document.getElementById('avisoDesc').value = btn.getAttribute('data-desc') || '';
+        document.getElementById('avisoLink').value = btn.getAttribute('data-link') || '';
+        document.getElementById('avisoPub').value = btn.getAttribute('data-pub') || '';
+        document.getElementById('avisoExp').value = btn.getAttribute('data-exp') || '';
+        contador.textContent = document.getElementById('avisoDesc').value.length;
+      }
+    });
+
+    // ===== Reset formulario =====
+    document.getElementById('btnResetAviso').addEventListener('click', function() {
+      document.getElementById('formAviso').reset();
+      contador.textContent = '0';
+    });
+
+    // ===== Guardar aviso (demo) =====
+    document.getElementById('btnGuardarAviso').addEventListener('click', function() {
+      var titulo = document.getElementById('avisoTitulo').value.trim();
+      var descripcion = document.getElementById('avisoDesc').value.trim();
+      var pub = document.getElementById('avisoPub').value;
+      var exp = document.getElementById('avisoExp').value;
+
+      if (!titulo || !descripcion || !pub || !exp) {
+        alert('Completa los campos obligatorios (*).');
+        return;
+      }
+      if (new Date(exp) < new Date(pub)) {
+        alert('La fecha de expiración no puede ser anterior a la de publicación.');
+        return;
+      }
+      alert('Aviso guardado (demo).');
+      bootstrap.Modal.getInstance(modalAviso).hide();
+    });
+
+    // ===== Eliminar aviso (demo) =====
+    document.querySelectorAll('.btn-delete').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var fila = this.closest('tr');
+        if (fila && confirm('¿Eliminar este aviso? (demo)')) {
+          fila.remove();
+        }
+      });
+    });
+
+    // ===== Fondo de hexágonos animados =====
+    (function generarHexagonos() {
+      var cont = document.getElementById('bgHexContainer');
+      if (!cont) return;
+      var cantidad = window.innerWidth < 768 ? 12 : 22;
+      for (var i = 0; i < cantidad; i++) {
+        var hex = document.createElement('div');
+        hex.className = 'bg-hexagon';
+        var size = 40 + Math.random() * 120;
+        hex.style.width = size + 'px';
+        hex.style.height = (size * 1.15) + 'px';
+        hex.style.left = Math.random() * 100 + '%';
+        hex.style.top = Math.random() * 100 + '%';
+        hex.style.opacity = (0.2 + Math.random() * 0.4).toFixed(2);
+        var dur = (12 + Math.random() * 18).toFixed(1);
+        hex.style.animation = 'flotarHex ' + dur + 's ease-in-out infinite';
+        hex.style.animationDelay = (-Math.random() * 10).toFixed(1) + 's';
+        hex.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
+        cont.appendChild(hex);
+      }
+    })();
+  })();
+</script>
+</body>
+</html>

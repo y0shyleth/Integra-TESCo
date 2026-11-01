@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Administrador | Requisitos</title>
+  <!-- Font Awesome 5 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/estilos_admin.css">
+</head>
+<body>
+<div class="bg-hex-container">
+  <div class="bg-hexagon" style="top: 10%; left: 8%;"></div>
+  <div class="bg-hexagon" style="top: 25%; right: 12%;"></div>
+  <div class="bg-hexagon" style="top: 60%; left: 15%;"></div>
+  <div class="bg-hexagon" style="top: 75%; right: 20%;"></div>
+  <div class="bg-hexagon" style="top: 45%; left: 50%;"></div>
+  <div class="bg-hexagon" style="top: 85%; left: 5%;"></div>
+</div>
+<!-- ==================== NAVBAR ADMIN ==================== -->
+<nav class="navbar navbar-expand-lg nav-inutilizable fixed-top always-collapse">
+  <div class="container-fluid position-relative">
+    <a class="navbar-brand" href="inicio_admin.html">
+      <span class="d-none d-sm-inline">Panel Admin | Reglas</span>
+      <span class="d-inline d-sm-none">Reglas</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar" aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="adminNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="inicio_admin.html"><i class="fas fa-home me-1"></i> Inicio</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="gadmin_admin.html"><i class="fas fa-user-cog me-1"></i> Gestión de administradores</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="gequipos_admin.html"><i class="fas fa-users-cog me-1"></i> Gestión de equipos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="reglas_admin.html"><i class="fas fa-gavel me-1"></i> Control de reglas</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="evaluaciones_admin.html"><i class="fas fa-clipboard-check me-1"></i> Evaluaciones</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="gcuentas_admin.html"><i class="fas fa-id-card me-1"></i> Gestión de cuentas</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="certificados_admin.html"><i class="fas fa-certificate me-1"></i> Certificados</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="garchivos_admin.html"><i class="fas fa-folder-open me-1"></i> Gestor de archivos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="avisos_admin.html"><i class="fas fa-bullhorn me-1"></i> Avisos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="widget_admin.html"><i class="fas fa-puzzle-piece me-1"></i> Widgets</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="inicio_dir_admin.html"><i class="fas fa-user-tie me-1"></i> Directivos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="index.html"><i class="fas fa-sign-out-alt me-1"></i> Salir</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ==================== SUBNavbar de reglas ==================== -->
+<div class="subnavbar-reglas">
+  <div class="container">
+    <ul class="nav subnav-tabs">
+      <li class="nav-item">
+        <a class="nav-link subnav-link active" href="requisitos_admin.html">Requisitos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link subnav-link" href="reglas_admin.html">Rúbricas</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- ==================== TERCER NAVBAR (competencia) ==================== -->
+<div class="competencia-navbar">
+  <div class="container">
+    <ul class="nav nav-pills competencia-tabs" id="competenciaTabs">
+      <li class="nav-item">
+        <button class="nav-link competencia-link active" data-bs-toggle="pill" data-bs-target="#certamen" type="button">Certamen de proyectos</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link competencia-link" data-bs-toggle="pill" data-bs-target="#innobotica" type="button">Innobótica</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link competencia-link" data-bs-toggle="pill" data-bs-target="#hackatec" type="button">Hackatec</button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- ==================== CONTENIDO PRINCIPAL ==================== -->
+<main class="main-login" style="margin-top: 76px;">
+  <div class="container">
+
+    <div class="tab-content" id="competenciaTabsContent">
+
+      <!-- ===== CERTAMEN DE PROYECTOS ===== -->
+      <div class="tab-pane fade show active" id="certamen">
+        <div class="row g-4">
+          <!-- Requisitos -->
+          <div class="col-12 col-lg-6">
+            <div class="panel-glass">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="panel-title mb-0">Requisitos de participación</h5>
+                <button class="btn btn-neon btn-sm" onclick="agregarRequisito('certamen')">
+                  <i class="fas fa-plus me-1"></i> Añadir
+                </button>
+              </div>
+              <div class="lista-requisitos" id="requisitos-certamen">
+                <div class="requisito-item">
+                  <span class="requisito-texto" contenteditable="true">Los equipos deben tener al menos una persona de cada género</span>
+                  <div class="requisito-acciones">
+                    <button class="btn btn-action btn-edit" title="Editar"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-action btn-delete" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
+                  </div>
+                </div>
+                <div class="requisito-item">
+                  <span class="requisito-texto" contenteditable="true">Los equipos deben tener integrantes de al menos 2 carreras distintas</span>
+                  <div class="requisito-acciones">
+                    <button class="btn btn-action btn-edit" title="Editar"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-action btn-delete" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
+                  </div>
+                </div>
+                <div class="requisito-item">
+                  <span class="requisito-texto" contenteditable="true">Contar con la documentación solicitada</span>
+                  <div class="requisito-acciones">
+                    <button class="btn btn-action btn-edit" title="Editar"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-action btn-delete" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Documentación solicitada -->
+          <div class="col-12 col-lg-6">
+            <div class="panel-glass">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="panel-title mb-0">Documentación solicitada</h5>
+                <button class="btn btn-neon btn-sm" onclick="agregarDocumento('certamen')">
+                  <i class="fas fa-plus me-1"></i> Añadir
+                </button>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-admin mb-0">
+                  <thead>
+                    <tr>
+                      <th>Documento</th>
+                      <th>Descripción</th>
+                      <th class="text-center" style="width: 100px;">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="documentos-certamen">
+                    <tr>
+                      <td contenteditable="true">Memoria técnica</td>
+                      <td contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</td>
+                      <td class="text-center">
+                        <div class="d-flex gap-1 justify-content-center">
+                          <button class="btn btn-action btn-edit" title="Editar"><i class="fas fa-edit"></i></button>
+                          <button class="btn btn-action btn-delete" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td contenteditable="true">Prototipo</td>
+                      <td contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud.</td>
+                      <td class="text-center">
+                        <div class="d-flex gap-1 justify-content-center">
+                          <button class="btn btn-action btn-edit" title="Editar"><i class="fas fa-edit"></i></button>
+                          <button class="btn btn-action btn-delete" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Equipos -->
+          <div class="col-12">
+            <div class="panel-glass">
+              <h5 class="panel-title mb-3">Equipos registrados</h5>
+              <div class="table-responsive">
+                <table class="table table-admin mb-0">
+                  <thead>
+                    <tr>
+                      <th>Equipo</th>
+                      <th>Categoría</th>
+                      <th>Líder</th>
+                      <th>Asesor</th>
+                      <th class="text-center" style="width: 90px;">Aprobar</th>
+                      <th class="text-center" style="width: 90px;">Ver</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="fw-semibold">KINOJ</td>
+                      <td>Bienes de consumo final</td>
+                      <td>Lani Yamille</td>
+                      <td>José Camacho</td>
+                      <td class="text-center">
+                        <div class="form-check d-flex justify-content-center">
+                          <input class="form-check-input" type="radio" name="aprobar-certamen-1">
+                        </div>
+                      </td>
+                      <td class="text-center">
+                        <button class="btn btn-action btn-view" data-bs-toggle="modal" data-bs-target="#modalVerEquipo"
+                          data-nombre="KINOJ" data-desc="Aplicación de apoyo a la salud mental"
+                          data-comp="Certamen de proyectos" data-cat="Bienes de consumo final">
+                          <i class="fas fa-eye"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="fw-semibold">AGRO-FUTURO</td>
+                      <td>Sector agroindustrial</td>
+                      <td>Pedro Sánchez</td>
+                      <td>María Fernanda López</td>
+                      <td class="text-center">
+                        <div class="form-check d-flex justify-content-center">
+                          <input class="form-check-input" type="radio" name="aprobar-certamen-2">
+                        </div>
+                      </td>
+                      <td class="text-center">
+                        <button class="btn btn-action btn-view" data-bs-toggle="modal" data-bs-target="#modalVerEquipo"
+                          data-nombre="AGRO-FUTURO" data-desc="Sistema de monitoreo agrícola inteligente"
+                          data-comp="Certamen de proyectos" data-cat="Sector agroindustrial">
+                          <i class="fas fa-eye"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== INNOBÓTICA ===== -->
+      <div class="tab-pane fade" id="innobotica">
+        <div class="row g-4">
+          <div class="col-12 col-lg-6">
+            <div class="panel-glass">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="panel-title mb-0">Requisitos de participación</h5>
+                <button class="btn btn-neon btn-sm" onclick="agregarRequisito('innobotica')">
+                  <i class="fas fa-plus me-1"></i> Añadir
+                </button>
+              </div>
+              <div class="lista-requisitos" id="requisitos-innobotica">
+                <div class="requisito-item">
+                  <span class="requisito-texto" contenteditable="true">Los equipos deben tener al menos una persona de cada género</span>
+                  <div class="requisito-acciones">
+                    <button class="btn btn-action btn-edit"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+                  </div>
+                </div>
+                <div class="requisito-item">
+                  <span class="requisito-texto" contenteditable="true">Los equipos deben tener integrantes de al menos 2 carreras distintas</span>
+                  <div class="requisito-acciones">
+                    <button class="btn btn-action btn-edit"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+                  </div>
+                </div>
+                <div class="requisito-item">
+                  <span class="requisito-texto" contenteditable="true">Contar con la documentación solicitada</span>
+                  <div class="requisito-acciones">
+                    <button class="btn btn-action btn-edit"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="panel-glass">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="panel-title mb-0">Documentación solicitada</h5>
+                <button class="btn btn-neon btn-sm" onclick="agregarDocumento('innobotica')">
+                  <i class="fas fa-plus me-1"></i> Añadir
+                </button>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-admin mb-0">
+                  <thead>
+                    <tr>
+                      <th>Documento</th>
+                      <th>Descripción</th>
+                      <th class="text-center" style="width: 100px;">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="documentos-innobotica">
+                    <tr>
+                      <td contenteditable="true">Memoria técnica</td>
+                      <td contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                      <td class="text-center">
+                        <div class="d-flex gap-1 justify-content-center">
+                          <button class="btn btn-action btn-edit"><i class="fas fa-edit"></i></button>
+                          <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td contenteditable="true">Prototipo</td>
+                      <td contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                      <td class="text-center">
+                        <div class="d-flex gap-1 justify-content-center">
+                          <button class="btn btn-action btn-edit"><i class="fas fa-edit"></i></button>
+                          <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="panel-glass">
+              <h5 class="panel-title mb-3">Equipos registrados</h5>
+              <div class="table-responsive">
+                <table class="table table-admin mb-0">
+                  <thead>
+                    <tr>
+                      <th>Equipo</th>
+                      <th>Categoría</th>
+                      <th>Líder</th>
+                      <th>Asesor</th>
+                      <th class="text-center" style="width: 90px;">Aprobar</th>
+                      <th class="text-center" style="width: 90px;">Ver</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="fw-semibold">ROBO-SIG</td>
+                      <td>Siguelineas</td>
+                      <td>Carlos Mendoza</td>
+                      <td>Ana Torres</td>
+                      <td class="text-center"><div class="form-check d-flex justify-content-center"><input class="form-check-input" type="radio" name="ap-inn-1"></div></td>
+                      <td class="text-center"><button class="btn btn-action btn-view" data-bs-toggle="modal" data-bs-target="#modalVerEquipo" data-nombre="ROBO-SIG" data-desc="Robot seguidor de línea de alta velocidad" data-comp="Innobótica" data-cat="Siguelineas"><i class="fas fa-eye"></i></button></td>
+                    </tr>
+                    <tr>
+                      <td class="fw-semibold">SUMO-TEC</td>
+                      <td>Mini sumo</td>
+                      <td>Diego Ramírez</td>
+                      <td>Laura Vega</td>
+                      <td class="text-center"><div class="form-check d-flex justify-content-center"><input class="form-check-input" type="radio" name="ap-inn-2"></div></td>
+                      <td class="text-center"><button class="btn btn-action btn-view" data-bs-toggle="modal" data-bs-target="#modalVerEquipo" data-nombre="SUMO-TEC" data-desc="Robot de mini sumo autónomo" data-comp="Innobótica" data-cat="Mini sumo"><i class="fas fa-eye"></i></button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== HACKATEC ===== -->
+      <div class="tab-pane fade" id="hackatec">
+        <div class="row g-4">
+          <div class="col-12 col-lg-6">
+            <div class="panel-glass">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="panel-title mb-0">Requisitos de participación</h5>
+                <button class="btn btn-neon btn-sm" onclick="agregarRequisito('hackatec')">
+                  <i class="fas fa-plus me-1"></i> Añadir
+                </button>
+              </div>
+              <div class="lista-requisitos" id="requisitos-hackatec">
+                <div class="requisito-item">
+                  <span class="requisito-texto" contenteditable="true">Los equipos deben tener al menos una persona de cada género</span>
+                  <div class="requisito-acciones">
+                    <button class="btn btn-action btn-edit"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+                  </div>
+                </div>
+                <div class="requisito-item">
+                  <span class="requisito-texto" contenteditable="true">Los equipos deben tener integrantes de al menos 2 carreras distintas</span>
+                  <div class="requisito-acciones">
+                    <button class="btn btn-action btn-edit"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+                  </div>
+                </div>
+                <div class="requisito-item">
+                  <span class="requisito-texto" contenteditable="true">Contar con la documentación solicitada</span>
+                  <div class="requisito-acciones">
+                    <button class="btn btn-action btn-edit"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="panel-glass">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="panel-title mb-0">Documentación solicitada</h5>
+                <button class="btn btn-neon btn-sm" onclick="agregarDocumento('hackatec')">
+                  <i class="fas fa-plus me-1"></i> Añadir
+                </button>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-admin mb-0">
+                  <thead>
+                    <tr>
+                      <th>Documento</th>
+                      <th>Descripción</th>
+                      <th class="text-center" style="width: 100px;">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="documentos-hackatec">
+                    <tr>
+                      <td contenteditable="true">Memoria técnica</td>
+                      <td contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                      <td class="text-center">
+                        <div class="d-flex gap-1 justify-content-center">
+                          <button class="btn btn-action btn-edit"><i class="fas fa-edit"></i></button>
+                          <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td contenteditable="true">Prototipo</td>
+                      <td contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                      <td class="text-center">
+                        <div class="d-flex gap-1 justify-content-center">
+                          <button class="btn btn-action btn-edit"><i class="fas fa-edit"></i></button>
+                          <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="panel-glass">
+              <h5 class="panel-title mb-3">Equipos registrados</h5>
+              <div class="table-responsive">
+                <table class="table table-admin mb-0">
+                  <thead>
+                    <tr>
+                      <th>Equipo</th>
+                      <th>Categoría</th>
+                      <th>Líder</th>
+                      <th>Asesor</th>
+                      <th class="text-center" style="width: 90px;">Aprobar</th>
+                      <th class="text-center" style="width: 90px;">Ver</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="fw-semibold">CODE-WARRIORS</td>
+                      <td>Hackatec</td>
+                      <td>Sofía Herrera</td>
+                      <td>Miguel Ángel Ruiz</td>
+                      <td class="text-center"><div class="form-check d-flex justify-content-center"><input class="form-check-input" type="radio" name="ap-hack-1"></div></td>
+                      <td class="text-center"><button class="btn btn-action btn-view" data-bs-toggle="modal" data-bs-target="#modalVerEquipo" data-nombre="CODE-WARRIORS" data-desc="Solución de ciberseguridad para PyMEs" data-comp="Hackatec" data-cat="Hackatec"><i class="fas fa-eye"></i></button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- ==================== MODAL: VER EQUIPO ==================== -->
+<div class="modal fade" id="modalVerEquipo" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content modal-glass">
+      <div class="modal-header modal-header-glass">
+        <h5 class="modal-title" id="modalEquipoNombre">KINOJ</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Info general -->
+        <div class="row g-3 mb-4">
+          <div class="col-12">
+            <p class="modal-equipo-desc" id="modalEquipoDesc">Aplicación de apoyo a la salud mental</p>
+          </div>
+          <div class="col-md-6">
+            <span class="info-label">Competencia</span>
+            <p class="info-valor" id="modalEquipoComp">Certamen de proyectos</p>
+          </div>
+          <div class="col-md-6">
+            <span class="info-label">Categoría</span>
+            <p class="info-valor" id="modalEquipoCat">Bienes de consumo final</p>
+          </div>
+        </div>
+
+        <!-- Integrantes -->
+        <h6 class="seccion-titulo">Integrantes</h6>
+        <div class="lista-integrantes-modal mb-4">
+          <div class="integrante-card lider">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <strong class="nombre-lider">Lani Yamille Fragoso Salinas</strong>
+                <span class="tag-lider">Líder</span>
+              </div>
+              <button class="btn btn-action btn-info" data-bs-toggle="modal" data-bs-target="#modalInfoIntegrante"><i class="fas fa-info-circle"></i></button>
+            </div>
+          </div>
+          <div class="integrante-card">
+            <div class="d-flex justify-content-between align-items-start">
+              <strong>Francisco Javier Camarillo</strong>
+              <button class="btn btn-action btn-info" data-bs-toggle="modal" data-bs-target="#modalInfoIntegrante"><i class="fas fa-info-circle"></i></button>
+            </div>
+          </div>
+          <div class="integrante-card">
+            <div class="d-flex justify-content-between align-items-start">
+              <strong>Chelsea Molina Valdamiz</strong>
+              <button class="btn btn-action btn-info" data-bs-toggle="modal" data-bs-target="#modalInfoIntegrante"><i class="fas fa-info-circle"></i></button>
+            </div>
+          </div>
+          <div class="integrante-card">
+            <div class="d-flex justify-content-between align-items-start">
+              <strong>Dana Karina Aguilar Martínez</strong>
+              <button class="btn btn-action btn-info" data-bs-toggle="modal" data-bs-target="#modalInfoIntegrante"><i class="fas fa-info-circle"></i></button>
+            </div>
+          </div>
+          <div class="integrante-card">
+            <div class="d-flex justify-content-between align-items-start">
+              <strong>Avril Olmos</strong>
+              <button class="btn btn-action btn-info" data-bs-toggle="modal" data-bs-target="#modalInfoIntegrante"><i class="fas fa-info-circle"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Asesores -->
+        <h6 class="seccion-titulo">Asesores</h6>
+        <div class="lista-integrantes-modal mb-4">
+          <div class="integrante-card asesor">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <strong class="nombre-asesor">José Luis Camacho Campero</strong>
+                <span class="tag-asesor">Principal</span>
+              </div>
+              <button class="btn btn-action btn-info" data-bs-toggle="modal" data-bs-target="#modalInfoIntegrante"><i class="fas fa-info-circle"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Documentación -->
+        <h6 class="seccion-titulo">Documentación cargada</h6>
+        <div class="table-responsive">
+          <table class="table table-admin mb-0">
+            <thead>
+              <tr>
+                <th>Tipo de archivo</th>
+                <th>Archivo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Memoria técnica</td>
+                <td><a href="#" class="archivo-link">memoria_tecnica_kinoj.pdf</a></td>
+              </tr>
+              <tr>
+                <td>Prototipo</td>
+                <td><a href="#" class="archivo-link">prototipo_kinoj_v2.pdf</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer modal-footer-glass">
+        <button type="button" class="btn btn-reset" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== MODAL: INFO INTEGRANTE ==================== -->
+<div class="modal fade" id="modalInfoIntegrante" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content modal-glass">
+      <div class="modal-header modal-header-glass">
+        <h5 class="modal-title">Información del integrante</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-2">
+          <div class="col-6"><span class="info-label">Nombre</span><p class="info-valor">Lani Yamille</p></div>
+          <div class="col-6"><span class="info-label">Apellido paterno</span><p class="info-valor">Fragoso</p></div>
+          <div class="col-6"><span class="info-label">Apellido materno</span><p class="info-valor">Salinas</p></div>
+          <div class="col-6"><span class="info-label">Matrícula</span><p class="info-valor">202320123</p></div>
+          <div class="col-6"><span class="info-label">Género</span><p class="info-valor">Femenino</p></div>
+          <div class="col-6"><span class="info-label">Carrera</span><p class="info-valor">SIC</p></div>
+          <div class="col-6"><span class="info-label">Semestre</span><p class="info-valor">8</p></div>
+          <div class="col-6"><span class="info-label">Grupo</span><p class="info-valor">3711</p></div>
+          <div class="col-6"><span class="info-label">Correo de contacto</span><p class="info-valor">202320123@tesco.edu.mx</p></div>
+          <div class="col-6"><span class="info-label">Número de contacto</span><p class="info-valor">55 1234 5678</p></div>
+        </div>
+        <h6 class="seccion-titulo mt-3">Archivos personales</h6>
+        <ul class="lista-archivos">
+          <li><a href="#" class="archivo-link">certificado.pdf</a></li>
+          <li><a href="#" class="archivo-link">identificacion.pdf</a></li>
+          <li><a href="#" class="archivo-link">constancia_inscripcion.pdf</a></li>
+        </ul>
+      </div>
+      <div class="modal-footer modal-footer-glass">
+        <button type="button" class="btn btn-reset" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer-innovatec text-center py-3">
+  <div class="container">
+    <p class="mb-1 small">&copy; 2026 Tecnológico Nacional de México. Todos los derechos reservados.</p>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <a href="#" class="footer-link small">Innovatec</a>
+      <a href="#" class="footer-link small">TESCo</a>
+      <a href="#" class="footer-link small">TecNM</a>
+      <a href="#" class="footer-link small">Integra</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="bootstrap-5.3.8-dist/js/admin_scripts.js"></script>
+<script>
+  (function() {
+    console.log('Requisitos cargados.');
+
+    // ===== Agregar requisito =====
+    window.agregarRequisito = function(comp) {
+      var cont = document.getElementById('requisitos-' + comp);
+      var div = document.createElement('div');
+      div.className = 'requisito-item';
+      div.innerHTML =
+        '<span class="requisito-texto" contenteditable="true">Nuevo requisito</span>' +
+        '<div class="requisito-acciones">' +
+        '<button class="btn btn-action btn-edit"><i class="fas fa-edit"></i></button>' +
+        '<button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>' +
+        '</div>';
+      cont.appendChild(div);
+    };
+
+    // ===== Agregar documento =====
+    window.agregarDocumento = function(comp) {
+      var tbody = document.getElementById('documentos-' + comp);
+      var tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td contenteditable="true">Nuevo documento</td>' +
+        '<td contenteditable="true">Descripción del documento</td>' +
+        '<td class="text-center">' +
+        '<div class="d-flex gap-1 justify-content-center">' +
+        '<button class="btn btn-action btn-edit"><i class="fas fa-edit"></i></button>' +
+        '<button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>' +
+        '</div></td>';
+      tbody.appendChild(tr);
+    };
+
+    // ===== Eliminar requisito / documento (delegado) =====
+    document.addEventListener('click', function(e) {
+      var btn = e.target.closest('.btn-delete');
+      if (btn) {
+        var item = btn.closest('.requisito-item');
+        if (item) { item.remove(); return; }
+        var fila = btn.closest('tr');
+        if (fila && fila.closest('tbody')) { fila.remove(); return; }
+      }
+    });
+
+    // ===== Modal ver equipo =====
+    var modalVer = document.getElementById('modalVerEquipo');
+    modalVer.addEventListener('show.bs.modal', function(event) {
+      var btn = event.relatedTarget;
+      document.getElementById('modalEquipoNombre').textContent = btn.getAttribute('data-nombre') || 'Equipo';
+      document.getElementById('modalEquipoDesc').textContent = btn.getAttribute('data-desc') || '';
+      document.getElementById('modalEquipoComp').textContent = btn.getAttribute('data-comp') || '';
+      document.getElementById('modalEquipoCat').textContent = btn.getAttribute('data-cat') || '';
+    });
+  })();
+</script>
+</body>
+</html>

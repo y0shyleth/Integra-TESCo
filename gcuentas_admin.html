@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Administración | Gestor de cuentas</title>
+  <!-- Font Awesome 5 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/estilos_admin.css">
+</head>
+<body>
+
+<!-- ==================== FONDO HEXÁGONOS ==================== -->
+<div class="bg-hex-container" id="bgHexContainer"></div>
+
+<!-- ==================== NAVBAR ADMIN ==================== -->
+<nav class="navbar navbar-expand-lg nav-inutilizable fixed-top always-collapse">
+  <div class="container-fluid position-relative">
+    <a class="navbar-brand" href="inicio_admin.html">
+      <span class="d-none d-sm-inline">Panel de Administración | Gestor de cuentas</span>
+      <span class="d-inline d-sm-none">Gestor de cuentas</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar" aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="adminNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="inicio_admin.html"><i class="fas fa-home me-1"></i> Inicio</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="gadmin_admin.html"><i class="fas fa-user-cog me-1"></i> Gestión de administradores</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="gequipos_admin.html"><i class="fas fa-users-cog me-1"></i> Gestión de equipos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="reglas_admin.html"><i class="fas fa-gavel me-1"></i> Control de reglas</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="evaluaciones_admin.html"><i class="fas fa-clipboard-check me-1"></i> Evaluaciones</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="gcuentas_admin.html"><i class="fas fa-id-card me-1"></i> Gestión de cuentas</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="certificados_admin.html"><i class="fas fa-certificate me-1"></i> Certificados</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="garchivos_admin.html"><i class="fas fa-folder-open me-1"></i> Gestor de archivos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="avisos_admin.html"><i class="fas fa-bullhorn me-1"></i> Avisos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="widget_admin.html"><i class="fas fa-puzzle-piece me-1"></i> Widgets</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="inicio_dir_admin.html"><i class="fas fa-user-tie me-1"></i> Directivos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="index.html"><i class="fas fa-sign-out-alt me-1"></i> Salir</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ==================== SUBNavbar de roles ==================== -->
+<div class="subnavbar-reglas">
+  <div class="container">
+    <ul class="nav subnav-tabs" id="rolTabs">
+      <li class="nav-item">
+        <button class="subnav-link competencia-link active" data-bs-toggle="pill" data-bs-target="#rol-participantes" type="button">Participantes</button>
+      </li>
+      <li class="nav-item">
+        <button class="subnav-link competencia-link" data-bs-toggle="pill" data-bs-target="#rol-evaluadores" type="button">Evaluadores</button>
+      </li>
+      <li class="nav-item">
+        <button class="subnav-link competencia-link" data-bs-toggle="pill" data-bs-target="#rol-asesores" type="button">Asesores</button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- ==================== CONTENIDO PRINCIPAL ==================== -->
+<main class="main-login" style="margin-top: 76px;">
+  <div class="container">
+
+    <!-- Botón añadir -->
+    <div class="d-flex justify-content-end mb-3">
+      <button class="btn btn-neon" id="btnAñadirUsuario" data-bs-toggle="modal" data-bs-target="#modalUsuario">
+        <i class="fas fa-plus me-1"></i> Añadir
+      </button>
+    </div>
+
+    <div class="tab-content" id="rolTabsContent">
+
+      <!-- ===== PARTICIPANTES ===== -->
+      <div class="tab-pane fade show active" id="rol-participantes">
+        <div class="table-responsive table-glass">
+          <table class="table table-admin align-middle mb-0">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Matrícula</th>
+                <th>Correo</th>
+                <th>Contraseña</th>
+                <th class="text-center">Activo</th>
+                <th class="text-center" style="width: 110px;">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Lani Yamille Fragoso Salinas</td>
+                <td>202320123</td>
+                <td>202320123@tesco.edu.mx</td>
+                <td>l4n1_2026</td>
+                <td class="text-center">
+                  <div class="form-check form-switch d-flex justify-content-center">
+                    <input class="form-check-input" type="checkbox" checked>
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div class="d-flex gap-2 justify-content-center">
+                    <button class="btn btn-action btn-edit" data-bs-toggle="modal" data-bs-target="#modalUsuario"
+                      data-rol="participante" data-nombre="Lani Yamille" data-ap="Fragoso" data-am="Salinas"
+                      data-matricula="2021300456" data-correo="lani.fragoso@tesco.edu.mx" data-tel="55 1234 5678">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-action btn-reset-user"><i class="fas fa-undo"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Francisco Javier Camarillo</td>
+                <td>202320666</td>
+                <td>202320666@tesco.edu.mx</td>
+                <td>oth3rsegm3ntz</td>
+                <td class="text-center">
+                  <div class="form-check form-switch d-flex justify-content-center">
+                    <input class="form-check-input" type="checkbox" checked>
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div class="d-flex gap-2 justify-content-center">
+                    <button class="btn btn-action btn-edit" data-bs-toggle="modal" data-bs-target="#modalUsuario"
+                      data-rol="participante" data-nombre="Francisco Javier" data-ap="Camarillo" data-am=""
+                      data-matricula="2021300789" data-correo="francisco.camarillo@tesco.edu.mx" data-tel="55 2345 6789">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-action btn-reset-user"><i class="fas fa-undo"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Chelsea Molina Valdamiz</td>
+                <td>202321234</td>
+                <td>202321234@tesco.edu.mx</td>
+                <td>ch3ls34_2026</td>
+                <td class="text-center">
+                  <div class="form-check form-switch d-flex justify-content-center">
+                    <input class="form-check-input" type="checkbox">
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div class="d-flex gap-2 justify-content-center">
+                    <button class="btn btn-action btn-edit" data-bs-toggle="modal" data-bs-target="#modalUsuario"
+                      data-rol="participante" data-nombre="Chelsea" data-ap="Molina" data-am="Valdamiz"
+                      data-matricula="2021301234" data-correo="chelsea.molina@tesco.edu.mx" data-tel="55 3456 7890">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-action btn-reset-user"><i class="fas fa-undo"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Dana Karina Aguilar Martínez</td>
+                <td>202321996</td>
+                <td>202321996@tesco.edu.mx</td>
+                <td>d4n4_2026</td>
+                <td class="text-center">
+                  <div class="form-check form-switch d-flex justify-content-center">
+                    <input class="form-check-input" type="checkbox" checked>
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div class="d-flex gap-2 justify-content-center">
+                    <button class="btn btn-action btn-edit" data-bs-toggle="modal" data-bs-target="#modalUsuario"
+                      data-rol="participante" data-nombre="Dana Karina" data-ap="Aguilar" data-am="Martínez"
+                      data-matricula="2021305678" data-correo="dana.aguilar@tesco.edu.mx" data-tel="55 4567 8901">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-action btn-reset-user"><i class="fas fa-undo"></i></button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ===== EVALUADORES ===== -->
+      <div class="tab-pane fade" id="rol-evaluadores">
+        <div class="table-responsive table-glass">
+          <table class="table table-admin align-middle mb-0">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Matrícula</th>
+                <th>Correo</th>
+                <th>Contraseña</th>
+                <th class="text-center">Activo</th>
+                <th class="text-center" style="width: 110px;">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>López Bañuelos Emanuel Rashidh</td>
+                <td>202320205</td>
+                <td>202320205@tesco.edu.mx</td>
+                <td>awadeuwu57</td>
+                <td class="text-center">
+                  <div class="form-check form-switch d-flex justify-content-center">
+                    <input class="form-check-input" type="checkbox" checked>
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div class="d-flex gap-2 justify-content-center">
+                    <button class="btn btn-action btn-edit" data-bs-toggle="modal" data-bs-target="#modalUsuario"
+                      data-rol="evaluador" data-nombre="Emanuel Rashidh" data-ap="López" data-am="Bañuelos"
+                      data-matricula="EMP-001" data-correo="emanuel.lopez@tesco.edu.mx" data-tel="55 5678 9012">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-action btn-reset-user"><i class="fas fa-undo"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Lugo Alvarez César Geovanni</td>
+                <td>202321449</td>
+                <td>202321499@tesco.edu.mx</td>
+                <td>c3s4r_2026</td>
+                <td class="text-center">
+                  <div class="form-check form-switch d-flex justify-content-center">
+                    <input class="form-check-input" type="checkbox" checked>
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div class="d-flex gap-2 justify-content-center">
+                    <button class="btn btn-action btn-edit" data-bs-toggle="modal" data-bs-target="#modalUsuario"
+                      data-rol="evaluador" data-nombre="César Geovanni" data-ap="Lugo" data-am="Alvarez"
+                      data-matricula="EMP-002" data-correo="cesar.lugo@tesco.edu.mx" data-tel="55 6789 0123">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-action btn-reset-user"><i class="fas fa-undo"></i></button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ===== ASESORES ===== -->
+      <div class="tab-pane fade" id="rol-asesores">
+        <div class="table-responsive table-glass">
+          <table class="table table-admin align-middle mb-0">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Matrícula</th>
+                <th>Correo</th>
+                <th>Contraseña</th>
+                <th class="text-center">Activo</th>
+                <th class="text-center" style="width: 110px;">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Camacho Campero José Luis</td>
+                <td>DOC-001</td>
+                <td>jose.camacho@tesco.edu.mx</td>
+                <td>j0s3_2026</td>
+                <td class="text-center">
+                  <div class="form-check form-switch d-flex justify-content-center">
+                    <input class="form-check-input" type="checkbox" checked>
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div class="d-flex gap-2 justify-content-center">
+                    <button class="btn btn-action btn-edit" data-bs-toggle="modal" data-bs-target="#modalUsuario"
+                      data-rol="asesor" data-nombre="José Luis" data-ap="Camacho" data-am="Campero"
+                      data-matricula="DOC-001" data-correo="jose.camacho@tesco.edu.mx" data-tel="55 7890 1234">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-action btn-reset-user"><i class="fas fa-undo"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Ana Torres Vega</td>
+                <td>DOC-002</td>
+                <td>ana.torres@tesco.edu.mx</td>
+                <td>4n4_2026</td>
+                <td class="text-center">
+                  <div class="form-check form-switch d-flex justify-content-center">
+                    <input class="form-check-input" type="checkbox" checked>
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div class="d-flex gap-2 justify-content-center">
+                    <button class="btn btn-action btn-edit" data-bs-toggle="modal" data-bs-target="#modalUsuario"
+                      data-rol="asesor" data-nombre="Ana" data-ap="Torres" data-am="Vega"
+                      data-matricula="DOC-002" data-correo="ana.torres@tesco.edu.mx" data-tel="55 8901 2345">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-action btn-reset-user"><i class="fas fa-undo"></i></button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- ==================== MODAL: USUARIO ==================== -->
+<div class="modal fade" id="modalUsuario" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content modal-glass">
+      <div class="modal-header modal-header-glass">
+        <h5 class="modal-title" id="tituloModalUsuario">Modificar participante</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formUsuario">
+          <div class="row g-3">
+            <!-- Nombre -->
+            <div class="col-12 col-md-4">
+              <label class="form-label">Nombre(s) *</label>
+              <input type="text" class="form-control form-control-glass" id="userNombre" required>
+            </div>
+            <!-- Apellido paterno -->
+            <div class="col-12 col-md-4">
+              <label class="form-label">Apellido paterno *</label>
+              <input type="text" class="form-control form-control-glass" id="userAp" required>
+            </div>
+            <!-- Apellido materno -->
+            <div class="col-12 col-md-4">
+              <label class="form-label">Apellido materno *</label>
+              <input type="text" class="form-control form-control-glass" id="userAm" required>
+            </div>
+            <!-- Matrícula -->
+            <div class="col-12 col-md-6">
+              <label class="form-label">Matrícula *</label>
+              <input type="text" class="form-control form-control-glass" id="userMatricula" required>
+            </div>
+            <!-- Correo -->
+            <div class="col-12 col-md-6">
+              <label class="form-label">E-mail de contacto</label>
+              <input type="email" class="form-control form-control-glass" id="userCorreo">
+            </div>
+            <!-- Teléfono -->
+            <div class="col-12 col-md-6">
+              <label class="form-label">Teléfono de contacto</label>
+              <input type="tel" class="form-control form-control-glass" id="userTelefono">
+            </div>
+            <!-- Carrera -->
+            <div class="col-12 col-md-6">
+              <label class="form-label">Carrera</label>
+              <select class="form-select form-control-glass" id="userCarrera">
+                <option value="">Selecciona una carrera</option>
+                <option>EMI</option><option>IND</option><option>SIC</option>
+                <option>LAM</option><option>MEC</option><option>AMB</option>
+                <option>IGE</option><option>IQU</option><option>ICV</option>
+                <option>TIC</option><option>IMA</option><option>IFV</option>
+              </select>
+            </div>
+            <!-- Semestre -->
+            <div class="col-6 col-md-3">
+              <label class="form-label">Semestre</label>
+              <select class="form-select form-control-glass" id="userSemestre">
+                <option value="">-</option>
+                <option>1</option><option>2</option><option>3</option><option>4</option>
+                <option>5</option><option>6</option><option>7</option><option>8</option>
+                <option>9</option><option>10</option><option>11</option><option>12</option>
+              </select>
+            </div>
+            <!-- Grupo -->
+            <div class="col-6 col-md-3">
+              <label class="form-label">Grupo</label>
+              <input type="text" class="form-control form-control-glass" id="userGrupo" placeholder="Ej. 5421">
+            </div>
+            <!-- Género -->
+            <div class="col-12">
+              <label class="form-label d-block">Género *</label>
+              <div class="btn-group-genero">
+                <input type="radio" class="btn-check" name="genero" id="generoM" value="M">
+                <label class="btn btn-glass btn-sm" for="generoM">
+                  <i class="fas fa-mars me-1"></i> Masculino
+                </label>
+                <input type="radio" class="btn-check" name="genero" id="generoF" value="F">
+                <label class="btn btn-glass btn-sm" for="generoF">
+                  <i class="fas fa-venus me-1"></i> Femenino
+                </label>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer modal-footer-glass">
+        <button type="button" class="btn btn-reset" id="btnResetUsuario">
+          <i class="fas fa-undo me-1"></i> Reestablecer
+        </button>
+        <button type="button" class="btn btn-neon" id="btnGuardarUsuario">
+          <i class="fas fa-save me-1"></i> Registrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer-innovatec text-center py-3">
+  <div class="container">
+    <p class="mb-1 small">&copy; 2026 Tecnológico Nacional de México. Todos los derechos reservados.</p>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <a href="#" class="footer-link small">Innovatec</a>
+      <a href="#" class="footer-link small">TESCo</a>
+      <a href="#" class="footer-link small">TecNM</a>
+      <a href="#" class="footer-link small">Integra</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="bootstrap-5.3.8-dist/js/admin_scripts.js"></script>
+<script>
+  (function() {
+    console.log('Gestor de cuentas cargado.');
+
+    // ===== Modal usuario: configurar según rol =====
+    var modalUsuario = document.getElementById('modalUsuario');
+    modalUsuario.addEventListener('show.bs.modal', function(event) {
+      var btn = event.relatedTarget;
+      var esNuevo = btn && btn.id === 'btnAñadirUsuario';
+      var titulo = document.getElementById('tituloModalUsuario');
+
+      if (esNuevo) {
+        titulo.textContent = 'Añadir usuario';
+        document.getElementById('formUsuario').reset();
+        document.querySelectorAll('#formUsuario .form-check-input').forEach(function(chk){chk.checked=false;});
+        return;
+      }
+
+      if (!btn) return;
+
+      var rol = btn.getAttribute('data-rol') || 'usuario';
+      var rolCap = rol.charAt(0).toUpperCase() + rol.slice(1);
+      titulo.textContent = 'Modificar ' + rolCap;
+
+      document.getElementById('userNombre').value = btn.getAttribute('data-nombre') || '';
+      document.getElementById('userAp').value = btn.getAttribute('data-ap') || '';
+      document.getElementById('userAm').value = btn.getAttribute('data-am') || '';
+      document.getElementById('userMatricula').value = btn.getAttribute('data-matricula') || '';
+      document.getElementById('userCorreo').value = btn.getAttribute('data-correo') || '';
+      document.getElementById('userTelefono').value = btn.getAttribute('data-tel') || '';
+    });
+
+    // ===== Reestablecer formulario =====
+    document.getElementById('btnResetUsuario').addEventListener('click', function() {
+      document.getElementById('formUsuario').reset();
+    });
+
+    // ===== Guardar usuario (demo) =====
+    document.getElementById('btnGuardarUsuario').addEventListener('click', function() {
+      var nombre = document.getElementById('userNombre').value.trim();
+      var ap = document.getElementById('userAp').value.trim();
+      var am = document.getElementById('userAm').value.trim();
+      var mat = document.getElementById('userMatricula').value.trim();
+      var genero = document.querySelector('input[name="genero"]:checked');
+
+      if (!nombre || !ap || !am || !mat) {
+        alert('Completa los campos obligatorios (*).');
+        return;
+      }
+      if (!genero) {
+        alert('Selecciona un género.');
+        return;
+      }
+      alert('Usuario registrado (demo).');
+      bootstrap.Modal.getInstance(modalUsuario).hide();
+    });
+
+    // ===== Botones de restaurar (demo) =====
+    document.querySelectorAll('.btn-reset-user').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        if (confirm('¿Restaurar la información de este usuario? (demo)')) {
+          alert('Información restaurada (demo).');
+        }
+      });
+    });
+
+    // ===== Fondo de hexágonos animados =====
+    (function generarHexagonos() {
+      var cont = document.getElementById('bgHexContainer');
+      if (!cont) return;
+      var cantidad = window.innerWidth < 768 ? 12 : 22;
+      for (var i = 0; i < cantidad; i++) {
+        var hex = document.createElement('div');
+        hex.className = 'bg-hexagon';
+        var size = 40 + Math.random() * 120;
+        hex.style.width = size + 'px';
+        hex.style.height = (size * 1.15) + 'px';
+        hex.style.left = Math.random() * 100 + '%';
+        hex.style.top = Math.random() * 100 + '%';
+        hex.style.opacity = (0.2 + Math.random() * 0.4).toFixed(2);
+        var dur = (12 + Math.random() * 18).toFixed(1);
+        hex.style.animation = 'flotarHex ' + dur + 's ease-in-out infinite';
+        hex.style.animationDelay = (-Math.random() * 10).toFixed(1) + 's';
+        hex.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
+        cont.appendChild(hex);
+      }
+    })();
+  })();
+</script>
+</body>
+</html>

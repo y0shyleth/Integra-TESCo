@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Integra-TESCO · Participantes | Evaluaciones</title>
+  
+  <!-- Fonts & icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Estilos base del participante -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/estilos_participante.css">
+</head>
+<body>
+
+  <!-- Fondo de hexágonos animados -->
+  <div class="bg-hex-container" id="bgHexContainer"></div>
+
+  <!-- ========== NAVBAR PARTICIPANTE ========== -->
+  <nav class="navbar-participante">
+    <div class="navbar-container">
+      <a href="inicio_participante.html" class="nav-title-link">
+        <span class="brand-text">Participantes <span class="brand-accent">| Evaluaciones</span></span>
+      </a>
+
+      <button class="navbar-toggler-participante" id="navbarToggler" aria-label="Abrir menú" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <ul class="nav-menu-participante" id="navMenu">
+        <li><a href="inicio_participante.html" class="nav-link-p"><i class="fas fa-house"></i> Inicio</a></li>
+        <li><a href="archivosp_participante.html" class="nav-link-p"><i class="fas fa-folder-open"></i> Archivos</a></li>
+        <li><a href="perfil_participante.html" class="nav-link-p"><i class="fas fa-user"></i> Perfil</a></li>
+        <li><a href="index.html" class="nav-link-p nav-link-danger"><i class="fas fa-right-from-bracket"></i> Cerrar sesión</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== CONTENIDO PRINCIPAL ========== -->
+  <main class="main-wrapper main-dashboard">
+
+    <!-- Pestañas (Segunda Navbar) -->
+    <div class="tabs-evaluaciones">
+      <button class="tab-btn active" data-target="panel-evaluaciones">
+        <i class="fas fa-list-check"></i> Ver evaluaciones de rúbrica
+      </button>
+      <button class="tab-btn" data-target="panel-ranking">
+        <i class="fas fa-ranking-star"></i> Ver ranking
+      </button>
+    </div>
+
+    <!-- CONTENEDOR 1: EVALUACIONES -->
+    <div id="panel-evaluaciones" class="tab-panel active">
+      
+      <div class="evaluacion-header-info">
+        <h2 class="evaluacion-titulo">Evaluación 
+          <input type="number" id="inputNumEvaluacion" class="input-eval-num" value="1" min="1" max="6"> 
+          de 6
+        </h2>
+        <p class="evaluador-nombre-text">Evaluador: Fabiola Fuentes Herrera</p>
+      </div>
+
+      <div class="rubrica-lista">
+        <!-- Punto 1 -->
+        <div class="rubrica-item">
+          <p class="rubrica-pregunta">El apoyo visual ayuda a la comprensión del presentador y es coherente con el proyecto que se presenta</p>
+          <div class="rubrica-puntaje">
+            <span class="puntaje-obtenido">5</span> de 5
+          </div>
+        </div>
+        <!-- Punto 2 -->
+        <div class="rubrica-item">
+          <p class="rubrica-pregunta">El orador expone de manera pausada, entendible y profesional</p>
+          <div class="rubrica-puntaje">
+            <span class="puntaje-obtenido">4</span> de 5
+          </div>
+        </div>
+        <!-- Punto 3 -->
+        <div class="rubrica-item">
+          <p class="rubrica-pregunta">Se identificaron las principales causas de la problemática, se planteó un objetivo y el trabajo expuesto se realizó con base a dicho objetivo</p>
+          <div class="rubrica-puntaje">
+            <span class="puntaje-obtenido">9</span> de 10
+          </div>
+        </div>
+      </div>
+
+      <div class="evaluacion-acciones-bottom">
+        <a href="equipo_participante.html" class="btn-submit btn-outline-orange">Volver</a>
+        <button type="button" class="btn-submit btn-orange" id="btnAbrirReporte">Reportar</button>
+      </div>
+
+    </div>
+
+    <!-- CONTENEDOR 2: RANKING -->
+    <div id="panel-ranking" class="tab-panel">
+      
+      <h2 class="ranking-titulo">Ranking - Certamen de proyectos: Bienes de Consumo final</h2>
+      
+      <div class="ranking-lista">
+        <div class="ranking-item pos-1">
+          <div class="ranking-equipo"><span class="ranking-pos">1.</span> Kinoj</div>
+          <div class="ranking-puntos">92/100</div>
+        </div>
+        <div class="ranking-item pos-2">
+          <div class="ranking-equipo"><span class="ranking-pos">2.</span> Apollo</div>
+          <div class="ranking-puntos">89/100</div>
+        </div>
+        <div class="ranking-item pos-3">
+          <div class="ranking-equipo"><span class="ranking-pos">3.</span> Tescanso</div>
+          <div class="ranking-puntos">75/100</div>
+        </div>
+        <div class="ranking-item pos-4">
+          <div class="ranking-equipo"><span class="ranking-pos">4.</span> Aquaguard</div>
+          <div class="ranking-puntos">74/100</div>
+        </div>
+        <div class="ranking-item pos-5">
+          <div class="ranking-equipo"><span class="ranking-pos">5.</span> CEYZVZ</div>
+          <div class="ranking-puntos">51/100</div>
+        </div>
+      </div>
+
+      <div class="evaluacion-acciones-bottom">
+        <a href="equipo_participante.html" class="btn-submit btn-outline-orange">Volver</a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ========== MODAL REPORTAR EVALUACIÓN ========== -->
+  <div class="modal-overlay" id="modalReportar">
+    <div class="modal-container modal-md">
+      <div class="modal-header">
+        <h3>Reportar evaluación</h3>
+        <button class="modal-close" data-close-modal="modalReportar" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="motivoReporte">Motivo de reporte <span class="required">*</span></label>
+          <select id="motivoReporte" class="form-control">
+            <option value="">Selecciona un motivo</option>
+            <option value="vacia">Evaluación vacía</option>
+            <option value="similares">Calificaciones similares</option>
+            <option value="injusta">Se cree que hubo una evaluación injusta</option>
+            <option value="incompleta">Evaluación incompleta</option>
+            <option value="otro">Otro</option>
+          </select>
+          <small class="error-msg" id="motivoReporteError"></small>
+        </div>
+        <div class="form-group">
+          <label for="descripcionReporte">Describa su reporte <span class="required">*</span></label>
+          <textarea id="descripcionReporte" class="form-control" rows="4" placeholder="Explica detalladamente el motivo de tu reporte..."></textarea>
+          <small class="error-msg" id="descripcionReporteError"></small>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-submit btn-outline-orange" data-close-modal="modalReportar">Cancelar</button>
+        <button type="button" class="btn-submit btn-orange" id="btnEnviarReporte">Enviar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer-participante">
+    <div class="footer-content">
+      <p>Integra-Tesco – Módulo de participantes | 2026 Todos los derechos reservados</p>
+      <div class="footer-links">
+        <a href="https://www.tecnm.mx/" target="_blank">TecNM</a>
+        <a href="https://coacalco.tecnm.mx/TECNM/" target="_blank">TESCo</a>
+        <a href="https://innova.tecnm.mx/" target="_blank">Innovatec</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="bootstrap-5.3.8-dist/js/participante_scripts.js"></script>
+
+</body>
+</html>

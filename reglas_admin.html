@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Administrador | Rúbricas</title>
+  <!-- Font Awesome 5 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/estilos_admin.css">
+</head>
+<body>
+<div class="bg-hex-container">
+  <div class="bg-hexagon" style="top: 10%; left: 8%;"></div>
+  <div class="bg-hexagon" style="top: 25%; right: 12%;"></div>
+  <div class="bg-hexagon" style="top: 60%; left: 15%;"></div>
+  <div class="bg-hexagon" style="top: 75%; right: 20%;"></div>
+  <div class="bg-hexagon" style="top: 45%; left: 50%;"></div>
+  <div class="bg-hexagon" style="top: 85%; left: 5%;"></div>
+</div>
+<!-- ==================== NAVBAR ADMIN ==================== -->
+<nav class="navbar navbar-expand-lg nav-inutilizable fixed-top always-collapse">
+  <div class="container-fluid position-relative">
+    <a class="navbar-brand" href="inicio_admin.html">
+      <span class="d-none d-sm-inline">Panel Admin | Reglas</span>
+      <span class="d-inline d-sm-none">Reglas</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar" aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="adminNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="inicio_admin.html"><i class="fas fa-home me-1"></i> Inicio</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="gadmin_admin.html"><i class="fas fa-user-cog me-1"></i> Gestión de administradores</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="gequipos_admin.html"><i class="fas fa-users-cog me-1"></i> Gestión de equipos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="reglas_admin.html"><i class="fas fa-gavel me-1"></i> Control de reglas</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="evaluaciones_admin.html"><i class="fas fa-clipboard-check me-1"></i> Evaluaciones</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="gcuentas_admin.html"><i class="fas fa-id-card me-1"></i> Gestión de cuentas</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="certificados_admin.html"><i class="fas fa-certificate me-1"></i> Certificados</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="garchivos_admin.html"><i class="fas fa-folder-open me-1"></i> Gestor de archivos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="avisos_admin.html"><i class="fas fa-bullhorn me-1"></i> Avisos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="widget_admin.html"><i class="fas fa-puzzle-piece me-1"></i> Widgets</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="inicio_dir_admin.html"><i class="fas fa-user-tie me-1"></i> Directivos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="index.html"><i class="fas fa-sign-out-alt me-1"></i> Salir</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ==================== SUBNavbar de reglas ==================== -->
+<div class="subnavbar-reglas">
+  <div class="container">
+    <ul class="nav subnav-tabs">
+      <li class="nav-item"><a class="nav-link subnav-link" href="requisitos_admin.html">Requisitos</a></li>
+      <li class="nav-item"><a class="nav-link subnav-link active" href="reglas_admin.html">Rúbricas</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ==================== TERCER NAVBAR ==================== -->
+<div class="competencia-navbar">
+  <div class="container">
+    <ul class="nav nav-pills competencia-tabs" id="competenciaTabs">
+      <li class="nav-item"><button class="nav-link competencia-link active" data-bs-toggle="pill" data-bs-target="#certamen" type="button">Certamen de proyectos</button></li>
+      <li class="nav-item"><button class="nav-link competencia-link" data-bs-toggle="pill" data-bs-target="#innobotica" type="button">Innobótica</button></li>
+      <li class="nav-item"><button class="nav-link competencia-link" data-bs-toggle="pill" data-bs-target="#hackatec" type="button">Hackatec</button></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ==================== CONTENIDO ==================== -->
+<main class="main-login" style="margin-top: 76px;">
+  <div class="container">
+
+    <div class="tab-content" id="competenciaTabsContent">
+
+      <!-- ===== CERTAMEN DE PROYECTOS ===== -->
+      <div class="tab-pane fade show active" id="certamen">
+        <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+          <h4 class="panel-title mb-0">Rúbrica · Certamen de proyectos</h4>
+          <div class="d-flex gap-2">
+            <button class="btn btn-glass btn-sm" data-bs-toggle="modal" data-bs-target="#modalGestorEvaluadores">
+              <i class="fas fa-users-cog me-1"></i> Gestor de evaluadores
+            </button>
+            <button class="btn btn-neon btn-sm" onclick="agregarPunto('certamen')">
+              <i class="fas fa-plus me-1"></i> Añadir punto
+            </button>
+          </div>
+        </div>
+
+        <div class="lista-puntos" id="puntos-certamen">
+          <!-- Puntos de rúbrica con botón de puntaje por evaluador -->
+          <div class="punto-card">
+            <div class="punto-handle"><i class="fas fa-grip-vertical"></i></div>
+            <div class="punto-contenido">
+              <div class="punto-nombre" contenteditable="true">Presentación del proyecto</div>
+              <div class="punto-desc" contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Claridad y estructura de la exposición.</div>
+            </div>
+            <div class="punto-acciones">
+              <button class="btn btn-action btn-puntaje" data-bs-toggle="modal" data-bs-target="#modalPuntajeEvaluador" title="Puntaje por evaluador">
+                <i class="fas fa-calculator"></i>
+              </button>
+              <button class="btn btn-action btn-edit"><i class="fas fa-edit"></i></button>
+              <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+            </div>
+          </div>
+
+          <div class="punto-card">
+            <div class="punto-handle"><i class="fas fa-grip-vertical"></i></div>
+            <div class="punto-contenido">
+              <div class="punto-nombre" contenteditable="true">Innovación</div>
+              <div class="punto-desc" contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Originalidad de la propuesta.</div>
+            </div>
+            <div class="punto-acciones">
+              <button class="btn btn-action btn-puntaje" data-bs-toggle="modal" data-bs-target="#modalPuntajeEvaluador"><i class="fas fa-calculator"></i></button>
+              <button class="btn btn-action btn-edit"><i class="fas fa-edit"></i></button>
+              <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+            </div>
+          </div>
+
+          <div class="punto-card">
+            <div class="punto-handle"><i class="fas fa-grip-vertical"></i></div>
+            <div class="punto-contenido">
+              <div class="punto-nombre" contenteditable="true">Viabilidad técnica</div>
+              <div class="punto-desc" contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Factibilidad de implementación.</div>
+            </div>
+            <div class="punto-acciones">
+              <button class="btn btn-action btn-puntaje" data-bs-toggle="modal" data-bs-target="#modalPuntajeEvaluador"><i class="fas fa-calculator"></i></button>
+              <button class="btn btn-action btn-edit"><i class="fas fa-edit"></i></button>
+              <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+            </div>
+          </div>
+
+          <div class="punto-card">
+            <div class="punto-handle"><i class="fas fa-grip-vertical"></i></div>
+            <div class="punto-contenido">
+              <div class="punto-nombre" contenteditable="true">Impacto social</div>
+              <div class="punto-desc" contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Beneficio a la comunidad.</div>
+            </div>
+            <div class="punto-acciones">
+              <button class="btn btn-action btn-puntaje" data-bs-toggle="modal" data-bs-target="#modalPuntajeEvaluador"><i class="fas fa-calculator"></i></button>
+              <button class="btn btn-action btn-edit"><i class="fas fa-edit"></i></button>
+              <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+            </div>
+          </div>
+
+          <div class="punto-card">
+            <div class="punto-handle"><i class="fas fa-grip-vertical"></i></div>
+            <div class="punto-contenido">
+              <div class="punto-nombre" contenteditable="true">Documentación</div>
+              <div class="punto-desc" contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Calidad de la memoria técnica.</div>
+            </div>
+            <div class="punto-acciones">
+              <button class="btn btn-action btn-puntaje" data-bs-toggle="modal" data-bs-target="#modalPuntajeEvaluador"><i class="fas fa-calculator"></i></button>
+              <button class="btn btn-action btn-edit"><i class="fas fa-edit"></i></button>
+              <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== INNOBÓTICA ===== -->
+      <div class="tab-pane fade" id="innobotica">
+        <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+          <h4 class="panel-title mb-0">Rúbrica · Innobótica</h4>
+          <button class="btn btn-neon btn-sm" onclick="agregarPuntoSimple('innobotica')">
+            <i class="fas fa-plus me-1"></i> Añadir punto
+          </button>
+        </div>
+        <div class="lista-puntos" id="puntos-innobotica">
+          <div class="punto-card">
+            <div class="punto-handle"><i class="fas fa-grip-vertical"></i></div>
+            <div class="punto-contenido">
+              <div class="punto-nombre" contenteditable="true">Innobótica 1</div>
+              <div class="punto-desc" contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diseño mecánico del robot.</div>
+            </div>
+            <div class="punto-valor">
+              <input type="number" class="form-control form-control-glass input-valor" value="10" min="0">
+              <span class="valor-label">pts máx.</span>
+            </div>
+            <div class="punto-acciones">
+              <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+            </div>
+          </div>
+          <div class="punto-card">
+            <div class="punto-handle"><i class="fas fa-grip-vertical"></i></div>
+            <div class="punto-contenido">
+              <div class="punto-nombre" contenteditable="true">Innobótica 2</div>
+              <div class="punto-desc" contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Programación y control.</div>
+            </div>
+            <div class="punto-valor">
+              <input type="number" class="form-control form-control-glass input-valor" value="10" min="0">
+              <span class="valor-label">pts máx.</span>
+            </div>
+            <div class="punto-acciones">
+              <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+            </div>
+          </div>
+          <div class="punto-card">
+            <div class="punto-handle"><i class="fas fa-grip-vertical"></i></div>
+            <div class="punto-contenido">
+              <div class="punto-nombre" contenteditable="true">Innobótica 3</div>
+              <div class="punto-desc" contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eficiencia energética.</div>
+            </div>
+            <div class="punto-valor">
+              <input type="number" class="form-control form-control-glass input-valor" value="10" min="0">
+              <span class="valor-label">pts máx.</span>
+            </div>
+            <div class="punto-acciones">
+              <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+            </div>
+          </div>
+          <div class="punto-card">
+            <div class="punto-handle"><i class="fas fa-grip-vertical"></i></div>
+            <div class="punto-contenido">
+              <div class="punto-nombre" contenteditable="true">Innobótica 4</div>
+              <div class="punto-desc" contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Autonomía y sensores.</div>
+            </div>
+            <div class="punto-valor">
+              <input type="number" class="form-control form-control-glass input-valor" value="10" min="0">
+              <span class="valor-label">pts máx.</span>
+            </div>
+            <div class="punto-acciones">
+              <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+            </div>
+          </div>
+          <div class="punto-card">
+            <div class="punto-handle"><i class="fas fa-grip-vertical"></i></div>
+            <div class="punto-contenido">
+              <div class="punto-nombre" contenteditable="true">Innobótica 5</div>
+              <div class="punto-desc" contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Presentación y documentación.</div>
+            </div>
+            <div class="punto-valor">
+              <input type="number" class="form-control form-control-glass input-valor" value="10" min="0">
+              <span class="valor-label">pts máx.</span>
+            </div>
+            <div class="punto-acciones">
+              <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== HACKATEC ===== -->
+      <div class="tab-pane fade" id="hackatec">
+        <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+          <h4 class="panel-title mb-0">Rúbrica · Hackatec</h4>
+          <button class="btn btn-neon btn-sm" onclick="agregarPuntoSimple('hackatec')">
+            <i class="fas fa-plus me-1"></i> Añadir punto
+          </button>
+        </div>
+        <div class="lista-puntos" id="puntos-hackatec">
+          <div class="punto-card">
+            <div class="punto-handle"><i class="fas fa-grip-vertical"></i></div>
+            <div class="punto-contenido">
+              <div class="punto-nombre" contenteditable="true">Hackatec 1</div>
+              <div class="punto-desc" contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Resolución del problema.</div>
+            </div>
+            <div class="punto-valor">
+              <input type="number" class="form-control form-control-glass input-valor" value="10" min="0">
+              <span class="valor-label">pts máx.</span>
+            </div>
+            <div class="punto-acciones">
+              <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+            </div>
+          </div>
+          <div class="punto-card">
+            <div class="punto-handle"><i class="fas fa-grip-vertical"></i></div>
+            <div class="punto-contenido">
+              <div class="punto-nombre" contenteditable="true">Hackatec 2</div>
+              <div class="punto-desc" contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Calidad del código.</div>
+            </div>
+            <div class="punto-valor">
+              <input type="number" class="form-control form-control-glass input-valor" value="10" min="0">
+              <span class="valor-label">pts máx.</span>
+            </div>
+            <div class="punto-acciones">
+              <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+            </div>
+          </div>
+          <div class="punto-card">
+            <div class="punto-handle"><i class="fas fa-grip-vertical"></i></div>
+            <div class="punto-contenido">
+              <div class="punto-nombre" contenteditable="true">Hackatec 3</div>
+              <div class="punto-desc" contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Escalabilidad.</div>
+            </div>
+            <div class="punto-valor">
+              <input type="number" class="form-control form-control-glass input-valor" value="10" min="0">
+              <span class="valor-label">pts máx.</span>
+            </div>
+            <div class="punto-acciones">
+              <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+            </div>
+          </div>
+          <div class="punto-card">
+            <div class="punto-handle"><i class="fas fa-grip-vertical"></i></div>
+            <div class="punto-contenido">
+              <div class="punto-nombre" contenteditable="true">Hackatec 4</div>
+              <div class="punto-desc" contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Interfaz de usuario.</div>
+            </div>
+            <div class="punto-valor">
+              <input type="number" class="form-control form-control-glass input-valor" value="10" min="0">
+              <span class="valor-label">pts máx.</span>
+            </div>
+            <div class="punto-acciones">
+              <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+            </div>
+          </div>
+          <div class="punto-card">
+            <div class="punto-handle"><i class="fas fa-grip-vertical"></i></div>
+            <div class="punto-contenido">
+              <div class="punto-nombre" contenteditable="true">Hackatec 5</div>
+              <div class="punto-desc" contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Documentación técnica.</div>
+            </div>
+            <div class="punto-valor">
+              <input type="number" class="form-control form-control-glass input-valor" value="10" min="0">
+              <span class="valor-label">pts máx.</span>
+            </div>
+            <div class="punto-acciones">
+              <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- ==================== MODAL: GESTOR DE EVALUADORES ==================== -->
+<div class="modal fade" id="modalGestorEvaluadores" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content modal-glass">
+      <div class="modal-header modal-header-glass">
+        <h5 class="modal-title">Tipos de evaluadores de certamen de proyectos</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex gap-2 mb-3 flex-wrap">
+          <button class="btn btn-glass btn-sm" id="btnEvaluadorUnico">
+            <i class="fas fa-user me-1"></i> Evaluador único
+          </button>
+          <button class="btn btn-neon btn-sm" id="btnAddTipoEvaluador">
+            <i class="fas fa-plus me-1"></i> Añadir tipo de evaluador
+          </button>
+        </div>
+
+        <!-- Formulario de nuevo tipo -->
+        <div class="form-nuevo-tipo d-none mb-3" id="formNuevoTipo">
+          <div class="row g-2">
+            <div class="col-md-5">
+              <input type="text" class="form-control form-control-glass" id="nuevoTipoNombre" placeholder="Tipo de evaluador">
+            </div>
+            <div class="col-md-5">
+              <input type="text" class="form-control form-control-glass" id="nuevoTipoDesc" placeholder="Descripción">
+            </div>
+            <div class="col-md-2 d-flex gap-1">
+              <button class="btn btn-neon btn-sm flex-fill" id="btnAceptarTipo"><i class="fas fa-check"></i></button>
+              <button class="btn btn-reset btn-sm flex-fill" id="btnCancelarTipo"><i class="fas fa-times"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lista de tipos -->
+        <div class="lista-tipos-evaluador" id="listaTiposEvaluador">
+          <div class="tipo-evaluador-card">
+            <div>
+              <strong class="tipo-nombre">Interno</strong>
+              <p class="tipo-desc">Evalúa las exposiciones dentro de la biblioteca.</p>
+            </div>
+            <div class="d-flex gap-1">
+              <button class="btn btn-action btn-edit"><i class="fas fa-edit"></i></button>
+              <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+            </div>
+          </div>
+          <div class="tipo-evaluador-card">
+            <div>
+              <strong class="tipo-nombre">Externo</strong>
+              <p class="tipo-desc">Evalúa los proyectos físicos de cancha techada.</p>
+            </div>
+            <div class="d-flex gap-1">
+              <button class="btn btn-action btn-edit"><i class="fas fa-edit"></i></button>
+              <button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer modal-footer-glass">
+        <button type="button" class="btn btn-reset" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== MODAL: PUNTAJE POR EVALUADOR ==================== -->
+<div class="modal fade" id="modalPuntajeEvaluador" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content modal-glass">
+      <div class="modal-header modal-header-glass">
+        <h5 class="modal-title">Puntaje por evaluador</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label">Puntaje máximo</label>
+          <input type="number" class="form-control form-control-glass" id="puntajeMaximo" value="10" min="0">
+        </div>
+
+        <h6 class="seccion-titulo">Asignación por tipo de evaluador</h6>
+        <div class="lista-puntaje-evaluador" id="listaPuntajeEvaluador">
+          <div class="puntaje-eval-item">
+            <div class="form-check">
+              <input class="form-check-input puntaje-check" type="checkbox" id="checkInterno" data-target="inputInterno">
+              <label class="form-check-label" for="checkInterno">Interno</label>
+            </div>
+            <input type="number" class="form-control form-control-glass input-puntos d-none" id="inputInterno" placeholder="Puntos" min="0">
+          </div>
+          <div class="puntaje-eval-item">
+            <div class="form-check">
+              <input class="form-check-input puntaje-check" type="checkbox" id="checkExterno" data-target="inputExterno">
+              <label class="form-check-label" for="checkExterno">Externo</label>
+            </div>
+            <input type="number" class="form-control form-control-glass input-puntos d-none" id="inputExterno" placeholder="Puntos" min="0">
+          </div>
+        </div>
+        <small class="text-muted-glass d-block mt-2">La suma de los puntos no puede superar el puntaje máximo.</small>
+      </div>
+      <div class="modal-footer modal-footer-glass">
+        <button type="button" class="btn btn-reset" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-neon" id="btnGuardarPuntaje">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer-innovatec text-center py-3">
+  <div class="container">
+    <p class="mb-1 small">&copy; 2026 Tecnológico Nacional de México. Todos los derechos reservados.</p>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <a href="#" class="footer-link small">Innovatec</a>
+      <a href="#" class="footer-link small">TESCo</a>
+      <a href="#" class="footer-link small">TecNM</a>
+      <a href="#" class="footer-link small">Integra</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="bootstrap-5.3.8-dist/js/admin_scripts.js"></script>
+<script>
+  (function() {
+    console.log('Rúbricas cargadas.');
+
+    // ===== Agregar punto (certamen con botón de puntaje) =====
+    window.agregarPunto = function(comp) {
+      var cont = document.getElementById('puntos-' + comp);
+      var div = document.createElement('div');
+      div.className = 'punto-card';
+      div.innerHTML =
+        '<div class="punto-handle"><i class="fas fa-grip-vertical"></i></div>' +
+        '<div class="punto-contenido">' +
+        '<div class="punto-nombre" contenteditable="true">Nueva rúbrica</div>' +
+        '<div class="punto-desc" contenteditable="true">Descripción</div>' +
+        '</div>' +
+        '<div class="punto-acciones">' +
+        '<button class="btn btn-action btn-puntaje" data-bs-toggle="modal" data-bs-target="#modalPuntajeEvaluador"><i class="fas fa-calculator"></i></button>' +
+        '<button class="btn btn-action btn-edit"><i class="fas fa-edit"></i></button>' +
+        '<button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>' +
+        '</div>';
+      cont.appendChild(div);
+    };
+
+    // ===== Agregar punto simple (innobotica / hackatec) =====
+    window.agregarPuntoSimple = function(comp) {
+      var cont = document.getElementById('puntos-' + comp);
+      var div = document.createElement('div');
+      div.className = 'punto-card';
+      div.innerHTML =
+        '<div class="punto-handle"><i class="fas fa-grip-vertical"></i></div>' +
+        '<div class="punto-contenido">' +
+        '<div class="punto-nombre" contenteditable="true">Nueva rúbrica</div>' +
+        '<div class="punto-desc" contenteditable="true">Descripción</div>' +
+        '</div>' +
+        '<div class="punto-valor">' +
+        '<input type="number" class="form-control form-control-glass input-valor" value="0" min="0">' +
+        '<span class="valor-label">pts máx.</span>' +
+        '</div>' +
+        '<div class="punto-acciones">' +
+        '<button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>' +
+        '</div>';
+      cont.appendChild(div);
+    };
+
+    // ===== Eliminar puntos (delegado) =====
+    document.addEventListener('click', function(e) {
+      var del = e.target.closest('.btn-delete');
+      if (del) {
+        var card = del.closest('.punto-card');
+        if (card) card.remove();
+      }
+    });
+
+    // ===== Modal gestor evaluadores =====
+    var btnAddTipo = document.getElementById('btnAddTipoEvaluador');
+    var formNuevo = document.getElementById('formNuevoTipo');
+    btnAddTipo.addEventListener('click', function() {
+      formNuevo.classList.toggle('d-none');
+    });
+    document.getElementById('btnCancelarTipo').addEventListener('click', function() {
+      formNuevo.classList.add('d-none');
+      document.getElementById('nuevoTipoNombre').value = '';
+      document.getElementById('nuevoTipoDesc').value = '';
+    });
+    document.getElementById('btnAceptarTipo').addEventListener('click', function() {
+      var nombre = document.getElementById('nuevoTipoNombre').value.trim();
+      var desc = document.getElementById('nuevoTipoDesc').value.trim();
+      if (!nombre) return;
+      var lista = document.getElementById('listaTiposEvaluador');
+      var card = document.createElement('div');
+      card.className = 'tipo-evaluador-card';
+      card.innerHTML =
+        '<div><strong class="tipo-nombre">' + nombre + '</strong>' +
+        '<p class="tipo-desc">' + (desc || 'Sin descripción') + '</p></div>' +
+        '<div class="d-flex gap-1">' +
+        '<button class="btn btn-action btn-edit"><i class="fas fa-edit"></i></button>' +
+        '<button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>' +
+        '</div>';
+      lista.appendChild(card);
+      formNuevo.classList.add('d-none');
+      document.getElementById('nuevoTipoNombre').value = '';
+      document.getElementById('nuevoTipoDesc').value = '';
+    });
+
+    // ===== Evaluador único =====
+    document.getElementById('btnEvaluadorUnico').addEventListener('click', function() {
+      var lista = document.getElementById('listaTiposEvaluador');
+      lista.innerHTML =
+        '<div class="tipo-evaluador-card">' +
+        '<div><strong class="tipo-nombre">Evaluador único</strong>' +
+        '<p class="tipo-desc">Evalúa todos los aspectos del proyecto.</p></div>' +
+        '<div class="d-flex gap-1">' +
+        '<button class="btn btn-action btn-edit"><i class="fas fa-edit"></i></button>' +
+        '<button class="btn btn-action btn-delete"><i class="fas fa-trash-alt"></i></button>' +
+        '</div></div>';
+    });
+
+    // ===== Mostrar/ocultar inputs de puntos =====
+    document.querySelectorAll('.puntaje-check').forEach(function(chk) {
+      chk.addEventListener('change', function() {
+        var target = document.getElementById(this.getAttribute('data-target'));
+        if (this.checked) target.classList.remove('d-none');
+        else { target.classList.add('d-none'); target.value = ''; }
+      });
+    });
+
+    // ===== Validar suma de puntos =====
+    document.getElementById('btnGuardarPuntaje').addEventListener('click', function() {
+      var max = parseFloat(document.getElementById('puntajeMaximo').value) || 0;
+      var suma = 0;
+      document.querySelectorAll('.input-puntos').forEach(function(inp) {
+        if (!inp.classList.contains('d-none')) {
+          suma += parseFloat(inp.value) || 0;
+        }
+      });
+      if (suma > max) {
+        alert('La suma de los puntos (' + suma + ') supera el puntaje máximo (' + max + ').');
+        return;
+      }
+      alert('Puntaje guardado (demo).');
+      bootstrap.Modal.getInstance(document.getElementById('modalPuntajeEvaluador')).hide();
+    });
+  })();
+</script>
+</body>
+</html>

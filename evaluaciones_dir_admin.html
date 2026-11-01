@@ -1,0 +1,503 @@
+<!-- ==================== evaluaciones_dir_admin.html ==================== -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Directivo | Evaluaciones</title>
+  <!-- Font Awesome 5 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/estilos_admin.css">
+</head>
+<body>
+
+<!-- ==================== FONDO HEXÁGONOS ==================== -->
+<div class="bg-hex-container" id="bgHexContainer"></div>
+
+<!-- ==================== NAVBAR DIRECTIVO ==================== -->
+<nav class="navbar navbar-expand-lg nav-inutilizable fixed-top always-collapse">
+  <div class="container-fluid position-relative">
+    <a class="navbar-brand" href="inicio_dir_admin.html">
+      <span class="d-none d-sm-inline">PANEL DIRECTIVO | Evaluaciones</span>
+      <span class="d-inline d-sm-none">Evaluaciones</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar" aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="adminNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="inicio_dir_admin.html"><i class="fas fa-home me-1"></i> Inicio</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="evaluaciones_dir_admin.html"><i class="fas fa-clipboard-check me-1"></i> Evaluaciones</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="usuarios_dir_admin.html"><i class="fas fa-users me-1"></i> Usuarios</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="equipos_dir_admin.html"><i class="fas fa-users-cog me-1"></i> Equipos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="inicio_admin.html"><i class="fas fa-arrow-left me-1"></i> Volver</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-evaluador" href="index.html"><i class="fas fa-sign-out-alt me-1"></i> Cerrar sesión</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ==================== SUBNavbar CATEGORÍAS (dinámico por competencia) ==================== -->
+<div class="subnavbar-reglas">
+  <div class="container">
+    <ul class="nav competencia-tabs" id="competenciaTabsEval">
+      <li class="nav-item"><button class="competencia-link active" data-bs-toggle="pill" data-bs-target="#dir-certamen" type="button">Certamen de proyectos</button></li>
+      <li class="nav-item"><button class="competencia-link" data-bs-toggle="pill" data-bs-target="#dir-innobotica" type="button">Innobótica</button></li>
+      <li class="nav-item"><button class="competencia-link" data-bs-toggle="pill" data-bs-target="#dir-hackatec" type="button">Hackatec</button></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ==================== SUBNavbar CATEGORÍAS (según competencia activa) ==================== -->
+<div class="categoria-navbar">
+  <div class="container">
+    <ul class="nav categoria-tabs" id="categoriaDirTabs">
+      <!-- Contenido dinámico por JS -->
+    </ul>
+  </div>
+</div>
+
+<!-- ==================== CONTENIDO ==================== -->
+<main class="main-login" style="margin-top: 76px;">
+  <div class="container">
+    <div class="tab-content" id="dirCompetenciaContent">
+
+      <!-- ===== CERTAMEN DE PROYECTOS ===== -->
+      <div class="tab-pane fade show active" id="dir-certamen">
+        <div class="tab-content" id="dirCategoriasCertamen">
+          <!-- Industria Eléctrica -->
+          <div class="tab-pane fade show active" data-categoria="industria" id="dir-cat-industria">
+            <div class="evaluaciones-lista">
+              <div class="equipo-eval-card">
+                <div class="equipo-eval-header">
+                  <div class="equipo-eval-info">
+                    <h5 class="equipo-eval-nombre">Kinoj</h5>
+                    <p class="equipo-eval-desc">Vales más de lo que crees</p>
+                  </div>
+                  <span class="badge-apto">Apto</span>
+                </div>
+                <div class="evaluaciones-items">
+                  <div class="evaluacion-item">
+                    <span class="evaluador-nombre">López Bañuelos Emanuel Rashidh</span>
+                    <div class="evaluacion-acciones">
+                      <span class="puntaje-badge">30</span>
+                      <button class="btn btn-action btn-view" data-bs-toggle="modal" data-bs-target="#modalDetalleEvaluacionDir"
+                        data-evaluador="López Bañuelos Emanuel Rashidh" data-puntaje="30" data-tipo="Interno" data-equipo="Kinoj">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="evaluacion-item">
+                    <span class="evaluador-nombre">Lugo Alvarez César Geovanni</span>
+                    <div class="evaluacion-acciones">
+                      <span class="puntaje-badge">25</span>
+                      <button class="btn btn-action btn-view" data-bs-toggle="modal" data-bs-target="#modalDetalleEvaluacionDir"
+                        data-evaluador="Lugo Alvarez César Geovanni" data-puntaje="25" data-tipo="Externo" data-equipo="Kinoj">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="equipo-eval-card">
+                <div class="equipo-eval-header">
+                  <div class="equipo-eval-info">
+                    <h5 class="equipo-eval-nombre">Sabritesco</h5>
+                    <p class="equipo-eval-desc">Frituras naturales, saludables y deliciosas</p>
+                  </div>
+                  <span class="badge-apto">Apto</span>
+                </div>
+                <div class="evaluaciones-items">
+                  <div class="evaluacion-item">
+                    <span class="evaluador-nombre">Camacho Campero José Luis</span>
+                    <div class="evaluacion-acciones">
+                      <span class="puntaje-badge">20</span>
+                      <button class="btn btn-action btn-view" data-bs-toggle="modal" data-bs-target="#modalDetalleEvaluacionDir"
+                        data-evaluador="Camacho Campero José Luis" data-puntaje="20" data-tipo="Interno" data-equipo="Sabritesco">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Electromovilidad -->
+          <div class="tab-pane fade" data-categoria="electromovilidad" id="dir-cat-electromovilidad">
+            <div class="evaluaciones-lista">
+              <div class="equipo-eval-card">
+                <div class="equipo-eval-header">
+                  <div class="equipo-eval-info">
+                    <h5 class="equipo-eval-nombre">Volt-Ride</h5>
+                    <p class="equipo-eval-desc">Scooter eléctrico de bajo consumo</p>
+                  </div>
+                  <span class="badge-apto">Apto</span>
+                </div>
+                <div class="evaluaciones-items">
+                  <div class="evaluacion-item">
+                    <span class="evaluador-nombre">Martínez Ruiz Ana Sofía</span>
+                    <div class="evaluacion-acciones">
+                      <span class="puntaje-badge">28</span>
+                      <button class="btn btn-action btn-view" data-bs-toggle="modal" data-bs-target="#modalDetalleEvaluacionDir"
+                        data-evaluador="Martínez Ruiz Ana Sofía" data-puntaje="28" data-tipo="Interno" data-equipo="Volt-Ride">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Salud Humana -->
+          <div class="tab-pane fade" data-categoria="salud" id="dir-cat-salud">
+            <div class="evaluaciones-lista">
+              <div class="equipo-eval-card">
+                <div class="equipo-eval-header">
+                  <div class="equipo-eval-info">
+                    <h5 class="equipo-eval-nombre">Medi-Tech</h5>
+                    <p class="equipo-eval-desc">Monitor de signos vitales portátil</p>
+                  </div>
+                  <span class="badge-apto">Apto</span>
+                </div>
+                <div class="evaluaciones-items">
+                  <div class="evaluacion-item">
+                    <span class="evaluador-nombre">Hernández López María</span>
+                    <div class="evaluacion-acciones">
+                      <span class="puntaje-badge">33</span>
+                      <button class="btn btn-action btn-view" data-bs-toggle="modal" data-bs-target="#modalDetalleEvaluacionDir"
+                        data-evaluador="Hernández López María" data-puntaje="33" data-tipo="Externo" data-equipo="Medi-Tech">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sostenibilidad -->
+          <div class="tab-pane fade" data-categoria="sostenibilidad" id="dir-cat-sostenibilidad">
+            <div class="evaluaciones-lista">
+              <div class="equipo-eval-card">
+                <div class="equipo-eval-header">
+                  <div class="equipo-eval-info">
+                    <h5 class="equipo-eval-nombre">Eco-Water</h5>
+                    <p class="equipo-eval-desc">Sistema de captación de agua pluvial</p>
+                  </div>
+                  <span class="badge-apto">Apto</span>
+                </div>
+                <div class="evaluaciones-items">
+                  <div class="evaluacion-item">
+                    <span class="evaluador-nombre">Ramírez Torres Carlos</span>
+                    <div class="evaluacion-acciones">
+                      <span class="puntaje-badge">22</span>
+                      <button class="btn btn-action btn-view" data-bs-toggle="modal" data-bs-target="#modalDetalleEvaluacionDir"
+                        data-evaluador="Ramírez Torres Carlos" data-puntaje="22" data-tipo="Interno" data-equipo="Eco-Water">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Consumo final -->
+          <div class="tab-pane fade" data-categoria="consumo" id="dir-cat-consumo">
+            <div class="evaluaciones-lista">
+              <div class="equipo-eval-card">
+                <div class="equipo-eval-header">
+                  <div class="equipo-eval-info">
+                    <h5 class="equipo-eval-nombre">Snack-Fresh</h5>
+                    <p class="equipo-eval-desc">Snacks nutritivos a base de insectos</p>
+                  </div>
+                  <span class="badge-apto">Apto</span>
+                </div>
+                <div class="evaluaciones-items">
+                  <div class="evaluacion-item">
+                    <span class="evaluador-nombre">Vega Mendoza Laura</span>
+                    <div class="evaluacion-acciones">
+                      <span class="puntaje-badge">19</span>
+                      <button class="btn btn-action btn-view" data-bs-toggle="modal" data-bs-target="#modalDetalleEvaluacionDir"
+                        data-evaluador="Vega Mendoza Laura" data-puntaje="19" data-tipo="Externo" data-equipo="Snack-Fresh">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Agroindustrial -->
+          <div class="tab-pane fade" data-categoria="agro" id="dir-cat-agro">
+            <div class="evaluaciones-lista">
+              <div class="equipo-eval-card">
+                <div class="equipo-eval-header">
+                  <div class="equipo-eval-info">
+                    <h5 class="equipo-eval-nombre">Agro-Smart</h5>
+                    <p class="equipo-eval-desc">Riego automatizado con sensores IoT</p>
+                  </div>
+                  <span class="badge-apto">Apto</span>
+                </div>
+                <div class="evaluaciones-items">
+                  <div class="evaluacion-item">
+                    <span class="evaluador-nombre">Sánchez Pérez Pedro</span>
+                    <div class="evaluacion-acciones">
+                      <span class="puntaje-badge">26</span>
+                      <button class="btn btn-action btn-view" data-bs-toggle="modal" data-bs-target="#modalDetalleEvaluacionDir"
+                        data-evaluador="Sánchez Pérez Pedro" data-puntaje="26" data-tipo="Interno" data-equipo="Agro-Smart">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== INNOBÓTICA ===== -->
+      <div class="tab-pane fade" id="dir-innobotica">
+        <div class="tab-content" id="dirCategoriasInnobotica">
+          <!-- Siguelineas -->
+          <div class="tab-pane fade show active" data-categoria="siguelineas" id="dir-cat-siguelineas">
+            <div class="evaluaciones-lista">
+              <div class="equipo-eval-card">
+                <div class="equipo-eval-header">
+                  <div class="equipo-eval-info">
+                    <h5 class="equipo-eval-nombre">ROBO-SIG</h5>
+                    <p class="equipo-eval-desc">Robot seguidor de línea de alta velocidad</p>
+                  </div>
+                  <span class="badge-apto">Apto</span>
+                </div>
+                <div class="evaluaciones-items">
+                  <div class="evaluacion-item">
+                    <span class="evaluador-nombre">Mendoza Carlos</span>
+                    <div class="evaluacion-acciones">
+                      <span class="puntaje-badge">40</span>
+                      <button class="btn btn-action btn-view" data-bs-toggle="modal" data-bs-target="#modalDetalleEvaluacionDir"
+                        data-evaluador="Mendoza Carlos" data-puntaje="40" data-tipo="Único" data-equipo="ROBO-SIG">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mini sumo -->
+          <div class="tab-pane fade" data-categoria="minisumo" id="dir-cat-minisumo">
+            <div class="evaluaciones-lista">
+              <div class="equipo-eval-card">
+                <div class="equipo-eval-header">
+                  <div class="equipo-eval-info">
+                    <h5 class="equipo-eval-nombre">SUMO-TEC</h5>
+                    <p class="equipo-eval-desc">Robot de mini sumo autónomo</p>
+                  </div>
+                  <span class="badge-apto">Apto</span>
+                </div>
+                <div class="evaluaciones-items">
+                  <div class="evaluacion-item">
+                    <span class="evaluador-nombre">Vega Laura</span>
+                    <div class="evaluacion-acciones">
+                      <span class="puntaje-badge">38</span>
+                      <button class="btn btn-action btn-view" data-bs-toggle="modal" data-bs-target="#modalDetalleEvaluacionDir"
+                        data-evaluador="Vega Laura" data-puntaje="38" data-tipo="Único" data-equipo="SUMO-TEC">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== HACKATEC (sin categorías) ===== -->
+      <div class="tab-pane fade" id="dir-hackatec">
+        <div class="evaluaciones-lista">
+          <div class="equipo-eval-card">
+            <div class="equipo-eval-header">
+              <div class="equipo-eval-info">
+                <h5 class="equipo-eval-nombre">CODE-WARRIORS</h5>
+                <p class="equipo-eval-desc">Solución de ciberseguridad para PyMEs</p>
+              </div>
+              <span class="badge-apto">Apto</span>
+            </div>
+            <div class="evaluaciones-items">
+              <div class="evaluacion-item">
+                <span class="evaluador-nombre">Herrera Sofía</span>
+                <div class="evaluacion-acciones">
+                  <span class="puntaje-badge">45</span>
+                  <button class="btn btn-action btn-view" data-bs-toggle="modal" data-bs-target="#modalDetalleEvaluacionDir"
+                    data-evaluador="Herrera Sofía" data-puntaje="45" data-tipo="Único" data-equipo="CODE-WARRIORS">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- ==================== MODAL: DETALLE EVALUACIÓN ==================== -->
+<div class="modal fade" id="modalDetalleEvaluacionDir" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content modal-glass">
+      <div class="modal-header modal-header-glass">
+        <h5 class="modal-title">Detalle de evaluación</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-3">
+          <div class="col-12">
+            <span class="info-label">Equipo</span>
+            <p class="info-valor" id="dirDetalleEquipo">-</p>
+          </div>
+          <div class="col-12">
+            <span class="info-label">Evaluador</span>
+            <p class="info-valor" id="dirDetalleEvaluador">-</p>
+          </div>
+          <div class="col-6">
+            <span class="info-label">Tipo de evaluador</span>
+            <p class="info-valor" id="dirDetalleTipo">-</p>
+          </div>
+          <div class="col-6">
+            <span class="info-label">Puntaje</span>
+            <p class="info-valor puntaje-grande" id="dirDetallePuntaje">-</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer modal-footer-glass">
+        <button type="button" class="btn btn-reset" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer-innovatec text-center py-3">
+  <div class="container">
+    <p class="mb-1 small">&copy; 2026 Tecnológico Nacional de México. Todos los derechos reservados.</p>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <a href="#" class="footer-link small">Innovatec</a>
+      <a href="#" class="footer-link small">TESCo</a>
+      <a href="#" class="footer-link small">TecNM</a>
+      <a href="#" class="footer-link small">Integra</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="bootstrap-5.3.8-dist/js/admin_scripts.js"></script>
+<script>
+  (function() {
+    console.log('Evaluaciones directivo cargadas.');
+
+    // ===== Categorías dinámicas según competencia =====
+    var categoriasPorCompetencia = {
+      'dir-certamen': [
+        { id: 'dir-cat-industria', label: 'Industria Eléctrica' },
+        { id: 'dir-cat-electromovilidad', label: 'Electromovilidad' },
+        { id: 'dir-cat-salud', label: 'Salud Humana' },
+        { id: 'dir-cat-sostenibilidad', label: 'Sostenibilidad' },
+        { id: 'dir-cat-consumo', label: 'Consumo final' },
+        { id: 'dir-cat-agro', label: 'Agroindustrial' }
+      ],
+      'dir-innobotica': [
+        { id: 'dir-cat-siguelineas', label: 'Siguelineas' },
+        { id: 'dir-cat-minisumo', label: 'Mini sumo' }
+      ],
+      'dir-hackatec': []
+    };
+
+    var categoriaUl = document.getElementById('categoriaDirTabs');
+    var competenciaTabs = document.querySelectorAll('#competenciaTabsEval .competencia-link');
+
+    function renderCategorias(competenciaTarget) {
+      categoriaUl.innerHTML = '';
+      var cats = categoriasPorCompetencia[competenciaTarget] || [];
+      if (cats.length === 0) {
+        categoriaUl.innerHTML = '<li class="nav-item"><span class="categoria-link" style="opacity:.5;cursor:default;">Sin categorías</span></li>';
+        return;
+      }
+      cats.forEach(function(cat, i) {
+        var li = document.createElement('li');
+        li.className = 'nav-item';
+        var btn = document.createElement('button');
+        btn.className = 'categoria-link' + (i === 0 ? ' active' : '');
+        btn.type = 'button';
+        btn.setAttribute('data-bs-toggle', 'pill');
+        btn.setAttribute('data-bs-target', '#' + cat.id);
+        btn.textContent = cat.label;
+        li.appendChild(btn);
+        categoriaUl.appendChild(li);
+      });
+    }
+
+    competenciaTabs.forEach(function(tab) {
+      tab.addEventListener('shown.bs.tab', function(event) {
+        var targetId = event.target.getAttribute('data-bs-target').substring(1);
+        renderCategorias(targetId);
+      });
+    });
+
+    // Inicial
+    renderCategorias('dir-certamen');
+
+    // ===== Modal detalle =====
+    var modalDetalle = document.getElementById('modalDetalleEvaluacionDir');
+    modalDetalle.addEventListener('show.bs.modal', function(event) {
+      var btn = event.relatedTarget;
+      document.getElementById('dirDetalleEquipo').textContent = btn.getAttribute('data-equipo') || '-';
+      document.getElementById('dirDetalleEvaluador').textContent = btn.getAttribute('data-evaluador') || '-';
+      document.getElementById('dirDetalleTipo').textContent = btn.getAttribute('data-tipo') || '-';
+      document.getElementById('dirDetallePuntaje').textContent = btn.getAttribute('data-puntaje') || '-';
+    });
+
+    // ===== Fondo de hexágonos animados =====
+    (function generarHexagonos() {
+      var cont = document.getElementById('bgHexContainer');
+      if (!cont) return;
+      var cantidad = window.innerWidth < 768 ? 12 : 22;
+      for (var i = 0; i < cantidad; i++) {
+        var hex = document.createElement('div');
+        hex.className = 'bg-hexagon';
+        var size = 40 + Math.random() * 120;
+        hex.style.width = size + 'px';
+        hex.style.height = (size * 1.15) + 'px';
+        hex.style.left = Math.random() * 100 + '%';
+        hex.style.top = Math.random() * 100 + '%';
+        hex.style.opacity = (0.2 + Math.random() * 0.4).toFixed(2);
+        var dur = (12 + Math.random() * 18).toFixed(1);
+        hex.style.animation = 'flotarHex ' + dur + 's ease-in-out infinite';
+        hex.style.animationDelay = (-Math.random() * 10).toFixed(1) + 's';
+        hex.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
+        cont.appendChild(hex);
+      }
+    })();
+  })();
+</script>
+</body>
+</html>

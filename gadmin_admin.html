@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Administrador | Gestión de Administradores</title>
+  <!-- Font Awesome 5 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/estilos_admin.css">
+</head>
+<body>
+<div class="bg-hex-container">
+  <div class="bg-hexagon" style="top: 10%; left: 8%;"></div>
+  <div class="bg-hexagon" style="top: 25%; right: 12%;"></div>
+  <div class="bg-hexagon" style="top: 60%; left: 15%;"></div>
+  <div class="bg-hexagon" style="top: 75%; right: 20%;"></div>
+  <div class="bg-hexagon" style="top: 45%; left: 50%;"></div>
+  <div class="bg-hexagon" style="top: 85%; left: 5%;"></div>
+</div>
+<!-- ==================== NAVBAR ADMIN ==================== -->
+<nav class="navbar navbar-expand-lg nav-inutilizable fixed-top always-collapse">
+  <div class="container-fluid position-relative">
+    <a class="navbar-brand" href="inicio_admin.html">
+      <span class="d-none d-sm-inline">Panel Admin | Gestor de administradores</span>
+      <span class="d-inline d-sm-none">Gestor de administradores</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar" aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="adminNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+        <li class="nav-item">
+          <a class="nav-link nav-link-evaluador" href="inicio_admin.html">
+            <i class="fas fa-home me-1"></i> Inicio
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-evaluador" href="gadmin_admin.html">
+            <i class="fas fa-user-cog me-1"></i> Gestión de administradores
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-evaluador" href="gequipos_admin.html">
+            <i class="fas fa-users-cog me-1"></i> Gestión de equipos
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-evaluador" href="reglas_admin.html">
+            <i class="fas fa-gavel me-1"></i> Control de reglas
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-evaluador" href="evaluaciones_admin.html">
+            <i class="fas fa-clipboard-check me-1"></i> Evaluaciones
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-evaluador" href="gcuentas_admin.html">
+            <i class="fas fa-id-card me-1"></i> Gestión de cuentas
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-evaluador" href="certificados_admin.html">
+            <i class="fas fa-certificate me-1"></i> Certificados
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-evaluador" href="garchivos_admin.html">
+            <i class="fas fa-folder-open me-1"></i> Gestor de archivos
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-evaluador" href="avisos_admin.html">
+            <i class="fas fa-bullhorn me-1"></i> Avisos
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-evaluador" href="widget_admin.html">
+            <i class="fas fa-puzzle-piece me-1"></i> Widgets
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-evaluador" href="inicio_dir_admin.html">
+            <i class="fas fa-user-tie me-1"></i> Directivos
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-evaluador" href="index.html">
+            <i class="fas fa-sign-out-alt me-1"></i> Salir
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ==================== CONTENIDO PRINCIPAL ==================== -->
+<main class="main-login" style="margin-top: 76px;">
+  <div class="container">
+
+    <!-- Barra de búsqueda + Botón añadir -->
+    <div class="row align-items-center mb-4 g-3">
+      <div class="col-12 col-md-7 col-lg-8">
+        <div class="search-wrapper">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" class="form-control search-input" placeholder="Buscar un administrador" id="searchAdmin">
+        </div>
+      </div>
+      <div class="col-12 col-md-5 col-lg-4 text-md-end">
+        <button class="btn btn-neon w-100 w-md-auto" data-bs-toggle="modal" data-bs-target="#modalAddAdmin">
+          <i class="fas fa-plus me-1"></i> Añadir
+        </button>
+      </div>
+    </div>
+
+    <!-- Tabla de administradores -->
+    <div class="table-responsive table-glass">
+      <table class="table table-admin align-middle mb-0">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Contraseña</th>
+            <th>Permisos</th>
+            <th>Habilitado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="adminTableBody">
+          <!-- Fila 1: ADMIN con todos los permisos -->
+          <tr data-permisos="10">
+            <td>1</td>
+            <td>ADMIN</td>
+            <td>geovarosh@innova.com</td>
+            <td>GeovaRash1705011</td>
+            <td>10 permisos</td>
+            <td>
+              <div class="form-check form-switch d-flex justify-content-center">
+                <input class="form-check-input" type="checkbox" checked>
+              </div>
+            </td>
+            <td>
+              <div class="d-flex gap-2 justify-content-center">
+                <button class="btn btn-action btn-edit" data-bs-toggle="modal" data-bs-target="#modalEditAdmin" data-nombre="ADMIN" data-correo="geovarosh@innova.com" data-pass="GeovaRash1705011" data-permisos="gadmins,gequipos,greglas,gevaluaciones,gcuentas,garchivos,gcertificados,gavisos,gwidgets,directivo">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-action btn-delete">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <!-- Fila 2: Geovanni (5 permisos) -->
+          <tr data-permisos="5">
+            <td>2</td>
+            <td>Geovanni</td>
+            <td>geovanni@tesco.edu.mx</td>
+            <td>g30v4nn1_2026</td>
+            <td>5 permisos</td>
+            <td>
+              <div class="form-check form-switch d-flex justify-content-center">
+                <input class="form-check-input" type="checkbox" checked>
+              </div>
+            </td>
+            <td>
+              <div class="d-flex gap-2 justify-content-center">
+                <button class="btn btn-action btn-edit" data-bs-toggle="modal" data-bs-target="#modalEditAdmin" data-nombre="Geovanni" data-correo="geovanni@tesco.edu.mx" data-pass="g30v4nn1_2026" data-permisos="gadmins,gequipos,greglas,gevaluaciones,gcuentas">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-action btn-delete">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <!-- Fila 3: Rashidh (6 permisos) -->
+          <tr data-permisos="6">
+            <td>3</td>
+            <td>Rashidh</td>
+            <td>rashidh@tesco.edu.mx</td>
+            <td>r4sh1dh_2026</td>
+            <td>6 permisos</td>
+            <td>
+              <div class="form-check form-switch d-flex justify-content-center">
+                <input class="form-check-input" type="checkbox" checked>
+              </div>
+            </td>
+            <td>
+              <div class="d-flex gap-2 justify-content-center">
+                <button class="btn btn-action btn-edit" data-bs-toggle="modal" data-bs-target="#modalEditAdmin" data-nombre="Rashidh" data-correo="rashidh@tesco.edu.mx" data-pass="r4sh1dh_2026" data-permisos="gadmins,gequipos,greglas,gevaluaciones,gcuentas,garchivos">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-action btn-delete">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <!-- Fila 4: Camacho (5 permisos) -->
+          <tr data-permisos="5">
+            <td>4</td>
+            <td>Camacho</td>
+            <td>camacho@tesco.edu.mx</td>
+            <td>c4m4ch0_2026</td>
+            <td>5 permisos</td>
+            <td>
+              <div class="form-check form-switch d-flex justify-content-center">
+                <input class="form-check-input" type="checkbox" checked>
+              </div>
+            </td>
+            <td>
+              <div class="d-flex gap-2 justify-content-center">
+                <button class="btn btn-action btn-edit" data-bs-toggle="modal" data-bs-target="#modalEditAdmin" data-nombre="Camacho" data-correo="camacho@tesco.edu.mx" data-pass="c4m4ch0_2026" data-permisos="gadmins,gequipos,greglas,gcertificados,gavisos">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-action btn-delete">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <!-- Fila 5: Mayte (1 permiso: directivo) -->
+          <tr data-permisos="1">
+            <td>5</td>
+            <td>Mayte</td>
+            <td>mayte@tesco.edu.mx</td>
+            <td>m4yt3_2026</td>
+            <td>1 permiso</td>
+            <td>
+              <div class="form-check form-switch d-flex justify-content-center">
+                <input class="form-check-input" type="checkbox" checked>
+              </div>
+            </td>
+            <td>
+              <div class="d-flex gap-2 justify-content-center">
+                <button class="btn btn-action btn-edit" data-bs-toggle="modal" data-bs-target="#modalEditAdmin" data-nombre="Mayte" data-correo="mayte@tesco.edu.mx" data-pass="m4yt3_2026" data-permisos="directivo">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-action btn-delete">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</main>
+
+<!-- ==================== MODAL: EDITAR ADMIN ==================== -->
+<div class="modal fade" id="modalEditAdmin" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content modal-glass">
+      <div class="modal-header modal-header-glass">
+        <h5 class="modal-title">Editar permisos (<span id="editAdminNombre">Admin</span>)</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formEditAdmin">
+          <div class="row g-3 mb-4">
+            <div class="col-md-6">
+              <label class="form-label">Nombre</label>
+              <input type="text" class="form-control form-control-glass" id="editNombre" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Correo</label>
+              <input type="email" class="form-control form-control-glass" id="editCorreo" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Contraseña</label>
+              <input type="text" class="form-control form-control-glass" id="editPass" required>
+            </div>
+          </div>
+
+          <h6 class="mb-3 text-neon">Permisos</h6>
+          <div class="table-responsive">
+            <table class="table table-permisos mb-0">
+              <thead>
+                <tr>
+                  <th>Permiso</th>
+                  <th class="text-center" style="width: 80px;">Sel.</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Gestor de admins</td><td class="text-center"><input type="checkbox" class="form-check-input permiso-check" value="gadmins"></td></tr>
+                <tr><td>Gestor de equipos</td><td class="text-center"><input type="checkbox" class="form-check-input permiso-check" value="gequipos"></td></tr>
+                <tr><td>Gestor de reglas</td><td class="text-center"><input type="checkbox" class="form-check-input permiso-check" value="greglas"></td></tr>
+                <tr><td>Gestor de evaluaciones</td><td class="text-center"><input type="checkbox" class="form-check-input permiso-check" value="gevaluaciones"></td></tr>
+                <tr><td>Gestor de cuentas</td><td class="text-center"><input type="checkbox" class="form-check-input permiso-check" value="gcuentas"></td></tr>
+                <tr><td>Gestor de archivos</td><td class="text-center"><input type="checkbox" class="form-check-input permiso-check" value="garchivos"></td></tr>
+                <tr><td>Gestor de certificados</td><td class="text-center"><input type="checkbox" class="form-check-input permiso-check" value="gcertificados"></td></tr>
+                <tr><td>Gestor de avisos</td><td class="text-center"><input type="checkbox" class="form-check-input permiso-check" value="gavisos"></td></tr>
+                <tr><td>Gestor de widgets</td><td class="text-center"><input type="checkbox" class="form-check-input permiso-check" value="gwidgets"></td></tr>
+                <tr><td>Directivo</td><td class="text-center"><input type="checkbox" class="form-check-input permiso-check" value="directivo"></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer modal-footer-glass">
+        <button type="button" class="btn btn-reset" id="btnResetEdit">
+          <i class="fas fa-undo me-1"></i> Reiniciar
+        </button>
+        <button type="button" class="btn btn-neon" id="btnSaveEdit">
+          <i class="fas fa-save me-1"></i> Guardar cambios
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== MODAL: AÑADIR ADMIN ==================== -->
+<div class="modal fade" id="modalAddAdmin" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content modal-glass">
+      <div class="modal-header modal-header-glass">
+        <h5 class="modal-title">Añadir administrador</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formAddAdmin">
+          <div class="row g-3 mb-4">
+            <div class="col-md-6">
+              <label class="form-label">Nombre</label>
+              <input type="text" class="form-control form-control-glass" id="addNombre" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Correo</label>
+              <input type="email" class="form-control form-control-glass" id="addCorreo" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Contraseña</label>
+              <input type="text" class="form-control form-control-glass" id="addPass" required>
+            </div>
+          </div>
+
+          <h6 class="mb-3 text-neon">Permisos</h6>
+          <div class="table-responsive">
+            <table class="table table-permisos mb-0">
+              <thead>
+                <tr>
+                  <th>Permiso</th>
+                  <th class="text-center" style="width: 80px;">Sel.</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Gestor de admins</td><td class="text-center"><input type="checkbox" class="form-check-input permiso-check-add" value="gadmins"></td></tr>
+                <tr><td>Gestor de equipos</td><td class="text-center"><input type="checkbox" class="form-check-input permiso-check-add" value="gequipos"></td></tr>
+                <tr><td>Gestor de reglas</td><td class="text-center"><input type="checkbox" class="form-check-input permiso-check-add" value="greglas"></td></tr>
+                <tr><td>Gestor de evaluaciones</td><td class="text-center"><input type="checkbox" class="form-check-input permiso-check-add" value="gevaluaciones"></td></tr>
+                <tr><td>Gestor de archivos</td><td class="text-center"><input type="checkbox" class="form-check-input permiso-check-add" value="garchivos"></td></tr>
+                <tr><td>Gestor de cuentas</td><td class="text-center"><input type="checkbox" class="form-check-input permiso-check-add" value="gcuentas"></td></tr>
+                <tr><td>Gestor de certificados</td><td class="text-center"><input type="checkbox" class="form-check-input permiso-check-add" value="gcertificados"></td></tr>
+                <tr><td>Gestor de avisos</td><td class="text-center"><input type="checkbox" class="form-check-input permiso-check-add" value="gavisos"></td></tr>
+                <tr><td>Gestor de widgets</td><td class="text-center"><input type="checkbox" class="form-check-input permiso-check-add" value="gwidgets"></td></tr>
+                <tr><td>Directivo</td><td class="text-center"><input type="checkbox" class="form-check-input permiso-check-add" value="directivo" checked></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer modal-footer-glass">
+        <button type="button" class="btn btn-reset" id="btnResetAdd">
+          <i class="fas fa-undo me-1"></i> Reiniciar
+        </button>
+        <button type="button" class="btn btn-neon" id="btnSaveAdd">
+          <i class="fas fa-save me-1"></i> Guardar cambios
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer-innovatec text-center py-3">
+  <div class="container">
+    <p class="mb-1 small">&copy; 2026 Tecnológico Nacional de México. Todos los derechos reservados.</p>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <a href="#" class="footer-link small">Innovatec</a>
+      <a href="#" class="footer-link small">TESCo</a>
+      <a href="#" class="footer-link small">TecNM</a>
+      <a href="#" class="footer-link small">Integra</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="bootstrap-5.3.8-dist/js/admin_scripts.js"></script>
+<script>
+  (function() {
+    console.log('Gestión de administradores cargada.');
+
+    // ===== Llenar modal de edición =====
+    var modalEdit = document.getElementById('modalEditAdmin');
+    modalEdit.addEventListener('show.bs.modal', function(event) {
+      var button = event.relatedTarget;
+      var nombre = button.getAttribute('data-nombre');
+      var correo = button.getAttribute('data-correo');
+      var pass = button.getAttribute('data-pass');
+      var permisos = button.getAttribute('data-permisos').split(',');
+
+      document.getElementById('editAdminNombre').textContent = nombre;
+      document.getElementById('editNombre').value = nombre;
+      document.getElementById('editCorreo').value = correo;
+      document.getElementById('editPass').value = pass;
+
+      document.querySelectorAll('#formEditAdmin .permiso-check').forEach(function(chk) {
+        chk.checked = permisos.indexOf(chk.value) !== -1;
+      });
+    });
+
+    // ===== Reset modal edición =====
+    document.getElementById('btnResetEdit').addEventListener('click', function() {
+      var modal = bootstrap.Modal.getInstance(document.getElementById('modalEditAdmin'));
+      // Simplemente recargamos desde el botón que abrió
+      var trigger = document.querySelector('[data-bs-target="#modalEditAdmin"]');
+      if (trigger) {
+        // Re-disparamos el evento para restaurar valores
+        modal.hide();
+        setTimeout(function() { modal.show(trigger); }, 200);
+      }
+    });
+
+    // ===== Guardar edición (demo) =====
+    document.getElementById('btnSaveEdit').addEventListener('click', function() {
+      var checks = document.querySelectorAll('#formEditAdmin .permiso-check:checked');
+      if (checks.length === 0) {
+        alert('Selecciona al menos un permiso.');
+        return;
+      }
+      alert('Cambios guardados (demo). Permisos seleccionados: ' + checks.length);
+      bootstrap.Modal.getInstance(document.getElementById('modalEditAdmin')).hide();
+    });
+
+    // ===== Reset modal añadir =====
+    document.getElementById('btnResetAdd').addEventListener('click', function() {
+      document.getElementById('formAddAdmin').reset();
+      // Directivo activo por default
+      document.querySelector('#formAddAdmin .permiso-check-add[value="directivo"]').checked = true;
+    });
+
+    // ===== Guardar nuevo admin (demo) =====
+    document.getElementById('btnSaveAdd').addEventListener('click', function() {
+      var checks = document.querySelectorAll('#formAddAdmin .permiso-check-add:checked');
+      if (checks.length === 0) {
+        alert('Selecciona al menos un permiso.');
+        return;
+      }
+      alert('Administrador añadido (demo). Permisos: ' + checks.length);
+      bootstrap.Modal.getInstance(document.getElementById('modalAddAdmin')).hide();
+      document.getElementById('formAddAdmin').reset();
+      document.querySelector('#formAddAdmin .permiso-check-add[value="directivo"]').checked = true;
+    });
+
+    // ===== Filtro de búsqueda (demo) =====
+    document.getElementById('searchAdmin').addEventListener('keyup', function() {
+      var filtro = this.value.toLowerCase();
+      var filas = document.querySelectorAll('#adminTableBody tr');
+      filas.forEach(function(fila) {
+        var texto = fila.textContent.toLowerCase();
+        fila.style.display = texto.indexOf(filtro) !== -1 ? '' : 'none';
+      });
+    });
+
+    // ===== Botones eliminar (demo) =====
+    document.querySelectorAll('.btn-delete').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        if (confirm('¿Eliminar este administrador? (demo)')) {
+          this.closest('tr').remove();
+        }
+      });
+    });
+  })();
+</script>
+</body>
+</html>
